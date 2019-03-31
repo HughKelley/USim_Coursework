@@ -29,7 +29,7 @@ correlation_chart <- corr_of_stats(network)
 
 
 
-effect_data <- node_chopper(network, node_function = "betweenness", network_function = "mean_distance", depth = 20)
+effect_data <- node_chopper(network, node_function = "betweenness", network_function = "mean_distance", depth = 20, unconn = FALSE)
 
 # build table of effects across stats and rank
 

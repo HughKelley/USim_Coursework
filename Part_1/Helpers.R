@@ -61,6 +61,7 @@ corr_of_stats <- function(input_graph) {
 }
 
 
+# this is a just a test run
 node_stats_calc <- function(input_graph, fun = betweenness) {
   
   foo = match.fun(fun)
@@ -76,7 +77,7 @@ node_stats_calc <- function(input_graph, fun = betweenness) {
 
 #Recursive function for calculating node removal effects
   
-node_chopper <- function(igraph_object, node_function, network_function, depth) {
+node_chopper <- function(igraph_object, node_function, network_function, depth, unconn) {
   
   # check that it's an igraph object
   if(class(igraph_object) != "igraph") {
@@ -99,11 +100,11 @@ node_chopper <- function(igraph_object, node_function, network_function, depth) 
         node_fun <- match.fun(node_function)
         
         # calculate pre-deletion network measurement statistic 
-        network_stat_1 = net_fun(igraph_object)
+        network_stat_1 = net_fun(igraph_object, unconnected = unconn)
         
         # call node_function on igraph object
         
-        node_stats = node_stats_calc(igraph_object)
+        node_stats = node_stats_calc(igraph_object, fun = node_fun)
         
         # station_name = max station stat
         
@@ -115,16 +116,17 @@ node_chopper <- function(igraph_object, node_function, network_function, depth) 
         igraph_object = delete.vertices(igraph_object, c(target))
         
         #calculate post_deletion network statistic
-        network_stat_2 = net_fun(igraph_object)
+        network_stat_2 = net_fun(igraph_object, unconnected = unconn)
         
         # calc change in network statistics due to deletion
+        # a positive change means that trips have gotten longer
         network_change = network_stat_2 - network_stat_1
         
         # join deleted station name and effect
-        value = data.frame(target, network_change, )
+        value = data.frame(target, network_change, components(igraph_object)$no)
         
         # return value
-        return (rbind(value, node_chopper(igraph_object, node_function, network_function, (depth - 1))))
+        return (rbind(value, node_chopper(igraph_object, node_function, network_function, (depth - 1), unconn = unconn)))
         
       } 
     }  

@@ -86,6 +86,8 @@ This is investigated using shortest path and shortest topological path. Given th
 
 The statistics calculated to understand the effect of node removal include: \% of connected nodes in the graph, average of the node specific statistics above, 
 
+The igraph package's mean_distance() function was used to compute the average shortest path between nodes in the network. The unconnected parameter was used to specify that nodes that were not connected to the largest cluster were counted as 1 + the longest possible geodesic, the actual longest geodesic is much less than this. This demonstrates the incompatibility of different network measures. There isn't really a way to compare the effect of a longer trip with the effect of removing a trip possibility entirely. To do that we would have to include alternate modes of transport like the bus network.  The actual longest geo
+
 \subsection{Node Removal Criteria}
 
 The function was run for measures that include, degree, betweeness, topological betweenness, closeness, topological closeness and eigenvector centrality. The correlations for these values across stations can be reviewed in figure 1. It was noted that correlations between weighted and topological measures were high, indicating that the distances between tube stations are fairly consistent so that the number of stations between two stations is a decent approximation of the distance. The correlation of measures betweenness and degree is also fairly high, indicating that tube stations at the middle of a line, with higher betweenness, also tend to have multiple lines, high degree. Correlations between eigenvector centrality and the other measures was very low, indicating that this does not give the same information as other metrics. Lastly, correlation between weighted and topological eigenvector centrality was 0 \textbf{indicating a problem with how they were calculated!}. 
@@ -124,11 +126,11 @@ The most important stations in the London tube network vary depending on the mea
 
 The model is constrained to the total flows of the system but flows out of an origin and into a destination can be any value between 0 and total system flows. 
 
-This is useful for studyin the change in connectivity between regions, for instance if a new transportation link was built. 
+This is useful for studying the change in connectivity between regions, for instance if a new transportation link was built. 
 
 \item production 
 
-The direction of flows can change but the total flows from each origin willl remain constant. This is useful for studying the effect of a new employement or consumption location that changes the dstinations of people going to work or to spend money. 
+The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. 
 
 Sums of the rows are constant
 
