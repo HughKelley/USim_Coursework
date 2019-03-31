@@ -1,0 +1,24 @@
+Using the `eigen_centrality()` function, it returns a list of three that includes the actual data as a vector, the eigenvalue calculated, and the options used in the calculation.  This makes it difficult to use alongside other similar calculations that simply return the result of the calculation. I'm currently using the below to correct for that but long term it would be good to be consistent I think. 
+
+Unless there's something unusual about the ARPACK tools used, the `options` really just returns the users own arguments. 
+
+I would argue that finding the eigenvalue should be another function that could be called by `eigen_centrality()`
+
+Finally, this is all inconsistent with the description in the documentation which states "eigen_centrality takes a graph (graph) and returns the eigenvector centralities of positions v within it." indicating that at some point, a developer thought it should do exactly what I'm proposing here and got side tracked?
+
+I'd be happy to submit a pull request for changing the documentation if that's agreeable, changing the code will obviously take a while longer. 
+
+    eigen_wrapper <- function(igraph_object, weighted = NULL){
+
+      require(igraph)
+  
+      if(is.null(weighted)){
+    
+        return(unlist(eigen_centrality(igraph_object)[1]))
+    
+      }
+      else
+      {
+        return(unlist(eigen_centrality(igraph_object, weights = weighted)[1]))
+      }
+    }
