@@ -6,7 +6,7 @@ require(corrplot)
 
 # source helper functions
 
-source('~/UCL_CASA_1819/USim/Coursework/USim_Part_1/Helpers_3.R', echo=FALSE)
+source('Helpers.R', echo=FALSE)
 
 # load data
 
@@ -29,7 +29,7 @@ correlation_chart <- corr_of_stats(network)
 
 
 
-effect_data <- node_chopper(network, node_function, network_function, depth = 5)
+effect_data <- node_chopper(network, node_function = "betweenness", network_function = "mean_distance", depth = 20)
 
 # build table of effects across stats and rank
 

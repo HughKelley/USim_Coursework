@@ -118,10 +118,10 @@ node_chopper <- function(igraph_object, node_function, network_function, depth) 
         network_stat_2 = net_fun(igraph_object)
         
         # calc change in network statistics due to deletion
-        network_change = network_stat_1 - network_stat_2
+        network_change = network_stat_2 - network_stat_1
         
         # join deleted station name and effect
-        value = data.frame(target, network_change)
+        value = data.frame(target, network_change, )
         
         # return value
         return (rbind(value, node_chopper(igraph_object, node_function, network_function, (depth - 1))))
