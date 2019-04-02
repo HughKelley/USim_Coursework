@@ -105,16 +105,39 @@ One note about this process, deleting nodes in some places creates isolates. In 
 
 
 \begin{center}
-\csvautotabular{bet.csv}
+\csvautotabular{betfalse.csv}
+\end{center}
+
+% gotta reformat this probably asking about it on tex stack exchange
+
+\begin{tabular}{|c|c|c|c|}\hline %
+  \multicolumn{4}{|c|}{\bfseries Betweenness unconn is false}  \\ \hline
+ & Node Deleted & Increase in Avg Geodesic & Components
+  \csvreader[head to column names]{betfalse.csv}{} %
+ {\\\index & \NodeDeleted & \IncreaseGeodesic & \Components} %
+ \\\hline
+ \end{tabular}
+ 
+
+
+\begin{center}
+\csvautotabular{bettrue.csv}
 \end{center}
 
 \begin{center}
-\csvautotabular{eig.csv}
+\csvautotabular{eigtrue.csv}
 \end{center}
+
+\begin{center}
+\csvautotabular{eigfalse.csv}
+\end{center}
+
+
+
 
 \subsection{Analysis}
 
-Wow, look at that effect!
+When Kings Cross is deleted, it creates a new unconnected component out of the 11 stations on the north east end of the picadilly line. In igraph, the two ways to handle this for the mean\_distance() function are either to exclude distances between those unconnected nodes and the rest of the network or to assume that the distance is one greater than the longest possible geodesic in the network, that is ,the number of nodes on the network. Data is included for both options. 
 
 
 \subsection{Conclusions}
