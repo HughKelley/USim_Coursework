@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>Urban_Simulation_Assessment.bcf</file>
+      <file>final.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>Urban_Simulation_Assessment.bbl</file>
+      <file>final.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -64,19 +64,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>Urban_Simulation_Assessment</infile>
+      <infile>final</infile>
     </cmdline>
     <input>
-      <file>Urban_Simulation_Assessment.bcf</file>
+      <file>final.bcf</file>
     </input>
     <output>
-      <file>Urban_Simulation_Assessment.bbl</file>
+      <file>final.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>Urban_Simulation_Assessment.bbl</file>
+      <file>final.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>Urban_Simulation_Assessment.bcf</file>
+      <file>final.bcf</file>
     </requires>
     <requires type="editable">
       <file>bibliography.bib</file>
