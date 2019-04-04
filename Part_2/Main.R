@@ -55,16 +55,16 @@ k <- T2/sum(T1)
 #run the model and store all of the new flow estimates in a new column in the dataframe
 commute_data$unconstrained_Est_1 <- round(k*vi1_mu*wj2_alpha*dist_beta,0)
 #check that the sum of these estimates makes sense
-# sum(commute_data$unconstrained_Est_1)
+sum(commute_data$unconstrained_Est_1)
 # [1] 1800430
-# sum(commute_data$TotalNoIntra)
+sum(commute_data$Total)
 # [1] 1800413
 
 # Check Goodness of fit
 
-est_1_r_2 <- CalcRSquared(commute_data$TotalNoIntra, commute_data$unconstrained_Est_1)
+est_1_r_2 <- CalcRSquared(commute_data$Total, commute_data$unconstrained_Est_1)
 
-est_1_RMSE <- CalcRMSE(commute_data$TotalNoIntra, commute_data$unconstrained_Est_1)
+est_1_RMSE <- CalcRMSE(commute_data$Total, commute_data$unconstrained_Est_1)
 cat("R2: ", est_1_r_2,'\n',"RMSE: ", est_1_RMSE, sep = "")
 
 
