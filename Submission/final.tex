@@ -145,7 +145,7 @@ Looking at the effect data it seems reasonable to say that betweenness did a bet
 
 \subsection{Conclusions}
 
-To improve this work, it would be good to add data about transportation networks besides the underground. IN particular information about bus routes connected nodes would be useful because it would allow for a better estimate of average shortest path when subway stations become disconnected as the shortest path could then go through a bus route instead. Similarly, it would be good to include more granular data about where a rider would have to change trains. The currnet network assumes there's no cost to switch trains relative to staying on the same train passing through a station. Anyone who has walked from the Picadilly line to the Northern line in kings cross knows that there is a big difference. 
+To improve this work, it would be good to add data about transportation networks besides the underground. In particular information about bus routes connected nodes would be useful because it would allow for a better estimate of average shortest path when subway stations become disconnected as the shortest path could then go through a bus route instead. Similarly, it would be good to include more granular data about where a rider would have to change trains. The current network assumes there's no cost to switch trains relative to staying on the same train passing through a station. Anyone who has walked from the Picadilly line to the Northern line at Kings Cross knows that there is a big difference. 
 
 An improvement to the data would be to use travel time data instead of using distance as an approximation. 
 
@@ -153,41 +153,38 @@ Lastly, it would be interesting to build an igraph function that can compute ave
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
 
 \section{Part 2}
 
-\textit{explain different models briefly: specifying which situations are appropriate for each}
+\subsection{The Models}
 
- \begin{itemize}
-\item unconstrained, 
+\subsubsection{Unconstrained}
 
 The model is constrained to the total flows of the system but flows out of an origin and into a destination can be any value between 0 and total system flows. 
 
-This is useful for studying the change in connectivity between regions, for instance if a new transportation link was built. 
+This is useful for studying the change in connectivity between regions, for instance if a new transportation link was built. In particular, it is useful for studying long term effects of a change where residence and employment are more flexible. 
 
-\item production 
+\subsubsection{Production }
 
-The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. 
+The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. In terms of the matrix, it implies that the sums of the rows of the matrix are constant. 
 
-Sums of the rows are constant
+\subsubsection{Attraction Constrained}
 
-\item attraction constrained
+The source of flows into a region can change but the total flows into a region will remain constant. That is, any reduction in flows into a destination from another region will be fully replaced by flows into the destination from another region.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area. Employers outside the area still need workers but will not be able to draw them from the same places after a housing change or natural disaster. In terms of the matrix the sums of the columns are held constant. 
 
-The source of flows into a region can change but the toal flows into a region will remain constant. This could be used to study a new housing development or 
+\subsubsection{Doubly Constrained,}
 
-Sums of the columns are constant
+Doubly constrained models could be used to test the short term effects of a change to transportation networks given that homes and businesses won't relocate but flexible behavior patterns like shopping could change almost immediately due to the change in accessibility or travel times between locations. In this model, the sums of both the columns and rows are held constant.
 
-\item doubly constrained,
-
-doubly constrained models could be used to test the short term effects of a change to transportation networks given that homes and businesses won't relocate but flexible behavior patterns like shopping could change almost immediately due to the change in accessibility or travel times between locations. 
-
-rows and columns sum constrained
-
-\end{itemize}
 
 \textit{explain the role of the parameters}
 
+\subsection{The Parameters}
+
 Sensitivities to origin attributes, destination attributes, and linkage attributes
+
+\subsection{A Scenario}
 
 \textit{select a scenario and explore the consequences of varying model parameters and inputs on interaction flows and the origin/destination estimates}
 
@@ -209,7 +206,21 @@ Expanding a CA model usually results in the creation of an ABM.  Cellular automa
 
 The simplicity of CA models make them very useful for studying mathematical processes whereas Agent Based Modeling flexibility make them useful for modeling more complex "real world" phenomena and make them more accessible to non-technical audiences. Often the value of ABM comes from the ability to conduct parameter sweeps, to study combination rules that apply to multiple conceptual processes with different parameter values. The value of cellular automata models tends to be focused on the effect of initialization states on the long term outcomes and equillibria of the model e.g. for the same model, outcomes are a function of the rule set and initialization values, where as agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
 
-\textit{ vary model parameters to construct 3 scenarios, descriibe them, find time required to reach steady state, minimum runs required for statistically meaningful results. }
+\textit{ vary model parameters to construct 3 scenarios, describe them, find time required to reach steady state, minimum runs required for statistically meaningful results. }
+
+
+\subsection{Scenarios}
+
+This will be an investigation of the behavior of an epidemic across different population types. The baseline population scenario will have mid-levels of immunity and recovery chances(50\%). The high immunity scenario will have immunity chance at 90\% and recovery chance at 10\% while the high recovery chance scenario will set recovery chance to 90\% and immunity chance to 10\%. 
+
+\subsection{assumptions and preliminary investigation}
+
+To understand a reasonable context for the scenarios above, behavior space was used to simulate a variety of initial-people and the number of people infected. 
+
+\subsection{Questions}
+
+
+
 
 Scenarios
 \begin{itemize}
@@ -228,14 +239,6 @@ How is this going to be 1000 words?
 \begin{verbatim}
 use pseudocode
 \end{verbatim}
-
-
-%Corr_tube_graph_node_stats
-
-
-
-
-
 
 XXXX words excluding headings, figures, and references. \\
 \nocite{*}

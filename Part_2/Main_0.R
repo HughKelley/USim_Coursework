@@ -42,8 +42,6 @@ c_data_sub <- commute_data[commute_data$OrigCode!=commute_data$DestCode,]
 # about the select function in the dplyr package as MASS also has a 'select' function and R will try and use this by default. 
 # We can be explict by using the syntax package::function
 
-c_data_sub <- dplyr::select(c_data_sub, OrigCodeNew, DestCodeNew, Total, everything())
-
 
 # draws line between each borough that you can then add attributes to
 travel_network <- stplanr::od2line(flow = c_data_sub, zones = LondonBNG)

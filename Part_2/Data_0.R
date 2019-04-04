@@ -1,20 +1,20 @@
 # preps all the london data for the spatial interaction modelling
 
 # load london data
-data_source <- "http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson"
-layers <- rgdal::ogrListLayers(data_source)
-layer_name <- layers[1]
-EW <- geojsonio::geojson_read(data_source, what = "sp")
-London <- EW[grep("^E09",EW@data$lad15cd),]
-
-BNG = "+init=epsg:27700"
-
-LondonBNG <- sp::spTransform(London, BNG)
-place_holder <- rgdal::writeOGR(LondonBNG, dsn = "London_Boundaries.geojson", "London_Boundaries", driver = "GeoJSON")
+# data_source <- "http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson"
+# layers <- rgdal::ogrListLayers(data_source)
+# layer_name <- layers[1]
+# EW <- geojsonio::geojson_read(data_source, what = "sp")
+# London <- EW[grep("^E09",EW@data$lad15cd),]
+# 
+# BNG = "+init=epsg:27700"
+# 
+# LondonBNG <- sp::spTransform(London, BNG)
+# place_holder <- rgdal::writeOGR(LondonBNG, dsn = "London_Boundaries.geojson", "London_Boundaries", driver = "GeoJSON")
 
 # or
 
-# LondonBNG <- geojsonio::geojson_read("London_Boundaries.geojson", what = "sp")
+LondonBNG <- geojsonio::geojson_read("London_Boundaries.geojson", what = "sp")
 
 # order by borough code
 LondonBNG <- LondonBNG[order(LondonBNG$lad15cd),]
@@ -43,8 +43,22 @@ commute_data$wj2_destsal <- popincome$med_income[match(commute_data$DestCodeNew,
 
 commute_data <- dplyr::arrange(commute_data, OrigCodeNew, DestCodeNew)
 
-#First create a new total column which excludes intra-borough flow totals (well sets them to a very very small number for reasons you will see later...)
-commute_data$TotalNoIntra <- ifelse(commute_data$OrigCode == commute_data$DestCode,0,commute_data$Total)
-commute_data$offset <- ifelse(commute_data$OrigCode == commute_data$DestCode,0.0000000001,1)
+
 # now add the distance column into the dataframe
 commute_data$dist <- distPair$value
+
+# remove "loops" or flows within a borough
+# follow: 
+# d<-d[!(d$A=="B" & d$E==0),]
+
+commute_data <- commute_data[!(commute_data$OrigCodeNew == commute_data$DestCodeNew), ]
+
+
+
+# #First create a new total column which excludes intra-borough flow totals (well sets them to a very very small number for reasons you will see later...)
+# commute_data$TotalNoIntra <- ifelse(commute_data$OrigCode == commute_data$DestCode,0.0000000001,commute_data$Total)
+# commute_data$dist <- ifelse(commute_data$OrigCode == commute_data$DestCode, 0.0000000001, commute_data$dist)
+
+commute_data <- dplyr::select(commute_data, OrigCodeNew, DestCodeNew, TotalNoIntra, everything())
+
+commute_data_matrix <- dcast(commute_data, Orig ~ Dest, sum, value.var = "TotalNoIntra", margins=c("Orig","Dest"))

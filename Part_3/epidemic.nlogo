@@ -185,7 +185,7 @@ INPUTBOX
 98
 197
 initial-people
-5000.0
+500.0
 1
 0
 Number
@@ -199,7 +199,7 @@ immune-chance
 immune-chance
 0
 100
-10.0
+90.0
 1
 1
 %
@@ -214,7 +214,7 @@ recovery-chance
 recovery-chance
 0
 100
-90.0
+10.0
 5
 1
 %
@@ -262,7 +262,7 @@ INPUTBOX
 202
 198
 num-infect
-50.0
+51.0
 1
 0
 Number
@@ -624,6 +624,69 @@ infect-random</setup>
       <value value="300"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="immune-chance">
+      <value value="10"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="baseline" repetitions="10" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="100"/>
+    <metric>count turtles with [infected?]</metric>
+    <metric>count turtles</metric>
+    <enumeratedValueSet variable="initial-people">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="1"/>
+      <value value="10"/>
+      <value value="51"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="immune-chance">
+      <value value="50"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="recovery-chance">
+      <value value="50"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="recovery" repetitions="10" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="100"/>
+    <metric>count turtles with [infected?]</metric>
+    <metric>count turtles</metric>
+    <enumeratedValueSet variable="initial-people">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="1"/>
+      <value value="10"/>
+      <value value="51"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="immune-chance">
+      <value value="10"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="recovery-chance">
+      <value value="90"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="immunity" repetitions="10" runMetricsEveryStep="true">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="100"/>
+    <metric>count turtles with [infected?]</metric>
+    <metric>count turtles</metric>
+    <enumeratedValueSet variable="initial-people">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="1"/>
+      <value value="10"/>
+      <value value="51"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="immune-chance">
+      <value value="90"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="recovery-chance">
       <value value="10"/>
     </enumeratedValueSet>
   </experiment>
