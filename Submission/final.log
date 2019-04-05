@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.24)  4 APR 2019 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.24)  5 APR 2019 16:37
 entering extended mode
 **./final.tex
 (final.tex
@@ -674,32 +674,40 @@ Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 102
  [2]
 [3 <./Corr_tube_graph_node_stats.png (PNG copy)>] [4] [5] [6] [7] [8] [9]
 [10] [11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 229.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 235.
 
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 229.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 235.
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--247
+Underfull \hbox (badness 10000) in paragraph at lines 251--253
 
  []
 
 [12] (final.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                final
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'final.run.xml'.
 \openout1 = `final.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11624 strings out of 492945
- 215594 string characters out of 3126696
- 646212 words of memory out of 3000000
- 15387 multiletter control sequences out of 15000+200000
+ 11622 strings out of 492945
+ 215574 string characters out of 3126696
+ 646118 words of memory out of 3000000
+ 15385 multiletter control sequences out of 15000+200000
  11427 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,11n,46p,1203b,1164s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -714,7 +722,7 @@ lic/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hugh/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Hugh/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on final.pdf (12 pages, 194776 bytes).
+Output written on final.pdf (12 pages, 195164 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
