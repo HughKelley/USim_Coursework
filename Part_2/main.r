@@ -10,6 +10,12 @@ pop_and_income_data = "https://www.dropbox.com/s/84z22a4wo3x2p86/popincome.csv?r
 
 london_data <- data_loader(a = boundaries, commute_data_source, code_dictionary, pop_and_income_data)
 
+# add function here to select only specific boroughs to check correctness against practical
+
+toMatch<-c("00AA", "00AB", "00AC", "00AD", "00AE", "00AF", "00AG")
+
+london_data <- subsetter(london_data, toMatch)
+
 rm(boundaries, commute_data_source, code_dictionary, pop_and_income_data, a)
 
 mu <- 1
@@ -58,6 +64,8 @@ cat("R2: ", est_2_r_2,'\n',"RMSE: ", est_2_RMSE, sep = "")
 #wj2_destsal is a numerical vector of salaries which gets a single parameter value
 production_constrained_model <- glm(Total ~ Orig+log(wj2_destsal)+log(distances), na.action = na.exclude, family = poisson(link = "log"), data = london_data)
 
+results$prod_con_est_1 <- round(fitted(production_constrained_model))
+
 # adjust contrast parameters for making dummy variable if need be
 # options(contrasts=c('contr.SAS','contr.SAS'))
 # default is 
@@ -79,6 +87,11 @@ k <- production_constrained_model$coefficients[1]
 mu_i <- production_constrained_model$coefficients[2:33]
 alpha <- production_constrained_model$coefficients[34]
 beta <- production_constrained_model$coefficients[35]
+
+# The code above can be done with fitted() but that doesn't allow one to 
+# change the parameters by hand as is required in the assessment
+
+
 
 # add to London data
 

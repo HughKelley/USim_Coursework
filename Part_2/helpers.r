@@ -89,5 +89,18 @@ O_and_D_flow_totals <- function(flow_data_frame) {
   return(flow_data_frame)
 }
 
+subsetter <- function (data, boroughs) {
+  
+  len = length(boroughs)
+  # origins
+  cdatasub <- cdata[grep(paste(toMatch,collapse = "|"), cdata$OrigCode),]
+  # destinations
+  cdatasub <- cdatasub[grep(paste(toMatch,collapse = "|"), cdata$DestCode),]
+  # take just the rows with data
+  cdatasub <- cdatasub[1:((len^2)-2),]
+  # check order
+  cdatasub <- dplyr::select(cdatasub, OrigCodeNew, DestCodeNew, Total, everything())
+  }
+
 
 
