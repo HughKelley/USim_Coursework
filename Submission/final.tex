@@ -67,7 +67,10 @@
 
 \section{Part 1}
 
-https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/
+% to combine each part into one overall repo for the submission. ended up just adding all the files to a new repo bc it didn't look like the procedure was compatible with github
+
+% in hindsight, I probably could have forked the Main repo, added the files from another part and merged twice. Would that have been better? 
+% https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/
 
 \subsection{Introduction}
 
@@ -185,6 +188,8 @@ Sensitivities to origin attributes, destination attributes, and linkage attribut
 
 \subsection{A Scenario}
 
+I selected a subset of the london Boroughs that included the main business areas, WEstminister, the city, and Camden, as well as the outermost boroughs
+
 idea: pick out the main business areas, city, westminister, camden 
 
 and the most peripheral boroughs: Hilingdon, Harrow, Barnet, Enfield, Waltham forest, Redbridge, Havering, Bexley, Bromley, Croydon, Sutton, Kingston, Richmond, Hounslow, 
@@ -221,9 +226,62 @@ The simplicity of CA models make them very useful for studying mathematical proc
 
 This will be an investigation of the behavior of an epidemic across different population types. The baseline population scenario will have mid-levels of immunity and recovery chances(50\%). The high immunity scenario will have immunity chance at 90\% and recovery chance at 10\% while the high recovery chance scenario will set recovery chance to 90\% and immunity chance to 10\%. 
 
-\subsection{assumptions and preliminary investigation}
+\subsection{Assumptions and Preliminary Investigation}
 
-To understand a reasonable context for the scenarios above, behavior space was used to simulate a variety of initial-people and the number of people infected. 
+To understand a reasonable context for the scenarios above, behavior space was used to simulate a variety of initial-people and the number of people infected. Focusing on the three scenarios allowed the investigation to avoid a full parameter search of the effect of the 4 dimensions (initial population, number of turtles infected, immune-chance, and recovery-chance) on the final percentage of turtles infected. 
+
+The way the model is written, the actual number of people infected is the \% population immunity multiplied by the number of people infected because if the model selects a turtle at random to infect that is immune, there is no infection. This for a population half immune, on average infecting 50 turtles with result in 25 turtles actually becoming infected. 
+
+Figures 2, 3, and 4 show the percentage of population infected over time for the three scenarios. The different lines represent the averages of 5 runs for 60 different combinations of initial population and number infected. Population size ranged from 100 to 1000 incremented by 100. Number infected ranged from 1 to 51 incremented by 10. It can be seen below that results are consistent within scenarios. Roughly the same trend and final steady state is reached by all lines within a chart. It was checked that this was true for individual runs as well with no information lost by averaging the five trials. There were no ``outlier'' trials. 
+
+It is notable that while the baseline and high recovery scenarios reached clear steady states in all cases, there were cases in the high Immunity scenario where the percentage of people infected over time continued to fluctuate after step 6 by which time all trials in the other scenarios were 0. There were not trials were the percentage of people infected increased meaningfully though. 
+
+
+% should figure out how to add axis labels, basically just need to build MWE to post on SE
+
+% baseline steady state
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{baseline_steady_state}
+\caption{\% of Population Infected Over Time \\ (Baseline Scenario)}
+\end{figure}
+
+% recovery steady state
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{immunity_steady_state}
+\caption{\% of Population Infected Over Time \\ (Immunity Scenario)}
+\end{figure}
+
+% immunity steady state
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{recovery_steady_state}
+\caption{\% of Population Infected Over Time \\ (Recovery Scenario)}
+\end{figure}
+
+Now add charts of distribution of outcomes for Immunity scenario. 
+
+
+\subsection{Analysis}
+
+The overall questions investigated here is, ``Is there a meaningful difference in disease transmission between populations with high immunity, high recovery rates, and populations with moderate levels for each. 
+
+To investigate this, a t-test is used to determine whether the difference between \% infected at tick 6 for each of the difference scenarios is statistically significant. 
+
+% What is a reasonable amount of immunity or recovery
+
+
+
+possibilities for t test
+\begin{itemize}
+\item test for difference between average \% infected between scenarios
+\item test for difference between averages of \% infected at different ticks
+\item test for difference in outcomes between initial population sizes or number infected. 
+\end{itemize}
 
 \subsection{Questions}
 
@@ -249,6 +307,9 @@ use pseudocode
 \end{verbatim}
 
 XXXX words excluding headings, figures, and references. \\
+
+Do I need to cite anything? 
+
 \nocite{*}
 
 

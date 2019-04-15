@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.24)  5 APR 2019 16:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.24)  15 APR 2019 16:49
 entering extended mode
 **./final.tex
 (final.tex
@@ -649,65 +649,67 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Warning: No \author given.
 
 
-Overfull \hbox (23.27513pt too wide) in paragraph at lines 70--71
-\OT1/cmr/m/n/10.95 https://saintgimp.org/2013/01/22/merging-two-git-repositorie
-s-into-one-repository-without-
- []
-
-
-Overfull \hbox (17.41542pt too wide) in paragraph at lines 81--83
+Overfull \hbox (17.41542pt too wide) in paragraph at lines 84--86
 \OT1/cmr/m/it/10.95 igraph: clus-ter edge be-tween-ness, clus-ter fast[]greedy,
  clus-ter[]label[]prop, clus-ter[]leading[]eigen,
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 90.
+(Font)              <10.95> on input line 93.
 [1
 
 {C:/Users/Hugh/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 <Corr_tube_graph_node_stats.png, id=11, 487.06969pt x 432.86719pt>
 File: Corr_tube_graph_node_stats.png Graphic file (type png)
 <use Corr_tube_graph_node_stats.png>
-Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 102
+Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 105
 .
 (pdftex.def)             Requested size: 334.60422pt x 297.37088pt.
  [2]
 [3 <./Corr_tube_graph_node_stats.png (PNG copy)>] [4] [5] [6] [7] [8] [9]
 [10] [11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 235.
-
+<baseline_steady_state.png, id=46, 389.455pt x 266.9975pt>
+File: baseline_steady_state.png Graphic file (type png)
+<use baseline_steady_state.png>
+Package pdftex.def Info: baseline_steady_state.png  used on input line 246.
+(pdftex.def)             Requested size: 334.60422pt x 229.4015pt.
+<immunity_steady_state.png, id=48, 389.455pt x 266.9975pt>
+File: immunity_steady_state.png Graphic file (type png)
+<use immunity_steady_state.png>
+Package pdftex.def Info: immunity_steady_state.png  used on input line 254.
+(pdftex.def)             Requested size: 334.60422pt x 229.4015pt.
+<recovery_steady_state.png, id=49, 382.42876pt x 266.9975pt>
+File: recovery_steady_state.png Graphic file (type png)
+<use recovery_steady_state.png>
+Package pdftex.def Info: recovery_steady_state.png  used on input line 262.
+(pdftex.def)             Requested size: 334.60422pt x 233.61815pt.
+ [12] [13 <./baseline_steady_state.png> <./immunity_steady_state.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 281.
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 235.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 281.
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--253
+[14 <./recovery_steady_state.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 
  []
 
-[12] (final.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                final
-(biblatex)                and rerun LaTeX afterwards.
-
+[15] (final.aux)
 Package logreq Info: Writing requests to 'final.run.xml'.
 \openout1 = `final.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11622 strings out of 492945
- 215574 string characters out of 3126696
- 646118 words of memory out of 3000000
- 15385 multiletter control sequences out of 15000+200000
+ 11639 strings out of 492945
+ 216026 string characters out of 3126696
+ 646212 words of memory out of 3000000
+ 15399 multiletter control sequences out of 15000+200000
  11427 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,46p,1203b,1164s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,11n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -722,9 +724,9 @@ lic/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hugh/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Hugh/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on final.pdf (12 pages, 195164 bytes).
+Output written on final.pdf (15 pages, 247197 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

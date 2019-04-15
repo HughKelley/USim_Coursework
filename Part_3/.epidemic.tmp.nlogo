@@ -185,7 +185,7 @@ INPUTBOX
 98
 197
 initial-people
-100.0
+1000.0
 1
 0
 Number
