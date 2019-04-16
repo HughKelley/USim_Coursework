@@ -188,11 +188,16 @@ Sensitivities to origin attributes, destination attributes, and linkage attribut
 
 \subsection{A Scenario}
 
+The scenario used for this assessment will be: What if teleportation was invented and dramatically reduced travel times but could only be used in the outer boroughs because of the need to avoid teleporting through tall buildings. Thus origin and destination attributes remain constant but the travel costs change dramatically in the most peripheral boroughs: Hilingdon, Harrow, Barnet, Enfield, Waltham forest, Redbridge, Havering, Bexley, Bromley, Croydon, Sutton, Kingston, Richmond, Hounslow. 
+
+This will be investigated using a doubly constrained model to estimate the short term effects where residences and businesses cannot relocate and a total constrained model to see the long term effects on business and residence locations as a result of the incredible new discovery. 
+
+
 I selected a subset of the london Boroughs that included the main business areas, WEstminister, the city, and Camden, as well as the outermost boroughs
 
 idea: pick out the main business areas, city, westminister, camden 
 
-and the most peripheral boroughs: Hilingdon, Harrow, Barnet, Enfield, Waltham forest, Redbridge, Havering, Bexley, Bromley, Croydon, Sutton, Kingston, Richmond, Hounslow, 
+and 
 
 Then do a production constrained model about what would change if salaries in one of the urban boroughs went up, or if a new transit line went in. 
 
@@ -202,7 +207,6 @@ One thing noticed is that as the number of constraints goes up the $R^2$ goes up
 
 
 
-What if Amazon built a big office in Long Island City? 
 
 
 
@@ -238,13 +242,14 @@ It is notable that while the baseline and high recovery scenarios reached clear 
 
 
 % should figure out how to add axis labels, basically just need to build MWE to post on SE
+% needs to be redo for 100 ticks 
 
 % baseline steady state
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{baseline_steady_state}
-\caption{\% of Population Infected Over Time \\ (Baseline Scenario)}
+\caption{\% of Population Infected Over Time}
 \end{figure}
 
 % recovery steady state
@@ -252,7 +257,7 @@ It is notable that while the baseline and high recovery scenarios reached clear 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{immunity_steady_state}
-\caption{\% of Population Infected Over Time \\ (Immunity Scenario)}
+\caption{\% of Population Infected Over Time}
 \end{figure}
 
 % immunity steady state
@@ -260,11 +265,48 @@ It is notable that while the baseline and high recovery scenarios reached clear 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{recovery_steady_state}
-\caption{\% of Population Infected Over Time \\ (Recovery Scenario)}
+\caption{\% of Population Infected Over Time}
 \end{figure}
 
 Now add charts of distribution of outcomes for Immunity scenario. 
 
+% baseline sicktime
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{baseline_total_sicktime}
+\caption{Total Time Sick Normalized for size of Turtle Population}
+\end{figure}
+
+% recovery sicktime
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{immunity_total_sicktime}
+\caption{Total Time Sick Normalized for size of Turtle Population}
+\end{figure}
+
+% immunity sicktime
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{recovery_total_sicktime}
+\caption{Total Time Sick Normalized for size of Turtle Population}
+\end{figure}
+
+Considering figures 2 through 7, it's clear that the baseline and high recovery scenarios reach steady states where no agent is infected. This is the only true steady possible in the model since no additional infections can occur without an infected agent present. In the case of the high immunity scenario, at 60 ticks, there were still  trails where a meaningful proportion of the population was infected.
+
+Also it is notable that all steady states identified in the trials are reached comfortably before 60 ticks, so this time limit will be used in the investigation.  
+
+Looking at figure 8 it seems that at 60 ticks. a higher proportion of turtles were infected at higher population sizes. This indicates that population density of turtles without immunity is a key consideration in infection rates and that immune turtles perhaps should be thought of simply as not existing for the purposes of the mode. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{immunity_perc_infected_across_pop}
+\caption{Trend in infection rates across population size}
+\end{figure}
+
+Thus in light of the findings above, the actual investigation uses a population of 1000, across 60 ticks. 
 
 \subsection{Analysis}
 
@@ -272,9 +314,15 @@ The overall questions investigated here is, ``Is there a meaningful difference i
 
 To investigate this, a t-test is used to determine whether the difference between \% infected at tick 6 for each of the difference scenarios is statistically significant. 
 
+Looking at the Baseline scenario with 50\% chance of immunity and 50\% chance of recovering, trails consistently found the 0 infection steady state and it can be said that there isn't a meaningful difference between outcomes in this state. 
+
+Comparing those two scenarios with the high immunity scenario, there is a noticeable difference. A t-test confirms that there is a significant difference between the two distributions. 
+
+\textbf{t test}
+
+Important to note is that the distribution of outcomes is not close to normal, mainly because there cannot be negative infection rates, trimming the distribution at 0 and indicating that more sophisticated statistical methods are necessary. 
+
 % What is a reasonable amount of immunity or recovery
-
-
 
 possibilities for t test
 \begin{itemize}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.24)  15 APR 2019 16:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  16 APR 2019 15:49
 entering extended mode
 **./final.tex
 (final.tex
@@ -433,18 +433,41 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/csvsimple\csvsimple
 .sty"
-Package: csvsimple 2016/07/01 version 1.20 LaTeX CSV file processing
+Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
 
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgfrc
+s.sty"
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-common.tex"
+\pgfutil@everybye=\toks22
+\pgfutil@tempdima=\dimen136
+\pgfutil@tempdimb=\dimen137
+
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-common-lists.tex"))
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+util-latex.def"
+\pgfutil@abb=\box29
+
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
+rcs.code.tex"
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf\pgf.revision.
+tex")
+Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
+))
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgfke
 ys.sty"
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keys.code.tex"
-\pgfkeys@pathtoks=\toks22
-\pgfkeys@temptoks=\toks23
+\pgfkeys@pathtoks=\toks23
+\pgfkeys@temptoks=\toks24
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks24
+\pgfkeys@tmptoks=\toks25
 )))
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\shellesc.sty"
 Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
@@ -608,16 +631,16 @@ Package caption Info: End \AtBeginDocument code.
 f.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count298
-\scratchdimen=\dimen136
-\scratchbox=\box29
+\scratchdimen=\dimen138
+\scratchbox=\box30
 \nofMPsegments=\count299
 \nofMParguments=\count300
-\everyMPshowfont=\toks25
+\everyMPshowfont=\toks26
 \MPscratchCnt=\count301
-\MPscratchDim=\dimen137
+\MPscratchDim=\dimen139
 \MPnumerator=\count302
 \makeMPintoPDFobject=\count303
-\everyMPtoPDFconversion=\toks26
+\everyMPtoPDFconversion=\toks27
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-b
 ase.sty"
@@ -637,7 +660,7 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-)
+) ABD: EveryShipout initializing macros
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 64.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -667,49 +690,73 @@ Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 105
 (pdftex.def)             Requested size: 334.60422pt x 297.37088pt.
  [2]
 [3 <./Corr_tube_graph_node_stats.png (PNG copy)>] [4] [5] [6] [7] [8] [9]
-[10] [11]
-<baseline_steady_state.png, id=46, 389.455pt x 266.9975pt>
+[10] [11] [12]
+<baseline_steady_state.png, id=49, 383.4325pt x 264.99pt>
 File: baseline_steady_state.png Graphic file (type png)
 <use baseline_steady_state.png>
-Package pdftex.def Info: baseline_steady_state.png  used on input line 246.
-(pdftex.def)             Requested size: 334.60422pt x 229.4015pt.
-<immunity_steady_state.png, id=48, 389.455pt x 266.9975pt>
+Package pdftex.def Info: baseline_steady_state.png  used on input line 251.
+(pdftex.def)             Requested size: 334.60422pt x 231.25916pt.
+<immunity_steady_state.png, id=51, 367.3725pt x 279.0425pt>
 File: immunity_steady_state.png Graphic file (type png)
 <use immunity_steady_state.png>
-Package pdftex.def Info: immunity_steady_state.png  used on input line 254.
-(pdftex.def)             Requested size: 334.60422pt x 229.4015pt.
-<recovery_steady_state.png, id=49, 382.42876pt x 266.9975pt>
+Package pdftex.def Info: immunity_steady_state.png  used on input line 259.
+(pdftex.def)             Requested size: 334.60422pt x 254.17175pt.
+<recovery_steady_state.png, id=52, 373.395pt x 264.99pt>
 File: recovery_steady_state.png Graphic file (type png)
 <use recovery_steady_state.png>
-Package pdftex.def Info: recovery_steady_state.png  used on input line 262.
-(pdftex.def)             Requested size: 334.60422pt x 233.61815pt.
- [12] [13 <./baseline_steady_state.png> <./immunity_steady_state.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 281.
+Package pdftex.def Info: recovery_steady_state.png  used on input line 267.
+(pdftex.def)             Requested size: 334.60422pt x 237.46985pt.
+<baseline_total_sicktime.png, id=53, 379.4175pt x 264.99pt>
+File: baseline_total_sicktime.png Graphic file (type png)
+<use baseline_total_sicktime.png>
+Package pdftex.def Info: baseline_total_sicktime.png  used on input line 277.
+(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
+<immunity_total_sicktime.png, id=54, 379.4175pt x 264.99pt>
+File: immunity_total_sicktime.png Graphic file (type png)
+<use immunity_total_sicktime.png>
+Package pdftex.def Info: immunity_total_sicktime.png  used on input line 285.
+(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
+<recovery_total_sicktime.png, id=55, 379.4175pt x 264.99pt>
+File: recovery_total_sicktime.png Graphic file (type png)
+<use recovery_total_sicktime.png>
+Package pdftex.def Info: recovery_total_sicktime.png  used on input line 293.
+(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
+<immunity_perc_infected_across_pop.png, id=56, 382.42876pt x 280.04625pt>
+File: immunity_perc_infected_across_pop.png Graphic file (type png)
+<use immunity_perc_infected_across_pop.png>
+Package pdftex.def Info: immunity_perc_infected_across_pop.png  used on input l
+ine 305.
+(pdftex.def)             Requested size: 334.60422pt x 245.03557pt.
+ [13 <./baseline_steady_state.png>] [14 <./immunity_steady_state.png> <./recove
+ry_steady_state.png>] [15 <./baseline_total_sicktime.png> <./immunity_total_sic
+ktime.png>] [16 <./recovery_total_sicktime.png> <./immunity_perc_infected_acros
+s_pop.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 329.
+
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 281.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 329.
 
-[14 <./recovery_steady_state.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
-[15] (final.aux)
+[17] [18] (final.aux)
 Package logreq Info: Writing requests to 'final.run.xml'.
 \openout1 = `final.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11639 strings out of 492945
- 216026 string characters out of 3126696
- 646212 words of memory out of 3000000
- 15399 multiletter control sequences out of 15000+200000
+ 11963 strings out of 492902
+ 223056 string characters out of 3124273
+ 652006 words of memory out of 3000000
+ 15707 multiletter control sequences out of 15000+200000
  11427 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,46p,1203b,1178s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -724,9 +771,9 @@ lic/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hugh/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Hugh/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on final.pdf (15 pages, 247197 bytes).
+Output written on final.pdf (18 pages, 376338 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -185,7 +185,7 @@ INPUTBOX
 98
 197
 initial-people
-100.0
+1000.0
 1
 0
 Number
@@ -633,6 +633,7 @@ infect-random</setup>
     <timeLimit steps="60"/>
     <metric>count turtles with [infected?]</metric>
     <metric>count turtles</metric>
+    <metric>sum [sicktime] of turtles</metric>
     <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
     <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
     <enumeratedValueSet variable="immune-chance">
@@ -648,6 +649,7 @@ infect-random</setup>
     <timeLimit steps="60"/>
     <metric>count turtles with [infected?]</metric>
     <metric>count turtles</metric>
+    <metric>sum [sicktime] of turtles</metric>
     <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
     <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
     <enumeratedValueSet variable="immune-chance">
@@ -663,6 +665,7 @@ infect-random</setup>
     <timeLimit steps="60"/>
     <metric>count turtles with [infected?]</metric>
     <metric>count turtles</metric>
+    <metric>sum [sicktime] of turtles</metric>
     <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
     <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
     <enumeratedValueSet variable="immune-chance">
