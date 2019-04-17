@@ -14,34 +14,45 @@ fig, ax = plt.subplots()
 
 # relevant files are 
 
-baseline = "output/baseline-table.csv"
-immunity = "output/immunity-table.csv"
-recovery = "output/recovery-table.csv"
+file = "output/scenario-1-table.csv"
 
-baseline_data = pd.read_csv(baseline)
-immunity_data = pd.read_csv(immunity)
-recovery_data = pd.read_csv(recovery)
+data = pd.read_csv(file)
 
-del baseline 
-del immunity 
-del recovery
+# del file
 
-list(baseline_data)
+list(data)
 
-baseline_data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','total_turtles','sum_sicktime']
-immunity_data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','total_turtles','sum_sicktime']
-recovery_data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','total_turtles','sum_sicktime']
+data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','immune_turtles','total_turtles','sum_sicktime']
 
+ending_values = data.loc[data['step'] == 40]
+ending_mean = ending_values['perc_infected'].mean()
+ending_std = ending_values['perc_infected'].std()
 
-grouped_baseline = baseline_data.groupby(['initial_people', 'step','num_infect'], as_index = False).mean()
-#grouped_baseline.set_index('step', inplace = True)
-grouped_baseline['perc_infected'] = grouped_baseline['infected_turtles'] / grouped_baseline['total_turtles'] * 100
-grouped_baseline['sicktime_per_turtle'] = grouped_baseline['sum_sicktime'] / grouped_baseline['total_turtles']
+# calc margin of error
+
+z = 1.96
+n = 20
+
+s_e = ending_std/(n^0.5)
+
+margin_of_error = 
+
+#grouped_data = data.groupby(['run_number'], as_index = False).mean()
+data.set_index('step', inplace = True)
+data['perc_infected'] = data['infected_turtles'] / data['total_turtles'] * 100
+data['sicktime_per_turtle'] = data['sum_sicktime'] / (data['total_turtles'] - data['immune_turtles'])
+
+plot1 = data.groupby('run_number')['perc_infected'].plot()
 
 # use plt.close() to clear plot
+#baseline_plot_perc = grouped_data.groupby(['initial_people','num_infect'])['perc_infected'].plot(x ='ticks', y ='percent', title = 'Baseline Scenario % Infected', use_index = False)
+#baseline_plot_time = grouped_data.groupby(['initial_people','num_infect'])['sum_sicktime'].plot(x ='ticks', y ='percent', title = 'Baseline Scenario Total Sick Time', use_index = False)
 
-baseline_plot_perc = grouped_baseline.groupby(['initial_people','num_infect'])['perc_infected'].plot(x ='ticks', y ='percent', title = 'Baseline Scenario % Infected', use_index = False)
-baseline_plot_time = grouped_baseline.groupby(['initial_people','num_infect'])['sum_sicktime'].plot(x ='ticks', y ='percent', title = 'Baseline Scenario Total Sick Time', use_index = False)
+
+# now calculate confidence interval for mean of pop
+
+
+
 
 # plot
 #for key, group in grouped_baseline.groupby(['initial_people', 'num_infect']):
@@ -55,42 +66,6 @@ baseline_plot_time = grouped_baseline.groupby(['initial_people','num_infect'])['
 #fig = plot.get_figure()
 #fig.savefig("baseline_steady_state.png")
 
-grouped_immunity = immunity_data.groupby(['initial_people', 'step','num_infect'], as_index = False).mean()
-grouped_immunity.set_index('step', inplace = True)
-grouped_immunity['perc_infected'] = grouped_immunity['infected_turtles'] / grouped_immunity['total_turtles'] * 100
-grouped_immunity['sicktime_per_turtle'] = grouped_immunity['sum_sicktime'] / grouped_immunity['total_turtles']
-
-immunity_plot_perc = grouped_immunity.groupby(['initial_people','num_infect'])['perc_infected'].plot(x ='ticks', y ='percent', title = 'Immunity Scenario % Infected', use_index = False)
-
-immunity_plot_time = grouped_immunity.groupby(['initial_people','num_infect'])['sum_sicktime'].plot(x ='ticks', y ='percent', title = 'Immunity Scenario Total Sick Time', use_index = False)
-
-
-#Immunity_plot = grouped_immunity.groupby(['initial_people','num_infect'])['perc_infected'].plot(title = 'Immunity Scenario')
-#fig = plot.get_figure()
-#fig.savefig("baseline_steady_state.png")
-
-grouped_recovery= recovery_data.groupby(['initial_people', 'step','num_infect'], as_index = False).mean()
-grouped_recovery.set_index('step', inplace = True)
-grouped_recovery['perc_infected'] = grouped_recovery['infected_turtles'] / grouped_recovery['total_turtles'] * 100
-grouped_recovery['sicktime_per_turtle'] = grouped_recovery['sum_sicktime'] / grouped_recovery['total_turtles']
-
-#recovery_plot = grouped_recovery.groupby(['initial_people','num_infect'])['perc_infected'].plot(title = 'Recovery Scenario')
-#fig = plot.get_figure()
-#fig.savefig("baseline_steady_state.png")
-
-recovery_plot_perc = grouped_recovery.groupby(['initial_people','num_infect'])['perc_infected'].plot(x ='ticks', y ='percent', title = 'Recovery Scenario % Infected', use_index = False)
-
-recovery_plot_time = grouped_recovery.groupby(['initial_people','num_infect'])['sum_sicktime'].plot(x ='ticks', y ='percent', title = 'Recovery Scenario Total Sick Time', use_index = False)
-
-# explore high immunity outcomes
-
-explore_immunity = immunity_data.groupby(['initial_people', 'step','num_infect'], as_index = False).mean()
-
-immunity_outcomes = explore_immunity.loc[explore_immunity['step']==60]
-#immunity_outcomes.set_index(')
-immunity_outcomes['perc_infected'] = immunity_outcomes['infected_turtles'] / immunity_outcomes['total_turtles'] * 100
-grouped_outcomes = immunity_outcomes.groupby(['total_turtles']).mean()
-grouped_outcomes['perc_infected'].plot()
 
 
 

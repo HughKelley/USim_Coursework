@@ -223,10 +223,63 @@ Expanding a CA model usually results in the creation of an ABM.  Cellular automa
 
 The simplicity of CA models make them very useful for studying mathematical processes whereas Agent Based Modeling flexibility make them useful for modeling more complex "real world" phenomena and make them more accessible to non-technical audiences. Often the value of ABM comes from the ability to conduct parameter sweeps, to study combination rules that apply to multiple conceptual processes with different parameter values. The value of cellular automata models tends to be focused on the effect of initialization states on the long term outcomes and equillibria of the model e.g. for the same model, outcomes are a function of the rule set and initialization values, where as agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
 
-\textit{ vary model parameters to construct 3 scenarios, describe them, find time required to reach steady state, minimum runs required for statistically meaningful results. }
+\textit{vary model parameters to construct 3 scenarios, describe them, find time required to reach steady state, minimum runs required for statistically meaningful results.}
 
 
 \subsection{Scenarios}
+
+This work will investigate three possible infection scenarios. The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu. The second scenario looks at a highly recoverable disease which no one is immune to like the common cold. The third looks at the efficacy of high but imperfect level of vaccination, as is scene for the seasonal flu where many in society are immunized but a meaningful amount of people do not. 
+
+All three scenarios will use a population of 1000 and infect 100 people initially. 
+
+\subsubsection{Scenario 1}
+
+% describe 
+
+The first scenario, looking at a flu type disease with no vaccine available uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% chance of recovery based on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
+
+% time required to reach steady state
+
+Looking at Figure 2, which plots the percentage of turtles infected over 150 steps of the model for 20 trials, a steady state becomes fairly clear. While this is not a perfect equilibrium, compared to the rapid increase in the first 20 ticks, the model becomes fairly stationary.  This, future runs of this model can be limited to 40 ticks with reasonably confidence that the model will have found an equilibrium. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{scen_1_steady_state}
+\caption{\% of Population Infected Over Time}
+\end{figure}
+
+
+% minimum runs for statistically meaningful results
+
+The average steady state percentage of turtles infected at 40 ticks was 38.02. The standard deviation was 1.896, which indicates a margin of error at 95\% confidence of \pm 0.831. Thus one can expect that 95\% of runs with these parameters will be within 1\% of 38\% infection at steady state. 
+
+The total infection time per non-immune turtle was also recorded. The 20 trial mean at tick 40 was 23.51 and standard deviation was 0.913. This gives a 95\% margin of confidence of \pm 0.40. 
+
+% conclusions. 
+
+Thus the model indicates that for these parameters, a fairly high number of turtles will contract the infection and the infection will be passed around continually rather than dying out at some point in the future. 
+
+
+
+
+\subsubsection{Scenario 2}
+
+% describe
+
+Scenario 2 looks at the flu in a society with high but imperfect immunization rates. In the US this is seen in cases where infants and the elderly cannot receive the vaccine and some people elect not to receive it or forget. This is accomplished by using the same recovery rate, 10\% but increasing immunity probability to 80\%. 
+
+
+% time required to reach steady state
+
+% minimum runs for statistically meaningful results
+
+\subsubsection{Scenario 3}
+
+This scenario will investigate how the common cold compares to the flu by using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines after contracting it exposing relatively more people than the flu, which most people suffer at home. 
+
+
+To investigate the  
+
 
 This will be an investigation of the behavior of an epidemic across different population types. The baseline population scenario will have mid-levels of immunity and recovery chances(50\%). The high immunity scenario will have immunity chance at 90\% and recovery chance at 10\% while the high recovery chance scenario will set recovery chance to 90\% and immunity chance to 10\%. 
 
