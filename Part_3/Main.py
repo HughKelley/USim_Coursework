@@ -8,27 +8,28 @@ Created on Mon Apr 15 14:14:14 2019
 # script for working with netlogo output data
 
 import pandas as pd
-import matplotlib
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
 
 # relevant files are 
+file = "output/twenty-runs-scenario-3.csv"
 
-file = "output/ten-run-scenario-1-table.csv"
-
-data = pd.read_csv(file)
-
-# del file
-
+data = pd.read_csv(file, header=6)  # header = 6
 list(data)
 
 data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','immune_turtles','total_turtles','sum_sicktime']
 data['perc_infected'] = data['infected_turtles'] / data['total_turtles'] * 100
 data['sicktime_per_turtle'] = data['sum_sicktime'] / (data['total_turtles'] - data['immune_turtles'])
 
-data = data2
+data2 = data
 
-ending_values = data.loc[data['step'] == 40]
+values_50 = data.loc[data['step'] == 40]
+values_100 = data.loc[data['step'] == 100]
+values_250 = data.loc[data['step'] == 250]
+values_150 = data.loc[data['step'] == 150]
+values_500 = data.loc[data['step'] == 500]
+values_400 = data.loc[data['step'] == 400]
+
+
+ending_values = values_50
 ending_mean = ending_values['perc_infected'].mean()
 ending_std = ending_values['perc_infected'].std()
 
