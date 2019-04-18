@@ -199,7 +199,7 @@ immune-chance
 immune-chance
 0
 100
-90.0
+50.0
 1
 1
 %
@@ -262,7 +262,7 @@ INPUTBOX
 202
 198
 num-infect
-51.0
+100.0
 1
 0
 Number
@@ -627,52 +627,65 @@ infect-random</setup>
       <value value="10"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="baseline" repetitions="5" runMetricsEveryStep="true">
+  <experiment name="scenario 1" repetitions="20" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="60"/>
+    <timeLimit steps="150"/>
     <metric>count turtles with [infected?]</metric>
+    <metric>count turtles with [immune? = true]</metric>
     <metric>count turtles</metric>
     <metric>sum [sicktime] of turtles</metric>
-    <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
-    <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
+    <enumeratedValueSet variable="initial-people">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="100"/>
+    </enumeratedValueSet>
     <enumeratedValueSet variable="immune-chance">
       <value value="50"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="recovery-chance">
-      <value value="50"/>
+      <value value="10"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="recovery" repetitions="5" runMetricsEveryStep="true">
+  <experiment name="scenario-2" repetitions="20" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="60"/>
+    <timeLimit steps="150"/>
     <metric>count turtles with [infected?]</metric>
     <metric>count turtles</metric>
     <metric>sum [sicktime] of turtles</metric>
-    <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
-    <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
+    <enumeratedValueSet variable="initial-people">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="100"/>
+    </enumeratedValueSet>
     <enumeratedValueSet variable="immune-chance">
-      <value value="10"/>
+      <value value="80"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="recovery-chance">
-      <value value="90"/>
+      <value value="10"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="immunity" repetitions="5" runMetricsEveryStep="true">
+  <experiment name="scenario-3" repetitions="20" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="60"/>
+    <timeLimit steps="150"/>
     <metric>count turtles with [infected?]</metric>
     <metric>count turtles</metric>
     <metric>sum [sicktime] of turtles</metric>
-    <steppedValueSet variable="initial-people" first="100" step="100" last="1000"/>
-    <steppedValueSet variable="num-infect" first="1" step="10" last="51"/>
+    <enumeratedValueSet variable="initial-people">
+      <value value="1000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="num-infect">
+      <value value="100"/>
+    </enumeratedValueSet>
     <enumeratedValueSet variable="immune-chance">
-      <value value="90"/>
+      <value value="5"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="recovery-chance">
-      <value value="10"/>
+      <value value="25"/>
     </enumeratedValueSet>
   </experiment>
 </experiments>

@@ -627,7 +627,7 @@ infect-random</setup>
       <value value="10"/>
     </enumeratedValueSet>
   </experiment>
-  <experiment name="scenario 1" repetitions="20" runMetricsEveryStep="true">
+  <experiment name="scenario 1" repetitions="5" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
     <timeLimit steps="150"/>
@@ -651,8 +651,9 @@ infect-random</setup>
   <experiment name="scenario-2" repetitions="20" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="150"/>
+    <timeLimit steps="500"/>
     <metric>count turtles with [infected?]</metric>
+    <metric>count turtles with [immune? = true]</metric>
     <metric>count turtles</metric>
     <metric>sum [sicktime] of turtles</metric>
     <enumeratedValueSet variable="initial-people">
@@ -671,8 +672,9 @@ infect-random</setup>
   <experiment name="scenario-3" repetitions="20" runMetricsEveryStep="true">
     <setup>setup</setup>
     <go>go</go>
-    <timeLimit steps="150"/>
+    <timeLimit steps="500"/>
     <metric>count turtles with [infected?]</metric>
+    <metric>count turtles with [immune? = true]</metric>
     <metric>count turtles</metric>
     <metric>sum [sicktime] of turtles</metric>
     <enumeratedValueSet variable="initial-people">

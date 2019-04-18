@@ -214,6 +214,8 @@ One thing noticed is that as the number of constraints goes up the $R^2$ goes up
 
 \section{Part 3}
 
+\subsection{Overview}
+
 \textit{define, compare and contrast Cellular Automata and Agent Based models}
 Compare CA and ABM
 
@@ -228,12 +230,12 @@ The simplicity of CA models make them very useful for studying mathematical proc
 
 \subsection{Scenarios}
 
-This work will investigate three possible infection scenarios. The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu. The second scenario looks at a highly recoverable disease which no one is immune to like the common cold. The third looks at the efficacy of high but imperfect level of vaccination, as is scene for the seasonal flu where many in society are immunized but a meaningful amount of people do not. 
+This work will investigate three possible infection scenarios. The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu without a vaccination program. The second scenario looks at the same disease with a vaccination program. The third looks at a disease like the common cold which is more recoverable but where immunity is close to non-existent. 
 
 All three scenarios will use a population of 1000 and infect 100 people initially. 
 
 \subsubsection{Scenario 1}
-
+%%%%%%%%%%%%%%%%%%%%%%
 % describe 
 
 The first scenario, looking at a flu type disease with no vaccine available uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% chance of recovery based on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
@@ -245,25 +247,29 @@ Looking at Figure 2, which plots the percentage of turtles infected over 150 ste
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{scen_1_steady_state}
-\caption{\% of Population Infected Over Time}
+\caption{\% of Population Infected Over Time \\ Scenario 1}
 \end{figure}
 
 
 % minimum runs for statistically meaningful results
 
-The average steady state percentage of turtles infected at 40 ticks was 38.02. The standard deviation was 1.896, which indicates a margin of error at 95\% confidence of \pm 0.831. Thus one can expect that 95\% of runs with these parameters will be within 1\% of 38\% infection at steady state. 
+The average steady state percentage of turtles infected at 40 ticks was 38.02. The standard deviation was 1.869, which indicates a margin of error at 95\% confidence of $\pm$ 0.831. Thus one can expect that 95\% of runs with these parameters will be within 1\% of 38\% infection at steady state. This was calculated for 20 trials. At 10 trials the mean percent of turtles infected 37.96\% $\pm0.27$ margin of error and mean of time infected was 23.822 $\pm$ 0.1522. For 5 trials the mean percent infected was $37.46\pm0.296$ and for total time the mean was 23.91 $\pm$ 0.138. Thus it is clear that this model is simple enough that for the parameters specified few trials are needed to be confident in the stability of results obtained given the low variation in outcome. This is demonstrated between trial sets with the outcomes of the 20, 10, and 5 trial runs very similar to each other. 
 
-The total infection time per non-immune turtle was also recorded. The 20 trial mean at tick 40 was 23.51 and standard deviation was 0.913. This gives a 95\% margin of confidence of \pm 0.40. 
+The total infection time per non-immune turtle was also recorded. The 20 trial mean at tick 40 was 23.51 and standard deviation was 0.913. This gives a 95\% margin of confidence of $\pm0.40$. 
+
+%redo at tick 50. 
+
+For both of these variables, 20 trials gives a very narrow band of expected outcomes for a 95\% confidence interval. 
 
 % conclusions. 
 
-Thus the model indicates that for these parameters, a fairly high number of turtles will contract the infection and the infection will be passed around continually rather than dying out at some point in the future. 
+Thus the model indicates that for these parameters, a fairly high number of turtles will contract the infection and the infection will be passed around continually rather than dying out at some point in the future. Considering the margin of errors for the results, if the model accurately reflects a real world scenario, we can have a good idea of how that scenario would play out. 
 
 
 
 
 \subsubsection{Scenario 2}
-
+%%%%%%%%%%%%%%%%%%%%
 % describe
 
 Scenario 2 looks at the flu in a society with high but imperfect immunization rates. In the US this is seen in cases where infants and the elderly cannot receive the vaccine and some people elect not to receive it or forget. This is accomplished by using the same recovery rate, 10\% but increasing immunity probability to 80\%. 
@@ -271,143 +277,54 @@ Scenario 2 looks at the flu in a society with high but imperfect immunization ra
 
 % time required to reach steady state
 
+In Figure 3 the distribution over time of the percentage of turtles infected in the scenario is illustrated. It can be seen that a steady state is more difficult ot identify. One consideration is that the average percentage is lower than in scenario 1 because 80\% of the population is immune. A second is that the lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
+
+Because a steady state is less certain looking at the chart a t-test can be used to confirm that the mean of the set of trials is not changing between steps. At step 50 the mean percent infected was 5.92 with st. deviation 1.853. At step 100 these were 6.90 and 1.99. At step 250 7.935 and 1.696. At step 400 8.075 and 1.502. At step 500 7.956 and 2.113. 
+
+The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116. Indicating a 12\% chance that they are different and that a stead state has not been reached with 95\% confidence. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it is difficult to say with confidence that a steady state exists for this model as the effort to reject the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar to each other by coincidence. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{20-runs-scenario-2-steady-state}
+\caption{\% of Population Infected Over Time \\ Scenario 2}
+\end{figure}
+
+
 % minimum runs for statistically meaningful results
+
+at tick 250, the mean percentage of turtles infected was $7.93 \pm 0.332$ again demonstrating that the variability in results for this scenario is very similar to those of scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, that is to say, the true mean may change across ticks.  Finally, smaller sets of trials exhibited similar results to those calculated in scenario 1 showing that the change in parameters affected the value of the results but not their variability. 
 
 \subsubsection{Scenario 3}
 
+% describe
+
 This scenario will investigate how the common cold compares to the flu by using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines after contracting it exposing relatively more people than the flu, which most people suffer at home. 
 
+% time required to reach steady state
 
-To investigate the  
-
-
-This will be an investigation of the behavior of an epidemic across different population types. The baseline population scenario will have mid-levels of immunity and recovery chances(50\%). The high immunity scenario will have immunity chance at 90\% and recovery chance at 10\% while the high recovery chance scenario will set recovery chance to 90\% and immunity chance to 10\%. 
-
-\subsection{Assumptions and Preliminary Investigation}
-
-To understand a reasonable context for the scenarios above, behavior space was used to simulate a variety of initial-people and the number of people infected. Focusing on the three scenarios allowed the investigation to avoid a full parameter search of the effect of the 4 dimensions (initial population, number of turtles infected, immune-chance, and recovery-chance) on the final percentage of turtles infected. 
-
-The way the model is written, the actual number of people infected is the \% population immunity multiplied by the number of people infected because if the model selects a turtle at random to infect that is immune, there is no infection. This for a population half immune, on average infecting 50 turtles with result in 25 turtles actually becoming infected. 
-
-Figures 2, 3, and 4 show the percentage of population infected over time for the three scenarios. The different lines represent the averages of 5 runs for 60 different combinations of initial population and number infected. Population size ranged from 100 to 1000 incremented by 100. Number infected ranged from 1 to 51 incremented by 10. It can be seen below that results are consistent within scenarios. Roughly the same trend and final steady state is reached by all lines within a chart. It was checked that this was true for individual runs as well with no information lost by averaging the five trials. There were no ``outlier'' trials. 
-
-It is notable that while the baseline and high recovery scenarios reached clear steady states in all cases, there were cases in the high Immunity scenario where the percentage of people infected over time continued to fluctuate after step 6 by which time all trials in the other scenarios were 0. There were not trials were the percentage of people infected increased meaningfully though. 
-
-
-% should figure out how to add axis labels, basically just need to build MWE to post on SE
-% needs to be redo for 100 ticks 
-
-% baseline steady state
+Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.4994 p-value for a two tailed t-test for difference in means indicates only a 5\% probability of the null hypothesis that the means are different, just on the border of an acceptable level of confidence but basically acceptable.\footnote{If I was testing arbitrary ticks like 53 and 107 against each other, this level of confidence might be more concerning.}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{baseline_steady_state}
-\caption{\% of Population Infected Over Time}
+\includegraphics[width=0.8\textwidth]{20-runs-scenario-3-steady-state}
+\caption{\% of Population Infected Over Time \\ Scenario 3}
 \end{figure}
 
-% recovery steady state
+% minimum runs for statistically meaningful results
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{immunity_steady_state}
-\caption{\% of Population Infected Over Time}
-\end{figure}
-
-% immunity steady state
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{recovery_steady_state}
-\caption{\% of Population Infected Over Time}
-\end{figure}
-
-Now add charts of distribution of outcomes for Immunity scenario. 
-
-% baseline sicktime
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{baseline_total_sicktime}
-\caption{Total Time Sick Normalized for size of Turtle Population}
-\end{figure}
-
-% recovery sicktime
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{immunity_total_sicktime}
-\caption{Total Time Sick Normalized for size of Turtle Population}
-\end{figure}
-
-% immunity sicktime
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{recovery_total_sicktime}
-\caption{Total Time Sick Normalized for size of Turtle Population}
-\end{figure}
-
-Considering figures 2 through 7, it's clear that the baseline and high recovery scenarios reach steady states where no agent is infected. This is the only true steady possible in the model since no additional infections can occur without an infected agent present. In the case of the high immunity scenario, at 60 ticks, there were still  trails where a meaningful proportion of the population was infected.
-
-Also it is notable that all steady states identified in the trials are reached comfortably before 60 ticks, so this time limit will be used in the investigation.  
-
-Looking at figure 8 it seems that at 60 ticks. a higher proportion of turtles were infected at higher population sizes. This indicates that population density of turtles without immunity is a key consideration in infection rates and that immune turtles perhaps should be thought of simply as not existing for the purposes of the mode. 
-
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{immunity_perc_infected_across_pop}
-\caption{Trend in infection rates across population size}
-\end{figure}
-
-Thus in light of the findings above, the actual investigation uses a population of 1000, across 60 ticks. 
-
-\subsection{Analysis}
-
-The overall questions investigated here is, ``Is there a meaningful difference in disease transmission between populations with high immunity, high recovery rates, and populations with moderate levels for each. 
-
-To investigate this, a t-test is used to determine whether the difference between \% infected at tick 6 for each of the difference scenarios is statistically significant. 
-
-Looking at the Baseline scenario with 50\% chance of immunity and 50\% chance of recovering, trails consistently found the 0 infection steady state and it can be said that there isn't a meaningful difference between outcomes in this state. 
-
-Comparing those two scenarios with the high immunity scenario, there is a noticeable difference. A t-test confirms that there is a significant difference between the two distributions. 
-
-\textbf{t test}
-
-Important to note is that the distribution of outcomes is not close to normal, mainly because there cannot be negative infection rates, trimming the distribution at 0 and indicating that more sophisticated statistical methods are necessary. 
-
-% What is a reasonable amount of immunity or recovery
-
-possibilities for t test
-\begin{itemize}
-\item test for difference between average \% infected between scenarios
-\item test for difference between averages of \% infected at different ticks
-\item test for difference in outcomes between initial population sizes or number infected. 
-\end{itemize}
-
-\subsection{Questions}
+At 50 ticks the mean percentage of turtles infected was $66.19  \pm 0.313$ . Thus the low variability of outcomes for different outcome values as a result of different parameter values continues. Checking sets of five and ten trials revealed that very few trials were necessary to get a fairly tight 95\% confidence interval for the model outcomes. 
 
 
+\subsection{Conclusion}
+
+Comparing the three scenarios, The unvaccinated flu, scenario 1, moderate immunity (50\%) and moderate recovery rates (10\%) resulted in a 38\% average infection rate while the vaccinated flu 80\% immunity and 10\% recovery resulted in 7.93\% of turtles infected on average. The common cold, 5\% immunity, 25\% chance of recovery gave 66\% of turtles infected. At tick 50, Scenario 1 turtles that were not immune had spent $23.6 \pm 0.12$ ticks sick on average while this was $7.54 \pm 0.45$ in scenario 2 and $24.14 \pm 0.05$ in scenario 3. 
+
+Thus it is clear that higher rates of vaccination in scenario 2 lead to lower amounts of sicktime for turtles without the vaccine. At a high level it can then be said that this model replicates the empirical idea of ``herd immunity'' where general immunity of a group protects non-immune members of the group. 
+
+To continue investigating this, the model could be explored to find whether there is a constant increase in sick time per non-immune turtle or whether as population immunity decreases sick time accelerates. It would also be useful to add in a parameter for the contagiousness of the infection, the radius within which turtles affect each other. Lastly, adding in death or post-infection immunity would be an interesting extension. 
 
 
-Scenarios
-\begin{itemize}
-\item Baseline 
-\item high immunity
-\item high recovery
-\end{itemize}
-
-Record the run by using Behavior space ?
-Change script so it infects people automatically?
-
-How is this going to be 1000 words? 
-
-
-
-\begin{verbatim}
-use pseudocode
-\end{verbatim}
-
-XXXX words excluding headings, figures, and references. \\
+1709 words excluding headings, figures, and references. \\
 
 Do I need to cite anything? 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  17 APR 2019 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  18 APR 2019 13:35
 entering extended mode
 **./final.tex
 (final.tex
@@ -694,84 +694,44 @@ Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 105
 <scen_1_steady_state.png, id=46, 373.395pt x 266.9975pt>
 File: scen_1_steady_state.png Graphic file (type png)
 <use scen_1_steady_state.png>
-Package pdftex.def Info: scen_1_steady_state.png  used on input line 244.
+Package pdftex.def Info: scen_1_steady_state.png  used on input line 249.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
  [12] [13 <./scen_1_steady_state.png>]
-<baseline_steady_state.png, id=56, 383.4325pt x 264.99pt>
-File: baseline_steady_state.png Graphic file (type png)
-<use baseline_steady_state.png>
-Package pdftex.def Info: baseline_steady_state.png  used on input line 290.
-(pdftex.def)             Requested size: 334.60422pt x 231.25916pt.
-<immunity_steady_state.png, id=57, 367.3725pt x 279.0425pt>
-File: immunity_steady_state.png Graphic file (type png)
-<use immunity_steady_state.png>
-Package pdftex.def Info: immunity_steady_state.png  used on input line 298.
-(pdftex.def)             Requested size: 334.60422pt x 254.17175pt.
-<recovery_steady_state.png, id=58, 373.395pt x 264.99pt>
-File: recovery_steady_state.png Graphic file (type png)
-<use recovery_steady_state.png>
-Package pdftex.def Info: recovery_steady_state.png  used on input line 306.
-(pdftex.def)             Requested size: 334.60422pt x 237.46985pt.
-<baseline_total_sicktime.png, id=59, 379.4175pt x 264.99pt>
-File: baseline_total_sicktime.png Graphic file (type png)
-<use baseline_total_sicktime.png>
-Package pdftex.def Info: baseline_total_sicktime.png  used on input line 316.
-(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
-<immunity_total_sicktime.png, id=60, 379.4175pt x 264.99pt>
-File: immunity_total_sicktime.png Graphic file (type png)
-<use immunity_total_sicktime.png>
-Package pdftex.def Info: immunity_total_sicktime.png  used on input line 324.
-(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
-<recovery_total_sicktime.png, id=61, 379.4175pt x 264.99pt>
-File: recovery_total_sicktime.png Graphic file (type png)
-<use recovery_total_sicktime.png>
-Package pdftex.def Info: recovery_total_sicktime.png  used on input line 332.
-(pdftex.def)             Requested size: 334.60422pt x 233.69734pt.
- [14 <./baseline_steady_state.png>] [15 <./immunity_steady_state.png> <./recove
-ry_steady_state.png>] [16 <./baseline_total_sicktime.png> <./immunity_total_sic
-ktime.png>]
-<immunity_perc_infected_across_pop.png, id=76, 382.42876pt x 280.04625pt>
-File: immunity_perc_infected_across_pop.png Graphic file (type png)
-<use immunity_perc_infected_across_pop.png>
-Package pdftex.def Info: immunity_perc_infected_across_pop.png  used on input l
-ine 344.
-(pdftex.def)             Requested size: 334.60422pt x 245.03557pt.
- [17 <./recovery_total_sicktime.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 368.
-
-
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 368.
-
-[18 <./immunity_perc_infected_across_pop.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
+<20-runs-scenario-2-steady-state.png, id=57, 373.395pt x 266.9975pt>
+File: 20-runs-scenario-2-steady-state.png Graphic file (type png)
+<use 20-runs-scenario-2-steady-state.png>
+Package pdftex.def Info: 20-runs-scenario-2-steady-state.png  used on input lin
+e 288.
+(pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
+ [14 <./20-runs-scenario-2-steady-state.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 305.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 305.
+<20-runs-scenario-3-steady-state.png, id=62, 373.395pt x 266.9975pt>
+File: 20-runs-scenario-3-steady-state.png Graphic file (type png)
+<use 20-runs-scenario-3-steady-state.png>
+Package pdftex.def Info: 20-runs-scenario-3-steady-state.png  used on input lin
+e 309.
+(pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
+ [15 <./20-runs-scenario-3-steady-state.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
-[19] (final.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                final
-(biblatex)                and rerun LaTeX afterwards.
-
+[16] (final.aux)
 Package logreq Info: Writing requests to 'final.run.xml'.
 \openout1 = `final.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11966 strings out of 492902
- 223170 string characters out of 3124273
- 651912 words of memory out of 3000000
- 15709 multiletter control sequences out of 15000+200000
- 11427 words of font info for 40 fonts, out of 3000000 for 9000
+ 11932 strings out of 492902
+ 222208 string characters out of 3124273
+ 652006 words of memory out of 3000000
+ 15681 multiletter control sequences out of 15000+200000
+ 12171 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,46p,1203b,1164s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -779,16 +739,17 @@ ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Hugh/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Hugh/AppData/Local/
 Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Hugh/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Use
-rs/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.p
+rs/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.p
 fb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmss10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hugh/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Hugh/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on final.pdf (19 pages, 417320 bytes).
+/cm/cmr8.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr9.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmss10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Hugh/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on final.pdf (16 pages, 360738 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
+ 114 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

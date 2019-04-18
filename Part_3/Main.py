@@ -14,7 +14,7 @@ fig, ax = plt.subplots()
 
 # relevant files are 
 
-file = "output/scenario-1-table.csv"
+file = "output/ten-run-scenario-1-table.csv"
 
 data = pd.read_csv(file)
 
@@ -23,24 +23,31 @@ data = pd.read_csv(file)
 list(data)
 
 data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','immune_turtles','total_turtles','sum_sicktime']
+data['perc_infected'] = data['infected_turtles'] / data['total_turtles'] * 100
+data['sicktime_per_turtle'] = data['sum_sicktime'] / (data['total_turtles'] - data['immune_turtles'])
+
+data = data2
 
 ending_values = data.loc[data['step'] == 40]
 ending_mean = ending_values['perc_infected'].mean()
 ending_std = ending_values['perc_infected'].std()
 
+time_mean = ending_values['sicktime_per_turtle'].mean()
+time_std = ending_values['sicktime_per_turtle'].std()
+
+
 # calc margin of error
 
 z = 1.96
-n = 20
+n = 100
+perc_s_e = ending_std/(n**0.5)
+perc_margin_of_error = perc_s_e * z
 
-s_e = ending_std/(n^0.5)
-
-margin_of_error = 
+time_s_e = time_std/(n**0.5)
+time_margin_of_error = time_s_e * z
 
 #grouped_data = data.groupby(['run_number'], as_index = False).mean()
 data.set_index('step', inplace = True)
-data['perc_infected'] = data['infected_turtles'] / data['total_turtles'] * 100
-data['sicktime_per_turtle'] = data['sum_sicktime'] / (data['total_turtles'] - data['immune_turtles'])
 
 plot1 = data.groupby('run_number')['perc_infected'].plot()
 
