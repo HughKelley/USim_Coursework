@@ -21,10 +21,15 @@ balancing_factor_calc = function(cdatasub)
       # glm estimate for beta coefficient as a column. 
 
 
+  print(nrow(cdatasub))
+  
   disdecay = 0
   
   #Create some new Ai and Bj columns and fill them with starting values
   cdatasub$Ai <- 1
+  
+  # full of 1's here
+  
   cdatasub$Bj <- 1
   cdatasub$OldAi <- 10
   cdatasub$OldBj <- 10
@@ -47,15 +52,32 @@ balancing_factor_calc = function(cdatasub)
       
       if(disdecay==0)
         {
-          cdatasub$Ai <- (cdatasub$Bj*cdatasub$D_j*exp(cdatasub$dist*cdatasub$beta))
+          cdatasub$Ai <- (cdatasub$Bj*cdatasub$D_j)
+          # print("first step")
+          # print(head(cdatasub$Ai), 10)
+          
+          cdatasub$holder = cdatasub$distances*cdatasub$beta
+          # print("second step")
+          # print(head(cdatasub$holder),10)
+          
+          cdatasub$holder <- exp(cdatasub$holder)
+          # print("third step")
+          # print(head(cdatasub$holder),10)
+          
+          cdatasub$Ai <- cdatasub$Ai * cdatasub$holder
+          # print("fourth step")
+          # print(head(cdatasub$Ai),10)
+          
         } else 
           {
-            cdatasub$Ai <- (cdatasub$Bj*cdatasub$D_j*exp(log(cdatasub$dist)*cdatasub$beta))
+            cdatasub$Ai <- (cdatasub$Bj*cdatasub$D_j*exp(log(cdatasub$distances)*cdatasub$beta))
           }  
         
       #aggregate the results by your Origs and store in a new dataframe
       AiBF <- aggregate(Ai ~ Orig, data = cdatasub, sum)
-      
+      # print("AiBF")
+      # print(AiBF)
+      # it's all ) here
       #now divide by 1
       AiBF$Ai <- 1/AiBF$Ai 
       
@@ -66,7 +88,9 @@ balancing_factor_calc = function(cdatasub)
       #now, if not the first iteration, calculate the difference between  the new Ai values and the old Ai values and once done, overwrite the old Ai values with the new ones. 
       if(its==1)
         {
-          cdatasub$OldAi <- cdatasub$Ai    
+          cdatasub$OldAi <- cdatasub$Ai 
+          print("Ai values: ") 
+          print(cdatasub$Ai)
         } else {
           cdatasub$diff <- abs((cdatasub$OldAi-cdatasub$Ai)/cdatasub$OldAi)    
           cdatasub$OldAi <- cdatasub$Ai
@@ -75,12 +99,21 @@ balancing_factor_calc = function(cdatasub)
       #Now some similar calculations for Bj...
       if(disdecay==0)
         {
-          cdatasub$Bj <- (cdatasub$Ai*cdatasub$O_i*exp(cdatasub$dist*cdatasub$beta))
+          # print("calc 0")
+          # print("Ai",cdatasub$Ai)
+          
+          cdatasub$Bj <- (cdatasub$Ai*cdatasub$O_i*exp(cdatasub$distances*cdatasub$beta))
+          
+          print(cdatasub$Bj)
         } else {
-          cdatasub$Bj <- (cdatasub$Ai*cdatasub$O_i*exp(log(cdatasub$dist)*cdatasub$beta))
+          cdatasub$Bj <- (cdatasub$Ai*cdatasub$O_i*exp(log(cdatasub$distances)*cdatasub$beta))
         }
       
+      print(nrow(cdatasub))
+      print(names(cdatasub))
+      
       #aggregate the results by your Dests and store in a new dataframe
+      # BjBF <- aggregate(x = Bj, by = Dest, FUN = sum, data = cdatasub)
       BjBF <- aggregate(Bj ~ Dest, data = cdatasub, sum)
       
       #now divide by 1

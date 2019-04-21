@@ -56,7 +56,10 @@ data_loader <- function(a,b,c,d)
   # then sort correctly
   
   commute_data = arrange(commute_data, OrigCodeNew, DestCodeNew)
-  commute_data$distances = paired_distances$value
+  
+  # use distances in kilometers hopefully solving bug in balancing
+  # factor calculation for double constrained model
+  commute_data$distances = paired_distances$value / 1000
   # remove intra-borough flows
   
   commute_data = commute_data[!(commute_data$OrigCodeNew == commute_data$DestCodeNew),]
@@ -100,6 +103,18 @@ subsetter <- function (data, boroughs) {
   cdatasub <- cdatasub[1:((len^2)-2),]
   # check order
   cdatasub <- dplyr::select(cdatasub, OrigCodeNew, DestCodeNew, Total, everything())
+  }
+
+
+flow_totals <- function(cdatasub)
+{
+  O_i <- cdatasub %>% group_by(OrigCodeNew) %>% summarise(O_i = sum(Total))
+  cdatasub$O_i <- O_i$O_i[match(cdatasub$OrigCodeNew,O_i$OrigCodeNew)]
+  D_j <- cdatasub %>% group_by(DestCodeNew) %>% summarise(D_j = sum(Total))
+  cdatasub$D_j <- D_j$D_j[match(cdatasub$DestCodeNew,D_j$DestCodeNew)]
+
+  return(cdatasub)
+  
   }
 
 # load function to calculate balancing factors for double constrained model
