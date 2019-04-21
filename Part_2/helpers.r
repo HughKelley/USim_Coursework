@@ -6,6 +6,7 @@ package_loader <- function(x)
   require(reshape2) &&
   require(geojsonio) &&
   require(rgdal) &&
+  require(tidyverse) &&
   require(downloader) &&
   require(maptools) &&
   require(dplyr) &&
@@ -118,7 +119,7 @@ flow_totals <- function(cdatasub)
   }
 
 # load function to calculate balancing factors for double constrained model
-source('~/UCL_CASA_1819/USim/USim_Coursework/Part_2/seniors_algorithm.r', echo=TRUE)
+source('seniors_algorithm.r', echo=TRUE)
 
 
 # code_dictionary = "https://www.dropbox.com/s/h8mpvnepdkwa1ac/CodeLookup.csv?raw=1"

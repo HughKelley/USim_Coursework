@@ -26,8 +26,6 @@ rm(boundaries, commute_data_source, code_dictionary, pop_and_income_data, a)
 unconstrained_model <- glm(Total ~ log(vi1_origpop)+log(wj2_destsal)+log(distances), na.action = na.exclude, family = poisson(link = "log"), data = london_data)
 
 double_constrained_model <- glm(Total ~ Orig+Dest+log(distances), na.action = na.exclude, family = poisson(link = "log"), data = london_data)
-
-
 # fit 
 
 # to save the estimates
@@ -62,8 +60,8 @@ double_intercept <- double_parameters[1,1]
 distance_parameter <- double_parameters[66,1]
 # and take them out
 double_parameters <- double_parameters[-c(1,66),,drop=F]
-# results in 64 parameters 32 * 2. 
-# but what about the baseline borough that doesn't get a parameter?
+# results in 64 parameters 32 * 2. Thats the 32 boroughs plus the city of london 
+# minus the reference borough
 
 # now convert long to wide
 names(double_parameters) <- 'coefficients'
@@ -96,7 +94,18 @@ balance_data$beta <- distance_parameter * (-1)
 
 # now use the function for calculating balancing factors
 
+# check an estimate by hand
+
 balance_data <- balancing_factor_calc(balance_data)
+
+
+balance_data$estimates <- balance_data$O_i*balance_data$Ai*balance_data$D_j*balance_data$Bj*exp(log(balance_data$distances)*balance_data$beta)
+balance_data$estimates <- round(balance_data$estimates, 0)
+flow_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "estimates", margins = c("Orig", "Dest"))
+total_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
+
+# with the regular distance decay function, estimates come out to a LOT of zeros
+# try the other one maybe it'll come out more reasonably. 
 
 
 # a chunk of the above should be a function for org purposes
