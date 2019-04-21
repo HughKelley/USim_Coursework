@@ -102,5 +102,12 @@ subsetter <- function (data, boroughs) {
   cdatasub <- dplyr::select(cdatasub, OrigCodeNew, DestCodeNew, Total, everything())
   }
 
+# load function to calculate balancing factors for double constrained model
+source('~/UCL_CASA_1819/USim/USim_Coursework/Part_2/seniors_algorithm.r', echo=TRUE)
 
+
+# code_dictionary = "https://www.dropbox.com/s/h8mpvnepdkwa1ac/CodeLookup.csv?raw=1"
+# codes <- read.csv(code_dictionary)
+# written_codes <- write.csv(codes, file='borough_codes.csv')
+# rm(codes, written_codes, code_dictionary)
 

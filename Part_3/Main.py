@@ -40,6 +40,7 @@ time_std = ending_values['sicktime_per_turtle'].std()
 # calc margin of error
 
 z = 1.96
+t = 2.093 
 n = 100
 perc_s_e = ending_std/(n**0.5)
 perc_margin_of_error = perc_s_e * z
