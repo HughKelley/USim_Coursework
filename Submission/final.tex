@@ -79,7 +79,7 @@ This is an analysis of resilience in the London tube network. The analysis uses 
 
 
 \subsection{Impact Evaluation}
-The network effect metric will be discussed first because the node removal criteria was decided in the context of the network effect metric. . 
+The network effect metric will be discussed first because the node removal criteria was decided in the context of the network effect metric.
 
 Breaking the network into isolates was investigated but not pursued. Instead, the focus will be on forcing tube users to travel further for longer on their journeys. 
 
@@ -149,7 +149,7 @@ An improvement to the data generally would be to use travel time data instead of
 
 Lastly, it would be interesting to build an igraph function that can compute average shortest path using edge weights since the current function cannot. This could confirm or reject the thought that tube stations are spaced fairly regularly based on the high correlation between weighted and topological centrality measures. 
 
-\textbf{943 words}
+\textbf{929 words}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -321,15 +321,13 @@ In both models the signs of the estimated parameters were consistent with expect
 
 \subsection{Overview}
 
-While CA models are often viewed as separate from ABM, a more modern view of these methods considers them to be cousins or related in the sense that CA are a subset of ABM. 
+Cellular automata models are made of homogeneous cells that interact only with each other according to a defined set of rules. Expanding a CA model to include heterogeneous cells or a separate environment results in a full Agent Based Model. This CA could be thought of either as distinct from ABM or as a subset. 
+ 
+The simplicity of CA models make them very useful for studying mathematical processes whereas ABM is more useful for modeling complex "real world" phenomena and make them more accessible to non-technical audiences. Often the value of ABM comes from the ability to conduct parameter sweeps, to study the combination of multiple processes. CA tends to focus on the effect of initialization states on the long term outcome of the model whereas agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
 
-Expanding a CA model usually results in the creation of an ABM.  Cellular automata models are defined by a set of homogeneous cells that interact only with each other according to a defined set of input/output functions, e.g., if a cell with value 1 is surrounded by other cells f value 1 it's value becomes 0. The models can be extended to "n" states but all cells should be capable of reaching all n states to maintain the homogeneity of the cells. This can be contrasted with ABM where cells can have infinite heterogeneity and future states can be functions of the "environment" other cells or agents" and the cells own state. 
+\subsection{Three Scenarios}
 
-The simplicity of CA models make them very useful for studying mathematical processes whereas Agent Based Modeling flexibility make them useful for modeling more complex "real world" phenomena and make them more accessible to non-technical audiences. Often the value of ABM comes from the ability to conduct parameter sweeps, to study combination rules that apply to multiple conceptual processes with different parameter values. The value of cellular automata models tends to be focused on the effect of initialization states on the long term outcomes and equillibria of the model e.g. for the same model, outcomes are a function of the rule set and initialization values, where as agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
-
-\subsection{Scenarios}
-
-This work will investigate three possible infection scenarios. The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu without a vaccination program. The second scenario looks at the same disease with a vaccination program. The third looks at a disease like the common cold which is more recoverable but where immunity is close to non-existent. 
+The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu without a vaccination program. The second scenario looks at the same disease with a vaccination program. The third looks at a disease like the common cold which is more recoverable but where immunity is close to non-existent. 
 
 All three scenarios will use a population of 1000 and infect 100 people initially. 
 
@@ -337,11 +335,11 @@ All three scenarios will use a population of 1000 and infect 100 people initiall
 %%%%%%%%%%%%%%%%%%%%%%
 % describe 
 
-The first scenario, looking at a flu type disease with no vaccine available uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% chance of recovery based on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
+The first scenario, no vaccine flu, uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% recovery probability on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
 
 % time required to reach steady state
 
-Looking at Figure 2, which plots the percentage of turtles infected over 150 steps of the model for 20 trials, a steady state becomes fairly clear. While this is not a perfect equilibrium, compared to the rapid increase in the first 20 ticks, the model becomes fairly stationary.  This, future runs of this model can be limited to 40 ticks with reasonably confidence that the model will have found an equilibrium. 
+Looking at Figure 2, which plots the percentage of turtles infected over 150 steps of the model for 20 trials, a steady state becomes fairly clear. While this is not a perfect equilibrium, compared to the rapid increase in the first 20 ticks, the model becomes fairly stationary by tick 20 or 30.   
 
 \begin{figure}
 \centering
@@ -352,9 +350,9 @@ Looking at Figure 2, which plots the percentage of turtles infected over 150 ste
 
 % minimum runs for statistically meaningful results
 
-The average steady state percentage of turtles infected at 50 ticks was 38.79. The sample standard deviation was 1.799, which indicates a margin of error at 95\% confidence of $\pm 0.842$ using a t-value of 2.093. This implies that to get a margin of confidence of 0.5, 56.7 trial runs would be required. When 56 trials were run, the result was $37.93 \pm 0.493$, so the estimate for $n$ was pretty accurate. 
+The average percentage of turtles infected at 50 ticks was 38.79. The sample standard deviation was 1.799, which indicates a margin of error at 95\% confidence of $\pm 0.842$ using a t-value of 2.093. This implies that to get a margin of confidence of 0.5, 56.7 trial runs would be required. When 56 trials were run, the result was $37.93 \pm 0.493$, so the estimate for $n$ was accurate. 
 
-The total infection time per non-immune turtle per tick was also recorded. The 20 trial mean at tick 40 was $0.6343 \pm 0.00669$. This has the value of adjusting for turtle immunity and runtime in order to compare results across scenarios later on. 
+The total infection time per non-immune turtle per tick was also recorded. The 20 trial mean at tick 40 was $0.6343 \pm 0.00669$. This adjusts for turtle immunity and runtime in order to compare results across scenarios later on. 
 
 % conclusions. 
 
@@ -369,13 +367,13 @@ Scenario 2 looks at the flu in a society with high but imperfect immunization ra
 
 % time required to reach steady state
 
-In Figure 3 the distribution over time of the percentage of turtles infected in the scenario is illustrated. It can be seen that a steady state is more difficult to identify. One consideration is that the average percentage is lower than in scenario 1 because 80\% of the population is immune. A second is that the lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
+ Figure 3 shows the percentage of turtles infected over time in the trials. A steady state is more difficult to identify. One consideration is that the average percentage is lower than in scenario 1 because 80\% of the population is immune. A second is that the lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
 
 Because a steady state is less certain looking at the chart a t-test can be used to confirm that the mean of the set of trials is not changing between steps. At step 50 the mean percent infected was 5.92 with st. deviation 1.799. At step 100 these were 6.90 and 1.99. At step 250 7.935 and 1.696. At step 400 8.075 and 1.502. At step 500 7.956 and 2.113. 
 
 The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116. Indicating a 12\% chance that they are different and that a steady state has not been reached with 95\% confidence. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it is difficult to say with confidence that a steady state exists for this model as the effort to reject the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar to each other by coincidence. 
 
-Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$. A lower average sicktime compared to scenario 1 with not as tight confidence interval. 
+Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$.
 
 \begin{figure}
 \centering
@@ -386,17 +384,17 @@ Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$. A lower ave
 
 % minimum runs for statistically meaningful results
 
-at tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$ again demonstrating that the variability in results for this scenario is very similar to those of scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, that is to say, the true mean may change across ticks.  Finally, smaller sets of trials exhibited similar results to those calculated in scenario 1 showing that the change in parameters affected the value of the results but not their variability. 
+At tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$ again demonstrating that the variability in results for this scenario is very similar to those of scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, that is to say, the true mean may change across ticks.  
 
 \subsubsection{Scenario 3}
 
 % describe
 
-This scenario will investigate how the common cold compares to the flu by using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines after contracting it exposing relatively more people than the flu, which most people suffer at home. 
+This scenario investigates how the common cold compares to the flu by using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines with a cold exposing relatively more people than the flu. 
 
 % time required to reach steady state
 
-Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.04994 p-value for a two tailed t-test for difference in means indicates only a 5\% probability of the null hypothesis that the means are different, just on the border of an acceptable level of confidence but basically acceptable.
+Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.04994 p-value for a two tailed t-test for difference in means indicates only a 5\% probability of the null hypothesis that the means are different.
 
 \begin{figure}
 \centering
@@ -413,16 +411,12 @@ Results for sick time per turtle per tick at tick 50 were $0.311 \pm 0.0013$. Le
 
 \subsection{Conclusion}
 
-Comparing the three scenarios, The unvaccinated flu, scenario 1, (moderate immunity (50\%) and moderate recovery rates (10\%)) resulted in a 38\% average infection rate while the vaccinated flu (80\% immunity and 10\% recovery) resulted in 7.93\% of turtles infected on average. The common cold, (5\% immunity, 25\% chance of recovery) gave 66\% of turtles infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on average while this number was  10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members. 
+Comparing the three scenarios, The unvaccinated flu, scenario 1, resulted in a 38\% average infection rate while the vaccinated flu, scenario 2, resulted in 7.93\% of turtles infected on average. The common cold, scenario 3,  gave 66\% of turtles infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on average while this number was  10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members.  At a high level it can then be said that this model replicates the empirical idea of ``herd immunity'' where general immunity of a group protects non-immune members of the group. 
 
-Scenario 1 turtles that were not immune had spent $23.6 \pm 0.12$ ticks sick on average while this was $7.54 \pm 0.45$ in scenario 2 and $24.14 \pm 0.05$ in scenario 3. 
-
-Thus it is clear that higher rates of vaccination in scenario 2 lead to lower amounts of sicktime for turtles without the vaccine. At a high level it can then be said that this model replicates the empirical idea of ``herd immunity'' where general immunity of a group protects non-immune members of the group. 
-
-To continue investigating this, the model could be explored to find whether there is a constant increase in sick time per non-immune turtle or whether as population immunity decreases sick time accelerates. It would also be useful to add in a parameter for the contagiousness of the infection, the radius within which turtles affect each other. Lastly, adding in death or post-infection immunity would be an interesting extension. 
+To continue investigating this, one could test whether there is a constant increase in sick time per non-immune turtle or whether as population immunity decreases sick time accelerates. It would also be useful to add in a parameter for the contagiousness of the infection, the radius within which turtles affect each other. Lastly, adding in death or post-infection immunity would be an interesting extension. 
 
 
-\textbf{1618 words}
+\textbf{1285 words}
 
 
 \nocite{*}
