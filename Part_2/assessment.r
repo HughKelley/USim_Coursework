@@ -83,36 +83,49 @@ results$unconstrained_estimate_calc <- round(results$unconstrained_estimate_calc
 results$double_estimate_calc <- exp(double_intercept+(london_data$mu_i)+(london_data$alpha_j)-(distance_parameter*log(london_data$distances)))
 results$double_estimate_calc <- round(results$double_estimate_calc)
 
-london_data <- flow_totals(london_data)
-london_data$beta <- distance_parameter * (-1)
-london_data$manual_estimate <- london_data$O_i*london_data$mu_i*london_data$alpha_j*london_data$D_j*exp(london_data$distances*london_data$beta)
-london_data$estimate <- fitted(double_constrained_model)
 
-# now use the function for calculating balancing factors
-
-# create origin and destination flow totals for each borough
+#########################################################################
+# now see if estimates can be reproduced with seniors algorithm
 
 balance_data <- flow_totals(london_data)
 balance_data$beta <- distance_parameter
 balance_data <- dplyr::select(balance_data, Orig, Dest, OrigCodeNew, DestCodeNew, vi1_origpop, wj2_destsal, D_j, O_i, distances, beta)
 
-# create scenario dataframe
+balance_data <- balancing_factor_calc(balance_data)
+
+# exp(double_intercept+(london_data$mu_i)+(london_data$alpha_j)-(distance_parameter*log(london_data$distances)))
+# (cdatasub$O_i*cdatasub$Ai*cdatasub$D_j*cdatasub$Bj*exp(log(cdatasub$dist)*cdatasub$beta))
+balance_data$estimate <- balance_data$O_i*balance_data$Ai*balance_data$D_j*balance_data$Bj*exp(log(balance_data$distances)*balance_data$beta)
+
+
+
+# balance_data$estimate <- exp(double_intercept+(balance_data$O_i*balance_data$Ai)+(balance_data$D_j*balance_data$Bj)-(distance_parameter*log(balance_data$distances)))
+# balance_data$fit <- round(fitted(double_constrained_model),0)
+
+# balance_data$estimates <- balance_data$O_i*balance_data$Ai*balance_data$D_j*balance_data$Bj*exp(log(balance_data$distances)*balance_data$beta)
+# balance_data$estimates <- round(balance_data$estimates, 0)
+# results$Double_manual_estimates <- balance_data$estimates
+
+# flow_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "estimates", margins = c("Orig", "Dest"))
+# total_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
+
+
+############################################################################
+# make the scenario data
+
 scenario_data <- balance_data
 outer_borough_codes <- c('E09000017','E09000015','E09000003','E09000010','E09000031','E09000026','E09000016','E09000004','E09000006','E09000008','E09000029','E09000021','E09000027','E09000018')
 scenario_data$distances <- ifelse((scenario_data$DestCodeNew %in% outer_borough_codes) & (scenario_data$OrigCodeNew %in% outer_borough_codes), 2.08, scenario_data$distances)
 
 
 # now use the function for calculating balancing factors
-balance_data <- balancing_factor_calc(balance_data)
-
-balance_data$estimates <- balance_data$O_i*balance_data$Ai*balance_data$D_j*balance_data$Bj*exp(log(balance_data$distances)*balance_data$beta)
-balance_data$estimates <- round(balance_data$estimates, 0)
-# results$Double_manual_estimates <- balance_data$estimates
-
-# flow_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "estimates", margins = c("Orig", "Dest"))
-# total_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
 
 scenario_data <- balancing_factor_calc(scenario_data)
+
+scenario_data$estimate <- scenario_data$O_i*scenario_data$Ai*scenario_data$D_j*scenario_data$Bj*exp(log(scenario_data$distances)*scenario_data$beta)
+
+
+
 scenario_data$double_estimates <- scenario_data$O_i*scenario_data$Ai*scenario_data$D_j*scenario_data$Bj*exp(log(scenario_data$distances)*scenario_data$beta)
 scenario_data$double_estimates <- round(scenario_data$double_estimates,0)
 results$scenario_double_estimates <- scenario_data$double_estimates
