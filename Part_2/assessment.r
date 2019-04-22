@@ -24,9 +24,11 @@ double_constrained_model <- glm(Total ~ Orig+Dest+log(distances), na.action = na
 
 
 # fit and save the estimates
-results <- data.frame(actual_flows = london_data$Total)
+results <- dplyr::select(london_data, Orig, Dest, Total)
 results$unconstrained_estimates <- round(fitted(unconstrained_model))
 results$double_constrained_estimates <- round(fitted(double_constrained_model))
+
+# save to a csv
 
 # test goodness of fit
 total_r_2 =  CalcRSquared(results$actual_flows, results$unconstrained_estimates)
@@ -79,50 +81,50 @@ london_data$alpha_j <- ifelse(is.na(london_data$alpha_j),1,london_data$alpha_j)
 
 balance_data <- flow_totals(london_data)
 balance_data$beta <- distance_parameter * (-1)
-balance_data <- dplyr::select(balance_data, Orig, Dest, D_j, O_i, distances, beta)
+balance_data <- dplyr::select(balance_data, Orig, Dest, OrigCodeNew, DestCodeNew, vi1_origpop, wj2_destsal, D_j, O_i, distances, beta)
 
 # create scenario dataframe
 scenario_data <- balance_data
 outer_borough_codes <- c('E09000017','E09000015','E09000003','E09000010','E09000031','E09000026','E09000016','E09000004','E09000006','E09000008','E09000029','E09000021','E09000027','E09000018')
-scenario_data$hypo_distances <- ifelse((scenario_data$DestCodeNew %in% outer_borough_codes) & (scenario_data$OrigCodeNew %in% outer_borough_codes), 2080, scenario_data$distances)
+scenario_data$distances <- ifelse((scenario_data$DestCodeNew %in% outer_borough_codes) & (scenario_data$OrigCodeNew %in% outer_borough_codes), 2.08, scenario_data$distances)
 
 
 # now use the function for calculating balancing factors
-
-# check an estimate by hand
-
 balance_data <- balancing_factor_calc(balance_data)
 
 balance_data$estimates <- balance_data$O_i*balance_data$Ai*balance_data$D_j*balance_data$Bj*exp(log(balance_data$distances)*balance_data$beta)
 balance_data$estimates <- round(balance_data$estimates, 0)
-flow_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "estimates", margins = c("Orig", "Dest"))
-total_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
+# results$Double_manual_estimates <- balance_data$estimates
 
-# with the regular distance decay function, estimates come out to a LOT of zeros
-# try the other one maybe it'll come out more reasonably. 
-
-
-# a chunk of the above should be a function for org purposes
-
-
-# print results
-cat("total constrained model", '\n', "R2: ", total_r_2,'\n',"RMSE: ", total_rmse, sep = "", '\n')
-cat("double constrained model", '\n', "R2: ", double_r_2,'\n',"RMSE: ", double_rmse, sep = "", '\n')
-
-# now create a new data for scenario estimates 
-# outer_boroughs <- c(Hilingdon, Harrow, Barnet, Enfield, Waltham forest, Redbridge, Havering, Bexley, Bromley, Croydon, Sutton, Kingston, Richmond, Hounslow)
-# this basically has to be done manually
-outer_borough_codes <- c('E09000017','E09000015','E09000003','E09000010','E09000031','E09000026','E09000016','E09000004','E09000006','E09000008','E09000029','E09000021','E09000027','E09000018')
-
-
-# get from london data borough codes and names for match
-# data: total flow for check, distances, mu parameters, alpha parameters
-scenario_data <- dplyr::select(london_data, Total, OrigCodeNew, DestCodeNew, Orig, Dest, distances, mu_i, alpha_j)
-
-# set distances between outer boroughs to min distance. 
-scenario_data$hypo_distances <- ifelse((scenario_data$DestCodeNew %in% outer_borough_codes) & (scenario_data$OrigCodeNew %in% outer_borough_codes), 2080, scenario_data$distances)
+# flow_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "estimates", margins = c("Orig", "Dest"))
+# total_matrix <- dcast(balance_data, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
 
 scenario_data <- balancing_factor_calc(scenario_data)
+scenario_data$double_estimates <- scenario_data$O_i*scenario_data$Ai*scenario_data$D_j*scenario_data$Bj*exp(log(scenario_data$distances)*scenario_data$beta)
+scenario_data$double_estimates <- round(scenario_data$double_estimates,0)
+results$scenario_double_estimates <- scenario_data$double_estimates
+
+
+# now calculate scenario estimates for the unconstrained model. 
+
+scenario_data$unconstrained_estimate <- exp(un_k+(un_mu*log(scenario_data$vi1_origpop))+(un_alpha*log(scenario_data$wj2_destsal))-(un_beta*log(scenario_data$distances)))
+scenario_data$unconstrained_estimate <- round(scenario_data$unconstrained_estimate,0)
+reduction_ratio <- sum(results$Total)/sum(scenario_data$unconstrained_estimate)
+scenario_data$unconstrained_estimate <- round(scenario_data$unconstrained_estimate * reduction_ratio,0)
+results$unconstrained_scenario_estimate <- scenario_data$unconstrained_estimate
+
+# matrix form
+actual_flows <- dcast(results, Orig ~ Dest, sum, value.var = "Total", margins = c("Orig", "Dest"))
+unconstrained_scenario <- dcast(results, Orig ~ Dest, sum, value.var = "unconstrained_scenario_estimate", margins = c("Orig", "Dest"))
+double_constrained_scenario <- dcast(results, Orig ~ Dest, sum, value.var = "scenario_double_estimates", margins = c("Orig", "Dest"))
+
+# write to csv
+
+write.csv(actual_flows, "actual_flows.csv")
+write.csv(unconstrained_scenario, "unconstrained_scenario_flows.csv")
+write.csv(double_constrained_scenario, "double_scenario_flows.csv")
+
+
 
 
 

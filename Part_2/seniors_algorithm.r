@@ -28,7 +28,7 @@ balancing_factor_calc <- function(cdatasub){
   #This is a while-loop which will calculate Orig and Dest balancing
   #factors until the specified convergence criteria is met
   
-  while(cnvg > 1)
+  while(cnvg > 0.001)
   {
     
     print(paste0("iteration ", its))
