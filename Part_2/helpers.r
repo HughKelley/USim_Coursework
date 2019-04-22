@@ -93,9 +93,9 @@ O_and_D_flow_totals <- function(flow_data_frame) {
   return(flow_data_frame)
 }
 
-subsetter <- function (data, boroughs) {
+subsetter <- function (cdata, toMatch) {
   
-  len = length(boroughs)
+  len = length(toMatch)
   # origins
   cdatasub <- cdata[grep(paste(toMatch,collapse = "|"), cdata$OrigCode),]
   # destinations

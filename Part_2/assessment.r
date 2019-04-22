@@ -31,10 +31,10 @@ results$double_constrained_estimates <- round(fitted(double_constrained_model))
 # save to a csv
 
 # test goodness of fit
-total_r_2 =  CalcRSquared(results$actual_flows, results$unconstrained_estimates)
-total_rmse = CalcRMSE(results$actual_flows, results$unconstrained_estimates)
-double_r_2 = CalcRSquared(results$actual_flows, results$double_constrained_estimates)
-double_rmse = CalcRMSE(results$actual_flows, results$double_constrained_estimates)
+total_r_2 =  CalcRSquared(results$Total, results$unconstrained_estimates)
+total_rmse = CalcRMSE(results$Total, results$unconstrained_estimates)
+double_r_2 = CalcRSquared(results$Total, results$double_constrained_estimates)
+double_rmse = CalcRMSE(results$Total, results$double_constrained_estimates)
 
 # get parameters for each of the models. 
 
@@ -42,7 +42,7 @@ double_rmse = CalcRMSE(results$actual_flows, results$double_constrained_estimate
 un_k <- unconstrained_model$coefficients[1]
 un_mu <- unconstrained_model$coefficients[2]
 un_alpha <- unconstrained_model$coefficients[3]
-un_beta <- unconstrained_model$coefficients[4]
+un_beta <- unconstrained_model$coefficients[4] *(-1)
 
 
 # double constrained parameters
@@ -51,6 +51,7 @@ double_parameters <- as.data.frame(double_constrained_model$coefficients)
 # order is intercept, coefs for origins, coefs for dests, coef for dist
 double_intercept <- double_parameters[1,1]
 distance_parameter <- double_parameters[66,1]
+distance_parameter <- distance_parameter*(-1)
 # and take out intercept and distance parameter
 double_parameters <- double_parameters[-c(1,66),,drop=F]
 # results in 64 parameters 32 * 2. Thats the 32 boroughs plus the city of london 
@@ -69,18 +70,30 @@ double_parameters <- spread(double_parameters, type, coefficients)
 london_data$mu_i <- double_parameters$Orig[match(london_data$Orig,double_parameters$id)]
 london_data$alpha_j <- double_parameters$Dest[match(london_data$Dest,double_parameters$id)]
 
-# the reference borough doesn't get a coefficient, it's 1. 
+# the reference borough doesn't get a coefficient, it's 0. 
 # so replace NA's where there was no match with 1
-london_data$mu_i <- ifelse(is.na(london_data$mu_i),1,london_data$mu_i)
-london_data$alpha_j <- ifelse(is.na(london_data$alpha_j),1,london_data$alpha_j)
+london_data$mu_i <- ifelse(is.na(london_data$mu_i),0,london_data$mu_i)
+london_data$alpha_j <- ifelse(is.na(london_data$alpha_j),0,london_data$alpha_j)
 
+# now calculate estimates by hand to be sure of calculation
+results$unconstrained_estimate_calc <- exp(un_k+(un_mu*log(london_data$vi1_origpop))+(un_alpha*log(london_data$wj2_destsal))-(un_beta*log(london_data$distances)))
+results$unconstrained_estimate_calc <- round(results$unconstrained_estimate_calc,0)
+
+
+results$double_estimate_calc <- exp(double_intercept+(london_data$mu_i)+(london_data$alpha_j)-(distance_parameter*log(london_data$distances)))
+results$double_estimate_calc <- round(results$double_estimate_calc)
+
+london_data <- flow_totals(london_data)
+london_data$beta <- distance_parameter * (-1)
+london_data$manual_estimate <- london_data$O_i*london_data$mu_i*london_data$alpha_j*london_data$D_j*exp(london_data$distances*london_data$beta)
+london_data$estimate <- fitted(double_constrained_model)
 
 # now use the function for calculating balancing factors
 
 # create origin and destination flow totals for each borough
 
 balance_data <- flow_totals(london_data)
-balance_data$beta <- distance_parameter * (-1)
+balance_data$beta <- distance_parameter
 balance_data <- dplyr::select(balance_data, Orig, Dest, OrigCodeNew, DestCodeNew, vi1_origpop, wj2_destsal, D_j, O_i, distances, beta)
 
 # create scenario dataframe
@@ -125,6 +138,6 @@ write.csv(unconstrained_scenario, "unconstrained_scenario_flows.csv")
 write.csv(double_constrained_scenario, "double_scenario_flows.csv")
 
 
-
+london_data$manual_estimate <- exp(london_data$k+london_data$mu_i+london_data$alpha_j-london_data$beta*london_data$distances)
 
 
