@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  21 APR 2019 10:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  22 APR 2019 12:10
 entering extended mode
 **./final.tex
 (final.tex
@@ -326,87 +326,10 @@ fg"))
 "
 Package: parskip 2019-01-16 v2.0c non-zero parskip adjustments
 )
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\booktabs.s
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\rotating.s
 ty"
-Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen111
-\lightrulewidth=\dimen112
-\cmidrulewidth=\dimen113
-\belowrulesep=\dimen114
-\belowbottomsep=\dimen115
-\aboverulesep=\dimen116
-\abovetopsep=\dimen117
-\cmidrulesep=\dimen118
-\cmidrulekern=\dimen119
-\defaultaddspace=\dimen120
-\@cmidla=\count280
-\@cmidlb=\count281
-\@aboverulesep=\dimen121
-\@belowrulesep=\dimen122
-\@thisruleclass=\count282
-\@lastruleclass=\count283
-\@thisrulewidth=\dimen123
-) ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
-Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen124
-\ar@mcellbox=\box27
-\extrarowheight=\dimen125
-\NC@list=\toks18
-\extratabsurround=\skip65
-\backup@length=\skip66
-\ar@cellbox=\box28
-)
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/paralist\paralist.s
-ty"
-Package: paralist 2017/01/22 v2.7 Extended list environments
-\pltopsep=\skip67
-\plpartopsep=\skip68
-\plitemsep=\skip69
-\plparsep=\skip70
-\pl@lab=\toks19
-)
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.sty"
-Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks20
-\verbatim@line=\toks21
-\verbatim@in@stream=\read2
-) ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfig\subfig.sty
-"
-Package: subfig 2005/06/28 ver: 1.3 subfig package
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty
-"
-Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
-
-("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.st
-y"
-Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen126
-\captionmargin@=\dimen127
-\captionwidth=\dimen128
-\caption@tempdima=\dimen129
-\caption@indent=\dimen130
-\caption@parindent=\dimen131
-\caption@hangindent=\dimen132
-)
-\c@caption@flags=\count284
-\c@ContinuedFloat=\count285
-)
-\c@KVtest=\count286
-\sf@farskip=\skip71
-\sf@captopadj=\dimen133
-\sf@capskip=\skip72
-\sf@nearskip=\skip73
-\c@subfigure=\count287
-\c@subfigure@save=\count288
-\c@lofdepth=\count289
-\c@subtable=\count290
-\c@subtable@save=\count291
-\c@lotdepth=\count292
-\sf@top=\skip74
-\sf@bottom=\skip75
-)
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.s
 ty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -428,8 +351,96 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 .def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen134
-\Gin@req@width=\dimen135
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+\c@r@tfl@t=\count280
+\rotFPtop=\skip65
+\rotFPbot=\skip66
+\rot@float@box=\box27
+\rot@mess@toks=\toks18
+)
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\booktabs.s
+ty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen113
+\lightrulewidth=\dimen114
+\cmidrulewidth=\dimen115
+\belowrulesep=\dimen116
+\belowbottomsep=\dimen117
+\aboverulesep=\dimen118
+\abovetopsep=\dimen119
+\cmidrulesep=\dimen120
+\cmidrulekern=\dimen121
+\defaultaddspace=\dimen122
+\@cmidla=\count281
+\@cmidlb=\count282
+\@aboverulesep=\dimen123
+\@belowrulesep=\dimen124
+\@thisruleclass=\count283
+\@lastruleclass=\count284
+\@thisrulewidth=\dimen125
+) ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen126
+\ar@mcellbox=\box28
+\extrarowheight=\dimen127
+\NC@list=\toks19
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box29
+)
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/paralist\paralist.s
+ty"
+Package: paralist 2017/01/22 v2.7 Extended list environments
+\pltopsep=\skip69
+\plpartopsep=\skip70
+\plitemsep=\skip71
+\plparsep=\skip72
+\pl@lab=\toks20
+)
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks21
+\verbatim@line=\toks22
+\verbatim@in@stream=\read2
+) ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfig\subfig.sty
+"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.sty
+"
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.st
+y"
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen128
+\captionmargin@=\dimen129
+\captionwidth=\dimen130
+\caption@tempdima=\dimen131
+\caption@indent=\dimen132
+\caption@parindent=\dimen133
+\caption@hangindent=\dimen134
+)
+\c@caption@flags=\count285
+\c@ContinuedFloat=\count286
+Package caption Info: rotating package is loaded.
+)
+\c@KVtest=\count287
+\sf@farskip=\skip73
+\sf@captopadj=\dimen135
+\sf@capskip=\skip74
+\sf@nearskip=\skip75
+\c@subfigure=\count288
+\c@subfigure@save=\count289
+\c@lofdepth=\count290
+\c@subtable=\count291
+\c@subtable@save=\count292
+\c@lotdepth=\count293
+\sf@top=\skip76
+\sf@bottom=\skip77
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/csvsimple\csvsimple
 .sty"
@@ -439,7 +450,7 @@ Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
 s.sty"
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 util-common.tex"
-\pgfutil@everybye=\toks22
+\pgfutil@everybye=\toks23
 \pgfutil@tempdima=\dimen136
 \pgfutil@tempdimb=\dimen137
 
@@ -447,7 +458,7 @@ util-common.tex"
 util-common-lists.tex"))
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 util-latex.def"
-\pgfutil@abb=\box29
+\pgfutil@abb=\box30
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ms\everyshi.sty"
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -462,36 +473,36 @@ Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
 ys.sty"
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keys.code.tex"
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
+\pgfkeys@pathtoks=\toks24
+\pgfkeys@temptoks=\toks25
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pgf
 keysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks25
+\pgfkeys@tmptoks=\toks26
 )))
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\shellesc.sty"
 Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 69.
 )
 \csv@file=\read3
-\c@csvinputline=\count293
-\c@csvrow=\count294
-\c@csvcol=\count295
+\c@csvinputline=\count294
+\c@csvrow=\count295
+\c@csvcol=\count296
 \csv@out=\write4
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyhdr\fancyhdr.s
 ty"
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
-\f@nch@headwidth=\skip76
-\f@nch@O@elh=\skip77
-\f@nch@O@erh=\skip78
-\f@nch@O@olh=\skip79
-\f@nch@O@orh=\skip80
-\f@nch@O@elf=\skip81
-\f@nch@O@erf=\skip82
-\f@nch@O@olf=\skip83
-\f@nch@O@orf=\skip84
+\f@nch@headwidth=\skip78
+\f@nch@O@elh=\skip79
+\f@nch@O@erh=\skip80
+\f@nch@O@olh=\skip81
+\f@nch@O@orh=\skip82
+\f@nch@O@elf=\skip83
+\f@nch@O@erf=\skip84
+\f@nch@O@olf=\skip85
+\f@nch@O@orf=\skip86
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sectsty\sectsty.sty
 "
@@ -511,43 +522,43 @@ Package tocbibind Note: Using section or other style headings.
 "
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
-\cftparskip=\skip85
-\cftbeforetoctitleskip=\skip86
-\cftaftertoctitleskip=\skip87
-\cftbeforepartskip=\skip88
-\cftpartnumwidth=\skip89
-\cftpartindent=\skip90
-\cftbeforesecskip=\skip91
-\cftsecindent=\skip92
-\cftsecnumwidth=\skip93
-\cftbeforesubsecskip=\skip94
-\cftsubsecindent=\skip95
-\cftsubsecnumwidth=\skip96
-\cftbeforesubsubsecskip=\skip97
-\cftsubsubsecindent=\skip98
-\cftsubsubsecnumwidth=\skip99
-\cftbeforeparaskip=\skip100
-\cftparaindent=\skip101
-\cftparanumwidth=\skip102
-\cftbeforesubparaskip=\skip103
-\cftsubparaindent=\skip104
-\cftsubparanumwidth=\skip105
-\cftbeforeloftitleskip=\skip106
-\cftafterloftitleskip=\skip107
-\cftbeforefigskip=\skip108
-\cftfigindent=\skip109
-\cftfignumwidth=\skip110
-\cftbeforelottitleskip=\skip111
-\cftafterlottitleskip=\skip112
-\cftbeforetabskip=\skip113
-\cfttabindent=\skip114
-\cfttabnumwidth=\skip115
-\cftbeforesubfigskip=\skip116
-\cftsubfigindent=\skip117
-\cftsubfignumwidth=\skip118
-\cftbeforesubtabskip=\skip119
-\cftsubtabindent=\skip120
-\cftsubtabnumwidth=\skip121
+\cftparskip=\skip87
+\cftbeforetoctitleskip=\skip88
+\cftaftertoctitleskip=\skip89
+\cftbeforepartskip=\skip90
+\cftpartnumwidth=\skip91
+\cftpartindent=\skip92
+\cftbeforesecskip=\skip93
+\cftsecindent=\skip94
+\cftsecnumwidth=\skip95
+\cftbeforesubsecskip=\skip96
+\cftsubsecindent=\skip97
+\cftsubsecnumwidth=\skip98
+\cftbeforesubsubsecskip=\skip99
+\cftsubsubsecindent=\skip100
+\cftsubsubsecnumwidth=\skip101
+\cftbeforeparaskip=\skip102
+\cftparaindent=\skip103
+\cftparanumwidth=\skip104
+\cftbeforesubparaskip=\skip105
+\cftsubparaindent=\skip106
+\cftsubparanumwidth=\skip107
+\cftbeforeloftitleskip=\skip108
+\cftafterloftitleskip=\skip109
+\cftbeforefigskip=\skip110
+\cftfigindent=\skip111
+\cftfignumwidth=\skip112
+\cftbeforelottitleskip=\skip113
+\cftafterlottitleskip=\skip114
+\cftbeforetabskip=\skip115
+\cfttabindent=\skip116
+\cfttabnumwidth=\skip117
+\cftbeforesubfigskip=\skip118
+\cftsubfigindent=\skip119
+\cftsubfignumwidth=\skip120
+\cftbeforesubtabskip=\skip121
+\cftsubtabindent=\skip122
+\cftsubtabnumwidth=\skip123
 
 
 Package tocloft Warning: \@starttoc has already been redefined; tocloft bailing
@@ -561,23 +572,23 @@ Package biblatex Info: ... file 'english.lbx' found.
 h.lbx"
 File: english.lbx 2018/11/02 v3.12 biblatex localization (PK/MW)
 )
-\@quotelevel=\count296
-\@quotereset=\count297
+\@quotelevel=\count297
+\@quotereset=\count298
  (final.aux)
 \openout1 = `final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
-LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -586,8 +597,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'final.bbl' found.
  (final.bbl)
-Package biblatex Info: Reference section=0 on input line 63.
-Package biblatex Info: Reference segment=0 on input line 63.
+Package biblatex Info: Reference section=0 on input line 64.
+Package biblatex Info: Reference segment=0 on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -623,24 +634,21 @@ Package biblatex Info: Reference segment=0 on input line 63.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: End \AtBeginDocument code.
 
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pd
 f.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count298
+\scratchcounter=\count299
 \scratchdimen=\dimen138
-\scratchbox=\box30
-\nofMPsegments=\count299
-\nofMParguments=\count300
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count301
+\scratchbox=\box31
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count302
 \MPscratchDim=\dimen139
-\MPnumerator=\count302
-\makeMPintoPDFobject=\count303
-\everyMPtoPDFconversion=\toks27
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks28
 )
 ("C:\Users\Hugh\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-b
 ase.sty"
@@ -660,78 +668,85 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-) ABD: EveryShipout initializing macros
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+ ABD: EveryShipout initializing macros
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 64.
+(Font)              <12> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 64.
+(Font)              <8> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 64.
+(Font)              <6> on input line 65.
 
 
 LaTeX Warning: No \author given.
 
-
-Overfull \hbox (17.41542pt too wide) in paragraph at lines 84--86
-\OT1/cmr/m/it/10.95 igraph: clus-ter edge be-tween-ness, clus-ter fast[]greedy,
- clus-ter[]label[]prop, clus-ter[]leading[]eigen,
- []
-
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 93.
+(Font)              <10.95> on input line 88.
 [1
 
 {C:/Users/Hugh/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<Corr_tube_graph_node_stats.png, id=11, 487.06969pt x 432.86719pt>
+<Corr_tube_graph_node_stats.png, id=9, 487.06969pt x 432.86719pt>
 File: Corr_tube_graph_node_stats.png Graphic file (type png)
 <use Corr_tube_graph_node_stats.png>
-Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 105
+Package pdftex.def Info: Corr_tube_graph_node_stats.png  used on input line 100
 .
 (pdftex.def)             Requested size: 334.60422pt x 297.37088pt.
- [2]
-[3 <./Corr_tube_graph_node_stats.png (PNG copy)>] [4] [5] [6] [7] [8] [9]
-[10] [11] [12]
-<scen_1_steady_state.png, id=53, 373.395pt x 266.9975pt>
+ [2 <./Corr_tube_graph_node_stats.png (PNG copy)>] [3] [4] [5] [6] [7] [8] [9] 
+[10]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 255.
+
+Overfull \hbox (52.51405pt too wide) in paragraph at lines 255--256
+[][] 
+ []
+
+
+Overfull \hbox (90.12466pt too wide) in paragraph at lines 260--261
+[][] 
+ []
+
+
+Overfull \hbox (52.51405pt too wide) in paragraph at lines 265--266
+[][] 
+ []
+
+[11] [12] [13] [14]
+<scen_1_steady_state.png, id=61, 373.395pt x 266.9975pt>
 File: scen_1_steady_state.png Graphic file (type png)
 <use scen_1_steady_state.png>
-Package pdftex.def Info: scen_1_steady_state.png  used on input line 297.
+Package pdftex.def Info: scen_1_steady_state.png  used on input line 348.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
- [13] [14 <./scen_1_steady_state.png>]
-<20-runs-scenario-2-steady-state.png, id=63, 373.395pt x 266.9975pt>
+ [15] [16 <./scen_1_steady_state.png>]
+<20-runs-scenario-2-steady-state.png, id=70, 373.395pt x 266.9975pt>
 File: 20-runs-scenario-2-steady-state.png Graphic file (type png)
 <use 20-runs-scenario-2-steady-state.png>
 Package pdftex.def Info: 20-runs-scenario-2-steady-state.png  used on input lin
-e 336.
+e 382.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
- [15 <./20-runs-scenario-2-steady-state.png>]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 353.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 353.
-<20-runs-scenario-3-steady-state.png, id=68, 373.395pt x 266.9975pt>
+ [17 <./20-runs-scenario-2-steady-state.png>]
+<20-runs-scenario-3-steady-state.png, id=75, 373.395pt x 266.9975pt>
 File: 20-runs-scenario-3-steady-state.png Graphic file (type png)
 <use 20-runs-scenario-3-steady-state.png>
 Package pdftex.def Info: 20-runs-scenario-3-steady-state.png  used on input lin
-e 357.
+e 403.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
- [16 <./20-runs-scenario-3-steady-state.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 375--376
-
- []
-
-[17] (final.aux)
+ [18 <./20-runs-scenario-3-steady-state.png>] [19]
+(final.aux)
 Package logreq Info: Writing requests to 'final.run.xml'.
 \openout1 = `final.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11934 strings out of 492902
- 222240 string characters out of 3124273
- 652015 words of memory out of 3000000
- 15683 multiletter control sequences out of 15000+200000
- 12171 words of font info for 42 fonts, out of 3000000 for 9000
+ 12066 strings out of 492902
+ 224578 string characters out of 3124273
+ 698032 words of memory out of 3000000
+ 15812 multiletter control sequences out of 15000+200000
+ 11259 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,11n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,46p,1203b,1163s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fon
@@ -744,16 +759,15 @@ pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmr17.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmr6.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Hugh/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Hugh/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/
-Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmsy8.pfb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti10.pfb>
-Output written on final.pdf (17 pages, 394661 bytes).
+ 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Hugh/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/Hugh/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/User
+s/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><C:/Users/Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmti10.pfb>
+Output written on final.pdf (19 pages, 399458 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
