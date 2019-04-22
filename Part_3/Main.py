@@ -18,10 +18,16 @@ list(data)
 data.columns = ['run_number', 'initial_people','num_infect','immune_chance','recovery_chance','step','infected_turtles','immune_turtles','total_turtles','sum_sicktime']
 data['perc_infected'] = data['infected_turtles'] / data['total_turtles'] * 100
 data['sicktime_per_turtle'] = data['sum_sicktime'] / (data['total_turtles'] - data['immune_turtles'])
-
 data2 = data
 
-values_50 = data.loc[data['step'] == 40]
+values_50 = data.loc[data['step'] == 50]
+values_50['sicktime_per_turtle_per_tick'] = values_50['sicktime_per_turtle'] / 100
+values_50['perc_infected'].mean()
+values_50['perc_infected'].std()
+
+values_50['sicktime_per_turtle_per_tick'].mean()
+values_50['sicktime_per_turtle_per_tick'].std()
+
 values_100 = data.loc[data['step'] == 100]
 values_250 = data.loc[data['step'] == 250]
 values_150 = data.loc[data['step'] == 150]
