@@ -333,11 +333,11 @@ This is useful for studying the change in connectivity between regions, for inst
 
 The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. In terms of the matrix, it implies that the sums of the rows of the matrix are constant. 
 
-\subsubsection{Attraction Constrained}
+\subsubsection{Attraction}
 
-The source of flows into a region can change but the total flows into a region will remain constant. That is, any reduction in flows into a destination from another region will be fully replaced by flows into the destination from another region.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area. Employers outside the area still need workers but will not be able to draw them from the same places after a housing change or natural disaster. In terms of the matrix the sums of the columns are held constant. Additionally, it can be used to study the effect of a specific change to employment where the model can be constrained to the values that result from that change. 
+The source of flows into a region can change but the total flows into a region will remain constant. That is, any reduction in flows into a destination from another region will be fully replaced by flows into the destination from another region.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area. Employers outside the area still need workers but will not be able to draw them from the same places after a housing change or natural disaster. In terms of the matrix the sums of the columns are held constant.
 
-\subsubsection{Doubly Constrained,}
+\subsubsection{Double}
 
 Doubly constrained models could be used to test the short term effects of a change to transportation networks given that homes and businesses won't relocate but flexible behavior patterns like shopping could change almost immediately due to the change in accessibility or travel times between locations. In this model, the sums of both the columns and rows are held constant.
 
@@ -382,34 +382,60 @@ ln(\lambda_{ij}) = ln(A_i O_i  B_j D_j) - \beta ln( d_{ij})
 
 \subsection{A Scenario}
 
-\textit{select a scenario and explore the consequences of varying model parameters and inputs on interaction flows and the origin/destination estimates}
+The scenario used for this assessment will be: ``What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements?'' Thus origin and destination attributes remain constant but distances change dramatically in : Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
 
-The scenario used for this assessment will be: ``What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements?'' Thus origin and destination attributes remain constant but the travel costs change dramatically in the most peripheral boroughs: Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
-
-
-This will be investigated using a doubly constrained model to estimate the short term effects where residences and businesses cannot relocate and a total constrained model to see the long term effects on business and residence locations as a result of the incredible new discovery. 
+A doubly constrained model will estimate the short term effects where residences and businesses cannot relocate and a total constrained model will estimate the long term effects on business and residence locations. 
 
 To approximate the effect of near instantaneous transportation between two boroughs, the lowest distance between centerpoints of two London boroughs, 2080 meters, is substituted for the real distance between each of the 9 outermost boroughs. 
 
 \subsection{Setup}
 
-The two models were estimated in R. 
 
-The parameters and goodness of fit statistics for the unconstrained model are seen in table 1. 
+\begin{table}
+\centering
+\begin{tabular}{lclc}
+ \multicolumn{2}{l}{Parameter} 	& \multicolumn{2}{l}{Fit } \\ \hline	 
+ $k$ : 		& $-12.5$ 	& RMSE :	&  $2330.9$	  	\\
+ $\mu$ :	& $1.62$	& $R^2$ :	&  	$0.386$  	\\
+ $\alpha$ :	& $1.55$	&  			&  	  			\\
+ $\beta$ :	& $1.5$	& 	 		&
+\end{tabular}
+\captionof{table}{Total constrained model results}\label{unconstrained}
+\end{table} 
 
-For the doubly constrained model, the estimated intercept was $24.63$ and distance parameter was $-1.92$. This model also produces a $32 X 32 $ matrix of origin and destination specific parameters that will not be included here. 
+The parameters and goodness of fit for the unconstrained model are seen in table 5.
+
+For the doubly constrained model, the estimated intercept was $24.63$ and $\beta$ was $1.92$. This model also produces 32 origin and 32 destination specific parameters that will not be included here. 
 
 In both models the signs of the estimated parameters were consistent with expectations and the majority of parameters were significant at the $0.0001$ level.
 
 \subsection{Results}
 
-Because there was no feasible way to include a 35x35 matrix in this report, data for a subset of relevant boroughs are presented below. Tables 6 through 11 show the actual, unconstrained estimate and double constrained estimate for flows between the outer boroughs (6, 7, and 8) and between some outer boroughs and main destination inner boroughs (9, 10, and 11). 
+Because there was no feasible way to include a 35x35 matrix, data for a subset of relevant boroughs are presented below. Tables 6 through 11 show the actual, unconstrained estimate and double constrained estimate for flows between the outer boroughs (6, 7, 8) and between some outer boroughs and main destination inner boroughs (9, 10,  11). 
 
 
+
+\subsection{Analysis}
 
 First, the difference between unconstrained and double constrained models can be seen in the total rows and columns where totals have changed for the unconstrained estimate and are constant in the double constrained estimate. 
 
+Second, It is notable that in the total-constrained model flows between the outer boroughs where distance was decreased, flows increased dramatically. Seen in the final row and column, total flows for these boroughs increase substantially, for instance from ~30,000 to ~100,000 in Barnet. This is consistent with general expectations as a large part of London is highly accessible from Barnet compared with inner London, where traditional distances still hold. Over the long term, it is reasonable to expect such a large change in transportation times to have such a large change in population flows. 
 
+Third, the validity of the double constrained estimates is doubtful. All of the borough totals are constant, seen by comparing the final row and column of table 6 with those of table 8. Specific flows between pairs of outer boroughs, where distance decreased were reduced though and a reasonable expectation would be that these would increase. 
+
+This result was investigated closely but an exact explanation did not present. The code used was able to reproduce the values found with \verb!fitted()! the  for 7 boroughs using Senior's algorithm, (\cite{senior1979gravity}) to calculate balancing factors in the practical but clearly gives unrealistic results for the scenario using all 33 London boroughs. A few possible explanations that were investigated but not proven were; the possibility that the initial guesses for the algorithm were leading to local but not global maxes upon convergence; the possibility that the algorithm or implementation that worked for a 7x7 matrix was unable to successfully calculate balancing factors for a 33x33 matrix; the possibility that the change in distance was too dramatic and that for these distances, where boroughs furthest apart became some of the closest, balancing factors simply do not exist. 
+
+\subsection{Parameter Effect}
+
+In the unconstrained model, only distance variables were changed for the scenario meaning that $\mu$ and $\alpha$ had no bearing on the magnitude of the change in flow. In the case of $\beta$ a larger beta would lead to a larger change in flow for a given change in distance. 
+
+In the doubly constrained model, the same is true for $\beta$. For the vector of balancing factor parameters either $\mu_i$ and $\alpha_j$ or $A_i$ and $B_j$, these simply adjusted the flow estimate from $exp(-\beta (log(distance)))$ so that the sum would equal the total flow into or out of a borough. 
+
+\subsection{Conclusion}
+
+In conclusion, the unconstrained model predicts large effects of a dramatic change in distance that are basically consistent with what one might imagine would occur over a long time period as a result of a technological innovation like teleportation. Large increases in flows between connected boroughs with equivalent reductions in flows between boroughs that are now relatively more difficult to travel between. 
+
+With regard to the double constrained model, more work is clearly needed to understand the issue with the estimates. In Senior's paper, the algorithm is demonstrated with a 3x3 matrix and a 7x7 matrix is used in the practical. Researching this, larger matrix double constrained models were not found. Lastly, another reasonable concern is that the doubly constrained model is overspecified. I calculated an  $\bar{R}^2$ for the double constrained model's $R^2 = 0.85$ and it only reduced to $\bar{R}^2 = 0.84$ indicating that over-specification is probably not an issue in the estimates.  
 
 
 \textbf{663 words}
@@ -420,16 +446,7 @@ First, the difference between unconstrained and double constrained models can be
 
 % model estimation results 
 
-\begin{center}
-\begin{tabular}{lclc}
- \multicolumn{2}{l}{Parameter} 	& \multicolumn{2}{l}{Fit } \\ \hline	 
- $k$ : 		& $-12.5$ 	& RMSE :	&  $2330.9$	  	\\
- $\mu$ :	& $1.62$	& $R^2$ :	&  	$0.386$  	\\
- $\alpha$ :	& $1.55$	&  			&  	  			\\
- $\beta$ :	& $-1.5$	& 	 		&
-\end{tabular}
-\captionof{table}{Total constrained model results}\label{unconstrained}
-\end{center} 
+
 
 % outer boroughs
 % 	actual
@@ -629,6 +646,9 @@ First, the difference between unconstrained and double constrained models can be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
 
 \section{Part 3}
 

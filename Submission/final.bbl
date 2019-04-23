@@ -88,6 +88,39 @@
       \range{pages}{9}
       \keyw{Model Description ; Model Formulation ; Model Replication ; Scientific Communication ; Standardization}
     \endentry
+    \entry{senior1979gravity}{article}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=84faf81a1ad366e7b7eed4e3c8f0e313}{%
+           family={Senior},
+           familyi={S\bibinitperiod},
+           given={Martyn\bibnamedelima L},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage CA: Thousand Oaks, CA}%
+      }
+      \strng{namehash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \strng{fullhash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \strng{bibnamehash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \strng{authorbibnamehash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \strng{authornamehash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \strng{authorfullhash}{84faf81a1ad366e7b7eed4e3c8f0e313}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Progress in Geography}
+      \field{number}{2}
+      \field{title}{From gravity modelling to entropy maximizing: a pedagogic guide}
+      \field{volume}{3}
+      \field{year}{1979}
+      \true{nocite}
+      \field{pages}{175\bibrangedash 210}
+      \range{pages}{36}
+    \endentry
     \entry{TasseronG.2017Upsr}{article}{}
       \name{author}{2}{}{%
         {{uniquename=0,uniquepart=base,hash=64024e413f9f30a1311fa7e490ea59f4}{%
