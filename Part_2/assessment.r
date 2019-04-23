@@ -123,15 +123,12 @@ scenario_data$distances <- ifelse((scenario_data$DestCodeNew %in% outer_borough_
 scenario_data <- balancing_factor_calc(scenario_data)
 
 scenario_data$estimate <- scenario_data$O_i*scenario_data$Ai*scenario_data$D_j*scenario_data$Bj*exp(log(scenario_data$distances)*scenario_data$beta)
+scenario_data$estimate <- round(scenario_data$estimate,0)
+
+results$scenario_double_estimates <- scenario_data$estimate
 
 
-
-scenario_data$double_estimates <- scenario_data$O_i*scenario_data$Ai*scenario_data$D_j*scenario_data$Bj*exp(log(scenario_data$distances)*scenario_data$beta)
-scenario_data$double_estimates <- round(scenario_data$double_estimates,0)
-results$scenario_double_estimates <- scenario_data$double_estimates
-
-
-# now calculate scenario estimates for the unconstrained model. 
+# calculate scenario estimates for the unconstrained model. 
 
 scenario_data$unconstrained_estimate <- exp(un_k+(un_mu*log(scenario_data$vi1_origpop))+(un_alpha*log(scenario_data$wj2_destsal))-(un_beta*log(scenario_data$distances)))
 scenario_data$unconstrained_estimate <- round(scenario_data$unconstrained_estimate,0)
@@ -149,8 +146,4 @@ double_constrained_scenario <- dcast(results, Orig ~ Dest, sum, value.var = "sce
 write.csv(actual_flows, "actual_flows.csv")
 write.csv(unconstrained_scenario, "unconstrained_scenario_flows.csv")
 write.csv(double_constrained_scenario, "double_scenario_flows.csv")
-
-
-london_data$manual_estimate <- exp(london_data$k+london_data$mu_i+london_data$alpha_j-london_data$beta*london_data$distances)
-
 

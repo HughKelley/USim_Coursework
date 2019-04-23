@@ -95,50 +95,214 @@ In order to maximize the increase in travel time measured by the average length 
 
 One note about this process, deleting nodes in some places creates isolates. The function assumes that the distance between unconnected nodes is the longest possible distance on the graph. This will be discussed in greater depth below. 
 
+% correlation
+
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{Corr_tube_graph_node_stats}
+\includegraphics[width=0.8\textwidth]{cropped_correlations}
 \caption{Correlation between station/node metrics}
 \end{figure}
 
+%
+%\begin{center}
+%\csvautotabular{betfalse.csv}
+%\end{center}
 
-\begin{center}
-\csvautotabular{betfalse.csv}
-\end{center}
+
+% effects here should probably be negative CHECK
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|r|l|r|r|}
+\hline
+\multicolumn{1}{|l|}{} & Node Deleted & \multicolumn{1}{l|}{$\Delta$ Avg Geodesic} & \multicolumn{1}{l|}{Components} \\ \hline
+1 & Green Park & 0.46 & 1 \\ 
+2 & King's Cross St. Pancras & 30.97 & 2 \\ 
+3 & Bank & 1.01 & 2 \\ 
+4 & Waterloo & 1.14 & 2 \\ 
+5 & Stockwell & 17.73 & 4 \\ 
+6 & Embankment & 108.62 & 5 \\ 
+7 & Baker Street & 2.77 & 6 \\ 
+8 & Notting Hill Gate & 30.67 & 7 \\ 
+9 & Ealing Common & 26.62 & 9 \\ 
+10 & Stratford & 10.58 & 10 \\ 
+11 & Canning Town & 5.34 & 12 \\ 
+12 & Hammersmith & 8.38 & 14 \\ 
+13 & Shadwell & 7.83 & 16 \\ 
+14 & Harrow-on-the-Hill & 2.89 & 18 \\ 
+15 & Camden Town & 2.38 & 20 \\ 
+16 & Canary Wharf & 1.96 & 23 \\ 
+17 & Mile End & 0.96 & 24 \\ 
+18 & Paddington & 0.18 & 28 \\ 
+19 & Earl's Court & 0.11 & 31 \\ 
+20 & Oxford Circus & -0.44 & 33 \\ 
+21 & Woodford & -0.43 & 34 \\ 
+22 & Aldgate East & -0.63 & 35 \\ 
+23 & Finsbury Park & -0.35 & 38 \\ 
+24 & Northfields & -0.42 & 39 \\ 
+25 & Wembley Park & -0.54 & 41 \\ 
+26 & North Acton & -0.59 & 43 \\ 
+27 & Upney & -0.59 & 44 \\ 
+28 & Rayners Lane & -0.60 & 46 \\ 
+29 & Liverpool Street & -0.60 & 48 \\ 
+30 & London Bridge & -0.60 & 50 \\ \hline
+\end{tabular}
+\caption{Network effect of prioritizing removal by betweenness \\ (unnconnected = false)}
+\label{betweenness false}
+\end{table}
+
 
 % gotta reformat this probably asking about it on tex stack exchange
 
-\begin{tabular}{|c|c|c|c|}\hline %
-  \multicolumn{4}{|c|}{\bfseries Betweenness unconn is false}  \\ \hline
- & Node Deleted & Increase in Avg Geodesic & Components
-  \csvreader[head to column names]{betfalse.csv}{} %
- {\\\index & \NodeDeleted & \IncreaseGeodesic & \Components} %
- \\\hline
- \end{tabular}
+% betweenness unconn is false
+
+%\begin{tabular}{|c|c|c|c|}\hline %
+%  \multicolumn{4}{|c|}{\bfseries Betweenness unconn is false}  \\ \hline
+% & Node Deleted & Increase in Avg Geodesic & Components
+%  \csvreader[head to column names]{betfalse.csv}{} %
+% {\\\index & \NodeDeleted & \IncreaseGeodesic & \Components} %
+% \\\hline
+% \end{tabular}
  
+ 
+% betweenness unconn is true
 
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|r|r|}
+\hline
+Node Deleted & \multicolumn{1}{l|}{$\Delta$ Avg Geodesic} & \multicolumn{1}{l|}{Components} \\ \hline
+Green Park & 0.46 & 1 \\ 
+King's Cross St. Pancras & 0.34 & 2 \\ 
+Bank & 1.14 & 2 \\ 
+Waterloo & 1.28 & 2 \\ 
+Stockwell & 0.56 & 4 \\ 
+Embankment & -6.17 & 5 \\ 
+Baker Street & 2.32 & 6 \\ 
+Notting Hill Gate & -1.74 & 7 \\ 
+Ealing Common & -2.86 & 9 \\ 
+Stratford & -0.36 & 10 \\ 
+Canning Town & 0.34 & 12 \\ 
+Hammersmith & -1.11 & 14 \\ 
+Shadwell & -1.44 & 16 \\ 
+Harrow-on-the-Hill & -0.49 & 18 \\ 
+Camden Town & -0.57 & 20 \\ 
+Canary Wharf & -0.34 & 23 \\ 
+Mile End & -0.85 & 24 \\ 
+Paddington & -0.33 & 28 \\ 
+Earl's Court & -0.20 & 31 \\ 
+Oxford Circus & 0.02 & 33 \\ 
+Woodford & -0.06 & 34 \\ 
+Aldgate East & 0.00 & 35 \\ 
+Finsbury Park & -0.10 & 38 \\ 
+Northfields & -0.21 & 39 \\ 
+Wembley Park & 0.01 & 41 \\ 
+North Acton & -0.08 & 43 \\ 
+Upney & -0.18 & 44 \\ 
+Rayners Lane & -0.12 & 46 \\ 
+Liverpool Street & -0.10 & 48 \\ 
+London Bridge & -0.08 & 50 \\ \hline
+\end{tabular}
+\caption{Network effect of prioritizing by betweenness \\ (unnconnected = true)}
+\label{betweenness true}
+\end{table}
 
-\begin{center}
-\csvautotabular{bettrue.csv}
-\end{center}
+%
+%\begin{center}
+%\csvautotabular{bettrue.csv}
+%\end{center}
 
-\begin{center}
-\csvautotabular{eigtrue.csv}
-\end{center}
+% eigenvector centality, uncon is false
 
-\begin{center}
-\csvautotabular{eigfalse.csv}
-\end{center}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|r|l|r|r|}
+\hline
+\multicolumn{1}{|l|}{} & Node Deleted & \multicolumn{1}{l|}{$\Delta$ Avg Geodesic} & \multicolumn{1}{l|}{Components} \\ \hline
+1 & Embankment & 0.12 & 1 \\ 
+2 & Cannon Street & 5.66 & 2 \\ 
+3 & Moorgate & 0.22 & 2 \\ 
+4 & West India Quay & 0.02 & 2 \\ 
+5 & Great Portland Street & 0.11 & 2 \\ 
+6 & Farringdon & 1.91 & 3 \\ 
+7 & Paddington & 23.34 & 4 \\ 
+8 & Leicester Square & 0.02 & 4 \\ 
+9 & Heron Quays & 15.48 & 5 \\ 
+10 & Gloucester Road & 0.32 & 5 \\ 
+11 & Euston & 34.93 & 6 \\ 
+12 & Aldgate & -0.03 & 6 \\ 
+13 & St. James's Park & -0.02 & 6 \\ 
+14 & Mile End & 0.50 & 6 \\ 
+15 & Oxford Circus & 0.31 & 6 \\ 
+16 & Notting Hill Gate & 3.48 & 7 \\ 
+17 & Rotherhithe & -0.02 & 7 \\ 
+18 & Blackfriars & -1.59 & 8 \\ 
+19 & Baker Street & 90.79 & 12 \\ 
+20 & Barons Court & 5.84 & 13 \\ 
+21 & Aldgate East & 1.50 & 14 \\ 
+22 & Ruislip Manor & 1.33 & 15 \\ 
+23 & Blackwall & -0.34 & 15 \\ 
+24 & King's Cross St. Pancras & 15.42 & 18 \\ 
+25 & Island Gardens & -1.07 & 19 \\ 
+26 & West Ham & 9.42 & 21 \\ 
+27 & Holborn & 2.77 & 24 \\ 
+28 & Waterloo & -0.37 & 24 \\ 
+29 & Victoria & 5.98 & 25 \\ 
+30 & Custom House & 2.37 & 26 \\ \hline
+\end{tabular}
+\caption{Network effect of prioritizing  by eigenvector centrality \\ (unnconnected = false)}
+\label{eig true}
+\end{table}
 
+% eigenvector centrality uncon is true. 
 
-
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|r|l|r|r|}
+\hline
+\multicolumn{1}{|l|}{} & Node Deleted & \multicolumn{1}{l|}{$\Delta$ Avg Geodesic} & \multicolumn{1}{l|}{Components} \\ \hline
+1 & Embankment & 0.12 & 1 \\ 
+2 & Cannon Street & -0.02 & 2 \\ 
+3 & Moorgate & 0.22 & 2 \\ 
+4 & West India Quay & 0.02 & 2 \\ 
+5 & Great Portland Street & 0.11 & 2 \\ 
+6 & Farringdon & 0.03 & 3 \\ 
+7 & Paddington & -0.07 & 4 \\ 
+8 & Leicester Square & 0.03 & 4 \\ 
+9 & Heron Quays & -0.21 & 5 \\ 
+10 & Gloucester Road & 0.40 & 5 \\ 
+11 & Euston & -0.23 & 6 \\ 
+12 & Aldgate & 0.03 & 6 \\ 
+13 & St. James's Park & 0.03 & 6 \\ 
+14 & Mile End & 0.78 & 6 \\ 
+15 & Oxford Circus & 0.51 & 6 \\ 
+16 & Notting Hill Gate & 2.80 & 7 \\ 
+17 & Rotherhithe & 0.04 & 7 \\ 
+18 & Blackfriars & 0.00 & 8 \\ 
+19 & Baker Street & -6.40 & 12 \\ 
+20 & Barons Court & -0.22 & 13 \\ 
+21 & Aldgate East & 0.05 & 14 \\ 
+22 & Ruislip Manor & -0.03 & 15 \\ 
+23 & Blackwall & 0.08 & 15 \\ 
+24 & King's Cross St. Pancras & -0.93 & 18 \\ 
+25 & Island Gardens & 0.02 & 19 \\ 
+26 & West Ham & 0.37 & 21 \\ 
+27 & Holborn & 0.01 & 24 \\ 
+28 & Waterloo & 0.86 & 24 \\ 
+29 & Victoria & -0.61 & 25 \\ 
+30 & Custom House & -0.39 & 26 \\ \hline
+\end{tabular}
+\caption{Network effect of prioritizing  by eigenvector centrality \\ (unnconnected = true)}
+\label{eig false}
+\end{table}
 
 \subsection{Analysis}
 
-When Kings Cross is deleted, it creates a new unconnected component out of the 11 stations on the north east end of the Picadilly line. In igraph, the two ways to handle this for the mean\_distance() function are either to exclude distances between those unconnected nodes and the rest of the network or to assume that the distance is one greater than the longest possible geodesic in the network, that is ,the number of nodes on the network. Excluding distances between unconnected nodes led to a decrease in average trip length because nodes disconnected tended to have higher than average distance to other nodes, lowering the average metric.  
+Tables 1 through 4 show the effect on average geodesic path length for nodes deleted according to betweenness and eigenvector centrality. Tables 1 and 3 assume that the geodesic path between unconnected nodes equals 1 plus the number fo nodes in the network, the longest possible path, while tables 2 and 4 do not include distnaces between unconnected nodes in the average. 
 
-Looking at the effect data it seems reasonable to say that betweenness did a better job than eigenvector centrality of prioritizing nodes to remove. Using betweenness created more isolates. It's difficult to judge which method lengthened average shortest path the most because of the options for dealing with disconnected networks. This will be discussed in the conclusion. 
+This is seen when Kings Cross is deleted, creating a new unconnected component out of the 11 stations on the north east end of the Picadilly line. Excluding distances between unconnected nodes led to a decrease in average trip length (Table 2) because nodes disconnected had higher than average distance to other nodes, lowering the average metric.  Table 1 shows a large increase in distance when Kings Cross is deleted as 11 distances of about 600 were added to the mean. 
 
+Looking at the effect data it seems that betweenness did a better job than eigenvector centrality of prioritizing nodes to remove. Using betweenness created more isolates. It's difficult to judge which method lengthened average shortest path the most because of the options for dealing with disconnected networks. 
 
 
 \subsection{Conclusions}
@@ -151,8 +315,8 @@ Lastly, it would be interesting to build an igraph function that can compute ave
 
 \textbf{929 words}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
 
 \section{Part 2}
@@ -237,6 +401,18 @@ For the doubly constrained model, the estimated intercept was $24.63$ and distan
 
 In both models the signs of the estimated parameters were consistent with expectations and the majority of parameters were significant at the $0.0001$ level.
 
+\subsection{Results}
+
+Because there was no feasible way to include a 35x35 matrix in this report, data for a subset of relevant boroughs are presented below. Tables 6 through 11 show the actual, unconstrained estimate and double constrained estimate for flows between the outer boroughs (6, 7, and 8) and between some outer boroughs and main destination inner boroughs (9, 10, and 11). 
+
+
+
+First, the difference between unconstrained and double constrained models can be seen in the total rows and columns where totals have changed for the unconstrained estimate and are constant in the double constrained estimate. 
+
+
+
+
+\textbf{663 words}
 
 
 
@@ -351,7 +527,6 @@ In both models the signs of the estimated parameters were consistent with expect
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % now combo of inner and outer for three types
 
 % actual
@@ -451,7 +626,9 @@ In both models the signs of the estimated parameters were consistent with expect
 %\csvautotabular{double_estimate.csv}
 %\end{sidewaystable}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Part 3}
 
