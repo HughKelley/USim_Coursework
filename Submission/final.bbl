@@ -19,75 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
-    \entry{GrimmVolker2010TOpA}{article}{}
-      \name{author}{6}{}{%
-        {{uniquename=0,uniquepart=base,hash=1afed3b8eacb2219efb8bbe1f6581962}{%
-           family={Grimm},
-           familyi={G\bibinitperiod},
-           given={Volker},
-           giveni={V\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=9384d3112d3d8d7a6daa243142b7d01c}{%
-           family={Berger},
-           familyi={B\bibinitperiod},
-           given={Uta},
-           giveni={U\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=081ebd6542bc907d4f2ab7015d4b04c7}{%
-           family={Deangelis},
-           familyi={D\bibinitperiod},
-           given={Donald\bibnamedelima L.},
-           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=58f931382f654441f4d79126ec98d33a}{%
-           family={Polhill},
-           familyi={P\bibinitperiod},
-           given={J.\bibnamedelimi Gary},
-           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=cebe364b2f95bcb284778ec7095dc684}{%
-           family={Giske},
-           familyi={G\bibinitperiod},
-           given={Jarl},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=8f57cb4e96e0868ea82e800df4a0f0fe}{%
-           family={Railsback},
-           familyi={R\bibinitperiod},
-           given={Steven\bibnamedelima F.},
-           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{language}{1}{%
-        {eng}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier B.V.}%
-      }
-      \strng{namehash}{34a4de0c97c67c80ceb4801a22916c07}
-      \strng{fullhash}{f9e2b18b2ea9be68fe5f413d5cbcf9ad}
-      \strng{bibnamehash}{34a4de0c97c67c80ceb4801a22916c07}
-      \strng{authorbibnamehash}{34a4de0c97c67c80ceb4801a22916c07}
-      \strng{authornamehash}{34a4de0c97c67c80ceb4801a22916c07}
-      \strng{authorfullhash}{f9e2b18b2ea9be68fe5f413d5cbcf9ad}
-      \field{sortinit}{G}
-      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The ‘ODD’ (Overview, Design concepts, and Details) protocol was published in 2006 to standardize the published descriptions of individual-based and agent-based models (ABMs). The primary objectives of ODD are to make model descriptions more understandable and complete, thereby making ABMs less subject to criticism for being irreproducible. We have systematically evaluated existing uses of the ODD protocol and identified, as expected, parts of ODD needing improvement and clarification. Accordingly, we revise the definition of ODD to clarify aspects of the original version and thereby facilitate future standardization of ABM descriptions. We discuss frequently raised critiques in ODD but also two emerging, and unanticipated, benefits: ODD improves the rigorous formulation of models and helps make the theoretical foundations of large models more visible. Although the protocol was designed for ABMs, it can help with documenting any large, complex model, alleviating some general objections against such models.}
-      \field{issn}{0304-3800}
-      \field{journaltitle}{Ecological Modelling}
-      \field{number}{23}
-      \field{title}{The ODD protocol: A review and first update}
-      \field{volume}{221}
-      \field{year}{2010}
-      \true{nocite}
-      \field{pages}{2760\bibrangedash 2768}
-      \range{pages}{9}
-      \keyw{Model Description ; Model Formulation ; Model Replication ; Scientific Communication ; Standardization}
-    \endentry
     \entry{senior1979gravity}{article}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=84faf81a1ad366e7b7eed4e3c8f0e313}{%
@@ -120,47 +51,6 @@
       \true{nocite}
       \field{pages}{175\bibrangedash 210}
       \range{pages}{36}
-    \endentry
-    \entry{TasseronG.2017Upsr}{article}{}
-      \name{author}{2}{}{%
-        {{uniquename=0,uniquepart=base,hash=64024e413f9f30a1311fa7e490ea59f4}{%
-           family={Tasseron},
-           familyi={T\bibinitperiod},
-           given={G.},
-           giveni={G\bibinitperiod},
-           givenun=0}}%
-        {{uniquename=0,uniquepart=base,hash=2819427fd8c6508f6e68cd8d07676d77}{%
-           family={Martens},
-           familyi={M\bibinitperiod},
-           given={K.},
-           giveni={K\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier Ltd}%
-      }
-      \strng{namehash}{119711f452ec00493160f70d9b41c26f}
-      \strng{fullhash}{119711f452ec00493160f70d9b41c26f}
-      \strng{bibnamehash}{119711f452ec00493160f70d9b41c26f}
-      \strng{authorbibnamehash}{119711f452ec00493160f70d9b41c26f}
-      \strng{authornamehash}{119711f452ec00493160f70d9b41c26f}
-      \strng{authorfullhash}{119711f452ec00493160f70d9b41c26f}
-      \field{sortinit}{T}
-      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The aim of this paper is to study the impacts of a reservation system for on-street parking. Such a system provides drivers looking for on-street parking with information on available parking spaces, thereby possibly reducing the need to cruise for parking and the accompanying negative externalities. The performance of the proposed system is studied using a highly detailed spatial agent-based simulation. The results of the simulations show that users of a reservation system benefit in terms of reduced search time and reduced walking distance under virtually all simulated circumstances. However, societal benefits are not as clear-cut. The benefit in search time for the users of the system comes at a cost to the regular drivers, which see a nearly identical increase in search time. In contrast, the positive impact on walking distance hardly influences walking distance for regular drivers. Hence, we conclude that the introduction of a reservation system for on-street parking results in a more efficient distribution of available parking spaces among drivers searching for parking.}
-      \field{issn}{01989715}
-      \field{journaltitle}{Computers, Environment and Urban Systems}
-      \field{title}{Urban parking space reservation through bottom-up information provision: An agent-based analysis}
-      \field{volume}{64}
-      \field{year}{2017}
-      \true{nocite}
-      \field{pages}{30\bibrangedash 41}
-      \range{pages}{12}
-      \keyw{Agent-Based System ; Intelligent Transportation System ; Parking ; Vehicle-to-Vehicle Communication ; Vehicular Ad-Hoc Network}
     \endentry
   \enddatalist
 \endrefsection
