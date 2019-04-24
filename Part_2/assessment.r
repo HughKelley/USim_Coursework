@@ -35,7 +35,7 @@ total_r_2 =  CalcRSquared(results$Total, results$unconstrained_estimates)
 total_rmse = CalcRMSE(results$Total, results$unconstrained_estimates)
 double_r_2 = CalcRSquared(results$Total, results$double_constrained_estimates)
 double_rmse = CalcRMSE(results$Total, results$double_constrained_estimates)
-
+double_adj_r_2 = 1-(1-double_r_2)*(1055/990)
 # get parameters for each of the models. 
 
 # unconstrained parameters
