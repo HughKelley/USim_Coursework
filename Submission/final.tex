@@ -65,7 +65,7 @@
 \maketitle
 
 
-\textbf{3518 words}
+3103 words excluding equations, code, headings, tables, and figures
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,25 +78,23 @@
 
 \subsection{Introduction}
 
-This is an analysis of resilience in the London tube network. The analysis uses a recursive function for node removal to calculate the marginal effect of a node's removal, pseudo-code for the function can be found in Appendix 1. Below, criteria for node removal and effect evaluation are discussed below. 
+This analysis uses a recursive function for node removal to calculate the marginal effect of a node's removal to consider the resilience of London's tube. Appendix 1 contains code for the function. Below, criteria for node removal and effect evaluation are discussed. 
 
 
 \subsection{Impact Evaluation}
-The network effect metric will be discussed first because the node removal criteria was decided in the context of the network effect metric.
+The network effect metric will be discussed first because the node removal criteria was decided in the context of the network metric.
 
-Breaking the network into isolates was investigated but not pursued. Instead, the focus will be on forcing tube users to travel further for longer on their journeys. 
+Breaking the network into isolates was investigated but not pursued. Instead, the focus will be on increasing the total length of a journey. 
 
-This is investigated using shortest path and shortest topological path. Given the spatial nature of the london tubes, where edge attributes represent actual distances, true shortest path might be an attractive option. In the context of the London tube though, total time and effort are more important than total distance. Trains can travel longer distances fairly rapidly while traveling through a high number of stations increases time dramatically because of the need to stop. Further, it is assumed that traveling through a higher number of stops implies a higher number of train changes which are difficult and slow. Thus by using geodesic path, what is being maximized is the increase in stoppage time, and line change time for travelers in the network.
+This is investigated using shortest topological path. Given the spatial nature of the tubes, where edge attributes represent actual distances, weighted shortest path might be an attractive option. In the context of the London tube though, total time and effort are more important than total distance. Trains can travel longer distances fairly rapidly while traveling through a high number of stations increases time because of the need to stop. Further, it is assumed that traveling through a higher number of stops implies a higher number of train changes which are difficult and slow. Thus by using geodesic path, what is being maximized is the increase in stoppage time, and line change time for travelers in the network.
 
-The igraph package's mean\_distance\(\) function was used to compute the average shortest path between nodes in the network. The unconnected parameter was used to specify that nodes that were not connected to the largest cluster were counted as 1 + the longest possible geodesic, the actual longest geodesic is much less than this. This demonstrates the incompatibility of different network measures. There was not a clear method for comparing the effect of a longer trip with the effect of removing a trip possibility entirely. To do that we would have to include alternate modes of transport like the bus network. 
+The igraph package's \verb!mean_distance()! function computes the average shortest path between nodes in the network. The unconnected parameter was used to specify that nodes that were not connected to the largest cluster were counted as 1 + the longest possible geodesic, the actual longest geodesic is much less than this. This demonstrates the incompatibility of different network measures. There was not a clear method for comparing the effect of a longer trip with the effect of removing a trip possibility entirely. 
 
 \subsection{Node Removal Criteria}
 
-For each node, degree, betweeness, topological betweenness, closeness, topological closeness and eigenvector centrality were calculated. The correlations for these values across stations can be reviewed in figure 1. It was noted that correlations between weighted and topological measures were high, indicating that the distances between tube stations are fairly consistent so that the number of stations between two stations is a decent approximation of the distance. This supports the decision to use geodesic longest path. The correlation of measures betweenness and degree is also fairly high, indicating that tube stations at the middle of a line, with higher betweenness, also tend to have multiple lines, high degree. Correlations between eigenvector centrality and the other measures was very low, indicating that this does not give the same information as other metrics. Lastly, it was not clear why correlation between weighted and topological eigenvector centrality was 0.
+For each node, degree, betweeness, topological betweenness, closeness, topological closeness and eigenvector centrality were calculated. The correlations for these values across stations can be reviewed in figure 1. It was noted that correlations between weighted and topological measures were high, indicating that the distances between tube stations are fairly consistent This supports the decision to use geodesic longest path. The correlation of measures betweenness and degree is also fairly high, indicating that tube stations at the middle of a line, with higher betweenness, also tend to have multiple lines, high degree. Correlations between eigenvector centrality and the other measures was very low, indicating that this does not give the same information as other metrics. Lastly, it was not clear why correlation between weighted and topological eigenvector centrality was 0.
 
-In order to maximize the increase in travel time measured by the average length of geodesic paths, betweenness will be used to order node removals. This measure is the number of shortest paths between nodes that travel through a given node. Deleting the node with highest betweenness will force the highest number of trips to use an alternate, ostensibly longer, path through other stations. 
-
-One note about this process, deleting nodes in some places creates isolates. The function assumes that the distance between unconnected nodes is the longest possible distance on the graph. This will be discussed in greater depth below. 
+In order to maximize the increase in travel time measured by the average length of geodesic paths, betweenness will be used to order node removals. This measure is the number of shortest paths between nodes that travel through a given node. Deleting the node with highest betweenness will force the highest number of trips to use an alternate, longer, path.  
 
 % correlation
 
@@ -110,9 +108,6 @@ One note about this process, deleting nodes in some places creates isolates. The
 %\begin{center}
 %\csvautotabular{betfalse.csv}
 %\end{center}
-
-
-% effects here should probably be negative CHECK
 
 \begin{table}[htbp]
 \centering
@@ -154,20 +149,6 @@ One note about this process, deleting nodes in some places creates isolates. The
 \label{betweenness false}
 \end{table}
 
-
-% gotta reformat this probably asking about it on tex stack exchange
-
-% betweenness unconn is false
-
-%\begin{tabular}{|c|c|c|c|}\hline %
-%  \multicolumn{4}{|c|}{\bfseries Betweenness unconn is false}  \\ \hline
-% & Node Deleted & Increase in Avg Geodesic & Components
-%  \csvreader[head to column names]{betfalse.csv}{} %
-% {\\\index & \NodeDeleted & \IncreaseGeodesic & \Components} %
-% \\\hline
-% \end{tabular}
- 
- 
 % betweenness unconn is true
 
 \begin{table}[htbp]
@@ -209,11 +190,6 @@ London Bridge & -0.08 & 50 \\ \hline
 \caption{Network effect of prioritizing by betweenness \\ (unnconnected = true)}
 \label{betweenness true}
 \end{table}
-
-%
-%\begin{center}
-%\csvautotabular{bettrue.csv}
-%\end{center}
 
 % eigenvector centality, uncon is false
 
@@ -301,7 +277,7 @@ London Bridge & -0.08 & 50 \\ \hline
 
 \subsection{Analysis}
 
-Tables 1 through 4 show the effect on average geodesic path length for nodes deleted according to betweenness and eigenvector centrality. Tables 1 and 3 assume that the geodesic path between unconnected nodes equals 1 plus the number fo nodes in the network, the longest possible path, while tables 2 and 4 do not include distnaces between unconnected nodes in the average. 
+Tables 1 through 4 show the effect on average geodesic path length for nodes deleted according to betweenness and eigenvector centrality. Tables 1 and 3 assume that the geodesic path between unconnected nodes equals 1 plus the number of nodes in the network, the longest possible path, while tables 2 and 4 do not include distances between unconnected nodes in the average. 
 
 This is seen when Kings Cross is deleted, creating a new unconnected component out of the 11 stations on the north east end of the Picadilly line. Excluding distances between unconnected nodes led to a decrease in average trip length (Table 2) because nodes disconnected had higher than average distance to other nodes, lowering the average metric.  Table 1 shows a large increase in distance when Kings Cross is deleted as 11 distances of about 600 were added to the mean. 
 
@@ -310,13 +286,13 @@ Looking at the effect data it seems that betweenness did a better job than eigen
 
 \subsection{Conclusions}
 
-To improve this work, it would be good to add data about transportation networks besides the underground. In particular information about bus routes connected nodes would be useful because it would allow for a better estimate of average shortest path when subway stations become disconnected as the shortest path could then go through a bus route instead. Similarly, it would be good to include more granular data about where a rider would have to change trains. The current network assumes there's no cost to switch trains relative to staying on the same train passing through a station. Anyone who has walked from the Picadilly line to the Northern line at Kings Cross knows that there is a big difference. 
+To improve this work, it would be good to add data about transportation networks besides the underground. In particular information about bus routes connected nodes would be useful because it would allow for a better estimate of average shortest path when stations become disconnected as the shortest path could then go through a bus route instead. Similarly, it would be good to include more granular data about where a rider would have to change trains. The current network assumes there's no cost to switch trains relative to staying on the same train passing through a station. Anyone who has walked from the Picadilly line to the Northern line at Kings Cross knows that there is a big difference. 
 
 An improvement to the data generally would be to use travel time data instead of using distance as an approximation. 
 
 Lastly, it would be interesting to build an igraph function that can compute average shortest path using edge weights since the current function cannot. This could confirm or reject the thought that tube stations are spaced fairly regularly based on the high correlation between weighted and topological centrality measures. 
 
-\textbf{964 words}
+%\textbf{851 words}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -328,25 +304,25 @@ Lastly, it would be interesting to build an igraph function that can compute ave
 
 \subsubsection{Unconstrained}
 
-The model is constrained to the total flows of the system but flows out of an origin and into a destination can be any value between 0 and total system flows. 
+The model is constrained to the total flows of the system but flows out of origins and into destinations can be any value between 0 and total system flows. 
 
-This is useful for studying the change in connectivity between regions, for instance if a new transportation link was built. In particular, it is useful for studying long term effects of a change where residence and employment are more flexible. 
+This is useful for studying the change in connectivity between regions, for instance if a new transportation link was built, particularly the long term effects of a change where residence and employment are more flexible. 
 
 \subsubsection{Production}
 
-The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. In terms of the matrix, it implies that the sums of the rows of the matrix are constant. 
+The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. The sums of the rows of the matrix are constant. 
 
 \subsubsection{Attraction}
 
-The source of flows into a region can change but the total flows into a region will remain constant. That is, any reduction in flows into a destination from another region will be fully replaced by flows into the destination from another region.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area. Employers outside the area still need workers but will not be able to draw them from the same places after a housing change or natural disaster. In terms of the matrix the sums of the columns are held constant.
+The source of flows into a region can change but the total flows into a region are constant. Any reduction in flows from one region are replaced by another.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area.  The sums of the matrix columns are held constant.
 
 \subsubsection{Double}
 
-Doubly constrained models could be used to test the short term effects of a change to transportation networks given that homes and businesses won't relocate but flexible behavior patterns like shopping could change almost immediately due to the change in accessibility or travel times between locations. In this model, the sums of both the columns and rows are held constant.
+Doubly constrained models can predict the short term effects of a change to transportation networks. Homes and business locations are fixed but behavior patterns like shopping could change almost immediately due to the change in accessibility or travel times between locations. In this model, the sums of both the columns and rows are constant.
 
 \subsection{The Parameters}
 
-Basically, the parameters are ratios of how much a change of 1, in the natural logarithm of one of the predictor variables affects the natural log of the estimate of flow. This is seen below, 1-3 for the unconstrained and 4-6 for the doubly constrained. The equation is log-linearized and then the flow estimate is solved for. In equation 6, $A_i$ and $B_i$ are vectors of parameters that allocate parts of the regions total flows across origins and destinations and $k$ is an arbitrary intercept used for estimation. 
+The parameters are ratios of how much a change of 1, in the logarithm of one of the predictor variables affects the logarithm of the estimate of flow. This is seen below, 1-3 for the unconstrained and 4-6 for the doubly constrained. The equation is log-linearized and then the flow estimate is solved for. In equation 6, $A_i$ and $B_i$ are vectors of parameters that allocate parts of the regions total flows across origins and destinations and $k$ is an arbitrary intercept used for estimation. 
 
 % basic equation
 \begin{equation}
@@ -385,14 +361,13 @@ ln(\lambda_{ij}) = ln(A_i O_i  B_j D_j) - \beta ln( d_{ij})
 
 \subsection{A Scenario}
 
-The scenario used for this assessment will be: ``What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements?'' Thus origin and destination attributes remain constant but distances change dramatically in : Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
+What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements? Thus origin and destination attributes remain constant but distances change dramatically in : Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
 
 A doubly constrained model will estimate the short term effects where residences and businesses cannot relocate and a total constrained model will estimate the long term effects on business and residence locations. 
 
-To approximate the effect of near instantaneous transportation between two boroughs, the lowest distance between centerpoints of two London boroughs, 2080 meters, is substituted for the real distance between each of the 9 outermost boroughs. 
+To approximate the effect of fast transportation between outer boroughs, the lowest distance between centerpoints of two London boroughs, 2080 meters, is substituted for the real distance between each of the 9 outermost boroughs. 
 
 \subsection{Setup}
-
 
 \begin{table}
 \centering
@@ -410,7 +385,7 @@ The parameters and goodness of fit for the unconstrained model are seen in table
 
 For the doubly constrained model, the estimated intercept was $24.63$ and $\beta$ was $1.92$. This model also produces 32 origin and 32 destination specific parameters that will not be included here. 
 
-In both models the signs of the estimated parameters were consistent with expectations and the majority of parameters were significant at the $0.0001$ level.
+In both models the signs of the estimated parameters were consistent with expectations and parameters were significant to $0.0001$.
 
 \subsection{Results}
 
@@ -422,11 +397,13 @@ Because there was no feasible way to include a 35x35 matrix, data for a subset o
 
 First, the difference between unconstrained and double constrained models can be seen in the total rows and columns where totals have changed for the unconstrained estimate and are constant in the double constrained estimate. 
 
-Second, It is notable that in the total-constrained model flows between the outer boroughs where distance was decreased, flows increased dramatically. Seen in the final row and column, total flows for these boroughs increase substantially, for instance from ~30,000 to ~100,000 in Barnet. This is consistent with general expectations as a large part of London is highly accessible from Barnet compared with inner London, where traditional distances still hold. Over the long term, it is reasonable to expect such a large change in transportation times to have such a large change in population flows. 
+Second, It is notable that in the total-constrained model flows between the outer boroughs where distance was decreased, flows increased dramatically. Seen in the final row and column, total flows for these boroughs increase substantially, for instance from ~30,000 to ~100,000 in Barnet. This is consistent with general expectations as a large part of London is highly accessible from Barnet in the scenario. Over the long term, it is reasonable to expect such a large change in distance to have effect on flows. 
 
 Third, the validity of the double constrained estimates is doubtful. All of the borough totals are constant, seen by comparing the final row and column of table 6 with those of table 8. Specific flows between pairs of outer boroughs, where distance decreased were reduced though and a reasonable expectation would be that these would increase. 
 
-This result was investigated closely but an exact explanation did not present. The code used was able to reproduce the values found with \verb!fitted()! the  for 7 boroughs using Senior's algorithm, (\cite{senior1979gravity}) to calculate balancing factors in the practical but clearly gives unrealistic results for the scenario using all 33 London boroughs. A few possible explanations that were investigated but not proven were; the possibility that the initial guesses for the algorithm were leading to local but not global maxes upon convergence; the possibility that the algorithm or implementation that worked for a 7x7 matrix was unable to successfully calculate balancing factors for a 33x33 matrix; the possibility that the change in distance was too dramatic and that for these distances, where boroughs furthest apart became some of the closest, balancing factors simply do not exist. 
+This result was investigated closely but an exact explanation did not present. The code reproduced values found with \verb!fitted()! for 7 boroughs using Senior's algorithm, (\cite{senior1979gravity}) to calculate balancing factors in the practical. Explanations that were investigated but not proven were; the initial guesses for the algorithm leading to local but not global maxes upon convergence; the algorithm or implementation that worked for a 7x7 matrix was unable to successfully calculate balancing factors for a 33x33 matrix; the change in distance was too dramatic and that for these distances, where boroughs furthest apart became some of the closest, balancing factors simply do not exist. 
+
+Lastly, another reasonable concern is that the doubly constrained model is overspecified. Adjusting the double constrained model's $R^2 = 0.85$ for the number of variables only reduced to $\bar{R}^2 = 0.84$ indicating that over-specification is not a problem.  
 
 \subsection{Parameter Effect}
 
@@ -436,14 +413,9 @@ In the doubly constrained model, the same is true for $\beta$. For the vector of
 
 \subsection{Conclusion}
 
-In conclusion, the unconstrained model predicts large effects of a dramatic change in distance that are basically consistent with what one might imagine would occur over a long time period as a result of a technological innovation like teleportation. Large increases in flows between connected boroughs with equivalent reductions in flows between boroughs that are now relatively more difficult to travel between. 
+In conclusion, the unconstrained model predicts large effects of a dramatic change in distance that are consistent with what one might imagine would occur over a long time period as a result of a technological innovation like teleportation. Large increases in flows between connected boroughs with equivalent reductions in flows between boroughs that are now relatively more difficult to travel between. 
 
-With regard to the double constrained model, more work is clearly needed to understand the issue with the estimates. In Senior's paper, the algorithm is demonstrated with a 3x3 matrix and a 7x7 matrix is used in the practical. Researching this, larger matrix double constrained models were not found. Lastly, another reasonable concern is that the doubly constrained model is overspecified. I calculated an  $\bar{R}^2$ for the double constrained model's $R^2 = 0.85$ and it only reduced to $\bar{R}^2 = 0.84$ indicating that over-specification is probably not an issue in the estimates.  
-
-
-\textbf{663 words}
-
-
+With regard to the double constrained model, more work is clearly needed to understand the issue with the estimates. In Senior's paper, the algorithm is demonstrated with a 3x3 matrix and a 7x7 matrix is used in the practical. Researching this, larger matrix double constrained models were not found. 
 
 % Tables
 
@@ -622,9 +594,7 @@ With regard to the double constrained model, more work is clearly needed to unde
 \label{Estimated Flows Double}
 \end{sidewaystable}
 
-
-\textbf{1256 words}
-
+%\textbf{1092 words}
 
 % old attempt at tables form csv 
 % just too much data
@@ -657,13 +627,13 @@ With regard to the double constrained model, more work is clearly needed to unde
 
 \subsection{Overview}
 
-Cellular automata models are made of homogeneous cells that interact only with each other according to a defined set of rules. Expanding a CA model to include heterogeneous cells or a separate environment results in a full Agent Based Model. This CA could be thought of either as distinct from ABM or as a subset. 
+Cellular automata models use homogeneous cells that interact with each other according to a set of rules. Expanding a CA model to include heterogeneous cells or an environment results in a Agent Based Model. Thus CA could be thought of either as distinct from ABM or as a subset. 
  
-The simplicity of CA models make them very useful for studying mathematical processes whereas ABM is more useful for modeling complex "real world" phenomena and make them more accessible to non-technical audiences. Often the value of ABM comes from the ability to conduct parameter sweeps, to study the combination of multiple processes. CA tends to focus on the effect of initialization states on the long term outcome of the model whereas agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
+The simplicity of CA models make them useful for studying mathematical processes whereas ABM is more useful for modeling complex "real world" phenomena. Often the value of ABM comes from the ability to conduct parameter sweeps, to study the combination of multiple processes, and accessibility to non-technical audiences. CA tends to focus on the effect of initialization states on the long term outcome of the model whereas agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
 
 \subsection{Three Scenarios}
 
-The first is a baseline scenario used to explore a moderately recoverable disease to which immunity is low, for instance the seasonal flu without a vaccination program. The second scenario looks at the same disease with a vaccination program. The third looks at a disease like the common cold which is more recoverable but where immunity is close to non-existent. 
+First a baseline scenario is used to explore a moderately recoverable disease to which immunity is low, e.g. the seasonal flu without a vaccination program. The second looks at the same disease with a vaccination program. The third looks at a disease that is more recoverable but with low immunity e.g. the common cold. 
 
 All three scenarios will use a population of 1000 and infect 100 people initially. 
 
@@ -671,7 +641,7 @@ All three scenarios will use a population of 1000 and infect 100 people initiall
 %%%%%%%%%%%%%%%%%%%%%%
 % describe 
 
-The first scenario, no vaccine flu, uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% recovery probability on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
+Scenario 1, no vaccine flu, uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% recovery probability on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
 
 % time required to reach steady state
 
@@ -703,11 +673,11 @@ Scenario 2 looks at the flu in a society with high but imperfect immunization ra
 
 % time required to reach steady state
 
- Figure 3 shows the percentage of turtles infected over time in the trials. A steady state is more difficult to identify. One consideration is that the average percentage is lower than in scenario 1 because 80\% of the population is immune. A second is that the lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
+ Figure 3 shows the percentage of turtles infected over time. A steady state is more difficult to identify. The average percentage is lower than scenario 1 because of 80\% population immunity. The lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
 
 Because a steady state is less certain looking at the chart a t-test can be used to confirm that the mean of the set of trials is not changing between steps. At step 50 the mean percent infected was 5.92 with st. deviation 1.799. At step 100 these were 6.90 and 1.99. At step 250 7.935 and 1.696. At step 400 8.075 and 1.502. At step 500 7.956 and 2.113. 
 
-The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116. Indicating a 12\% chance that they are different and that a steady state has not been reached with 95\% confidence. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it is difficult to say with confidence that a steady state exists for this model as the effort to reject the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar to each other by coincidence. 
+The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116. Indicating a 12\% chance of different means and no steady state with 95\% confidence. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it is difficult to say with confidence that a steady state exists for this model as the effort to reject the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar to each other by coincidence. 
 
 Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$.
 
@@ -720,17 +690,17 @@ Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$.
 
 % minimum runs for statistically meaningful results
 
-At tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$ again demonstrating that the variability in results for this scenario is very similar to those of scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, that is to say, the true mean may change across ticks.  
+At tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$. the variability in results for this scenario is very similar to scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, i.e. the true mean may change across ticks.  
 
 \subsubsection{Scenario 3}
 
 % describe
 
-This scenario investigates how the common cold compares to the flu by using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines with a cold exposing relatively more people than the flu. 
+This scenario investigates the common cold using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines with a cold exposing relatively more people than the flu. 
 
 % time required to reach steady state
 
-Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.04994 p-value for a two tailed t-test for difference in means indicates only a 5\% probability of the null hypothesis that the means are different.
+Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.04994 p-value for a two tailed t-test indicates a 5\% probability of the null hypothesis that the means are different.
 
 \begin{figure}
 \centering
@@ -740,20 +710,83 @@ Figure 4 illustrates the percentage of turtles infected over time. Here a steady
 
 % minimum runs for statistically meaningful results
 
-At 50 ticks the mean percentage of turtles infected was $66.08 \pm 0.902$ . Thus the low variability of outcomes for different outcome values as a result of different parameter values continues. 
-
-Results for sick time per turtle per tick at tick 50 were $0.311 \pm 0.0013$. Less than the no vaccine flu scenario. which was less recoverable but more than the vaccinated scenario. 
+At 50 ticks the mean percentage of turtles infected was $66.08 \pm 0.902$ Results for sick time per turtle per tick at tick 50 were $0.311 \pm 0.0013$. Good margins of error in both cases. 
 
 
 \subsection{Conclusion}
 
-Comparing the three scenarios, The unvaccinated flu, scenario 1, resulted in a 38\% average infection rate while the vaccinated flu, scenario 2, resulted in 7.93\% of turtles infected on average. The common cold, scenario 3,  gave 66\% of turtles infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on average while this number was  10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members.  At a high level it can then be said that this model replicates the empirical idea of ``herd immunity'' where general immunity of a group protects non-immune members of the group. 
+Comparing the three scenarios, The unvaccinated flu, scenario 1, resulted in a 38\% average infection rate while the vaccinated flu, scenario 2, resulted in 7.93\% of turtles infected on average. The common cold, scenario 3,  66\% of turtles infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on compared to 10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members.  This model replicates the empirical idea of ``herd immunity''; general group immunity protecting non-immune members. 
 
-To continue investigating this, one could test whether there is a constant increase in sick time per non-immune turtle or whether as population immunity decreases sick time accelerates. It would also be useful to add in a parameter for the contagiousness of the infection, the radius within which turtles affect each other. Lastly, adding in death or post-infection immunity would be an interesting extension. 
+To continue, one could test whether there is a constant increase in sick time per non-immune turtle or whether  sick time accelerates. One could also add  a parameter for infection contagiousness. Adding in death or post-infection immunity would be an interesting extension. 
+
+%\textbf{1160 words}
 
 
-\textbf{1288 words}
 
+\pagebreak
+
+\section{Appendix 1}
+
+\begin{verbatim}
+#Recursive function for calculating node removal effects
+  
+node_deleter <- function(igraph_object, node_function, network_function, 
+									depth, unconn) {
+
+  # check that it's an igraph object
+  if(class(igraph_object) != "igraph") {
+    return("i_graph_object must be of class igraph")
+  } else {
+    
+    # if igraph object is null (all nodes have been deleted) return null
+    if(is.null(igraph_object)) {
+      return(NULL)
+    } else {
+      
+      # if depth == 0 return null if enough nodes have been deleted 
+      # to complete the analysis
+      if(depth == 0){
+        
+      } else {
+        
+        # match functions
+        net_fun <- match.fun(network_function)
+        node_fun <- match.fun(node_function)
+        
+        # calculate pre-deletion network measurement statistic 
+        network_stat_1 = net_fun(igraph_object, unconnected = unconn)
+        
+        # call node_function on igraph object
+        node_stats = node_stats_calc(igraph_object, fun = node_fun)
+        
+        # station_name = max station stat
+        target <- node_stats[which.max(node_stats$stat),]
+        target <- as.character(target[[1]])
+        
+        # delete station
+        igraph_object = delete.vertices(igraph_object, c(target))
+        
+        #calculate post_deletion network statistic
+        network_stat_2 = net_fun(igraph_object, unconnected = unconn)
+        
+        # calc change in network statistics due to deletion
+        # a positive change means that trips have gotten longer
+        network_change = network_stat_2 - network_stat_1
+        
+        # join deleted station name and effect
+        value = data.frame(target, network_change, components(igraph_object)$no)
+        
+        # return value
+        return (rbind(value, node_chopper(igraph_object, node_function, 
+        	network_function, (depth - 1), unconn = unconn)))
+        
+      } 		# end deletion procedure
+    } 			# end recurse check 
+  } 			# end type check 
+} 				# end function
+
+
+\end{verbatim}
 
 \nocite{*}
 
