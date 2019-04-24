@@ -65,7 +65,8 @@
 \maketitle
 
 
-3103 words excluding equations, code, headings, tables, and figures
+2990 words excluding equations, code, headings, tables, and figures
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,7 +79,7 @@
 
 \subsection{Introduction}
 
-This analysis uses a recursive function for node removal to calculate the marginal effect of a node's removal to consider the resilience of London's tube. Appendix 1 contains code for the function. Below, criteria for node removal and effect evaluation are discussed. 
+This analysis uses a recursive function for calculating the marginal effect of a node's removal to consider the resilience of London's tube. Appendix 1 contains code for the function.
 
 
 \subsection{Impact Evaluation}
@@ -292,7 +293,7 @@ An improvement to the data generally would be to use travel time data instead of
 
 Lastly, it would be interesting to build an igraph function that can compute average shortest path using edge weights since the current function cannot. This could confirm or reject the thought that tube stations are spaced fairly regularly based on the high correlation between weighted and topological centrality measures. 
 
-%\textbf{851 words}
+%\textbf{840 words}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -310,11 +311,11 @@ This is useful for studying the change in connectivity between regions, for inst
 
 \subsubsection{Production}
 
-The direction of flows can change but the total flows from each origin will remain constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. The sums of the rows of the matrix are constant. 
+The direction of flows changes but total flows from each origin are constant. This is useful for studying the effect of a new employment or consumption location that changes the destinations of people going to work or to spend money. The sums of the matrix rows are constant. 
 
 \subsubsection{Attraction}
 
-The source of flows into a region can change but the total flows into a region are constant. Any reduction in flows from one region are replaced by another.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster that forces residents out of an area.  The sums of the matrix columns are held constant.
+The origin of flows into a region can change but the total flows into a region are constant. Reduced flows from one region are replaced by another.  This could be used to study a new housing development that pulls people into residence in a different part of an area or a natural disaster forcing residents out of an area.  The sums of the matrix columns are held constant.
 
 \subsubsection{Double}
 
@@ -361,7 +362,7 @@ ln(\lambda_{ij}) = ln(A_i O_i  B_j D_j) - \beta ln( d_{ij})
 
 \subsection{A Scenario}
 
-What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements? Thus origin and destination attributes remain constant but distances change dramatically in : Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
+What if teleportation  was invented and dramatically reduced travel times in connected boroughs but could only be used in London's outermost boroughs due to construction requirements? Origin and destination attributes remain constant but distances change between : Barnet, Bexley, Croydon, Enfield, Harrow, Havering, Hilingdon, Hounslow, Kingston, Redbridge, Richmond, Sutton, Waltham. 
 
 A doubly constrained model will estimate the short term effects where residences and businesses cannot relocate and a total constrained model will estimate the long term effects on business and residence locations. 
 
@@ -381,27 +382,25 @@ To approximate the effect of fast transportation between outer boroughs, the low
 \captionof{table}{Total constrained model results}\label{unconstrained}
 \end{table} 
 
-The parameters and goodness of fit for the unconstrained model are seen in table 5.
+The parameters and fit of the unconstrained model are seen in table 5.
 
 For the doubly constrained model, the estimated intercept was $24.63$ and $\beta$ was $1.92$. This model also produces 32 origin and 32 destination specific parameters that will not be included here. 
 
-In both models the signs of the estimated parameters were consistent with expectations and parameters were significant to $0.0001$.
+The signs of both model's estimated parameters were consistent with expectations and were significant to $0.0001$.
 
 \subsection{Results}
 
-Because there was no feasible way to include a 35x35 matrix, data for a subset of relevant boroughs are presented below. Tables 6 through 11 show the actual, unconstrained estimate and double constrained estimate for flows between the outer boroughs (6, 7, 8) and between some outer boroughs and main destination inner boroughs (9, 10,  11). 
-
-
+Lacking a feasible way to include a 35x35 matrix, data for a subset of relevant boroughs are presented. Tables 6 through 8 show the actual, unconstrained estimate and double constrained estimate for flows between the outer boroughs and between some outer boroughs and main destination inner boroughs (9, 10,  11). 
 
 \subsection{Analysis}
 
 First, the difference between unconstrained and double constrained models can be seen in the total rows and columns where totals have changed for the unconstrained estimate and are constant in the double constrained estimate. 
 
-Second, It is notable that in the total-constrained model flows between the outer boroughs where distance was decreased, flows increased dramatically. Seen in the final row and column, total flows for these boroughs increase substantially, for instance from ~30,000 to ~100,000 in Barnet. This is consistent with general expectations as a large part of London is highly accessible from Barnet in the scenario. Over the long term, it is reasonable to expect such a large change in distance to have effect on flows. 
+Second, It is notable that in the total-constrained model flows between the outer boroughs where distance was decreased, flows increased dramatically. Seen in the final row and column, total flows for these boroughs increase substantially, e.g. from ~30,000 to ~100,000 in Barnet. This is consistent with general expectations as a large part of London is highly accessible from Barnet in the scenario. Over the long term, it is reasonable to expect such a large change in distance to have effect on flows. 
 
 Third, the validity of the double constrained estimates is doubtful. All of the borough totals are constant, seen by comparing the final row and column of table 6 with those of table 8. Specific flows between pairs of outer boroughs, where distance decreased were reduced though and a reasonable expectation would be that these would increase. 
 
-This result was investigated closely but an exact explanation did not present. The code reproduced values found with \verb!fitted()! for 7 boroughs using Senior's algorithm, (\cite{senior1979gravity}) to calculate balancing factors in the practical. Explanations that were investigated but not proven were; the initial guesses for the algorithm leading to local but not global maxes upon convergence; the algorithm or implementation that worked for a 7x7 matrix was unable to successfully calculate balancing factors for a 33x33 matrix; the change in distance was too dramatic and that for these distances, where boroughs furthest apart became some of the closest, balancing factors simply do not exist. 
+This result was investigated closely but an exact explanation did not present. The code reproduced values found with \verb!fitted()! for 7 boroughs using Senior's algorithm, (\cite{senior1979gravity}) to calculate balancing factors in the practical. Explanations that were investigated but not proven were; the initial guesses for the algorithm leading to local but not global maxes; the algorithm or implementation that worked for a 7x7 matrix was unable to successfully calculate balancing factors for a 33x33 matrix; the change in distance was too dramatic and where boroughs furthest apart became some of the closest, balancing factors simply do not exist. 
 
 Lastly, another reasonable concern is that the doubly constrained model is overspecified. Adjusting the double constrained model's $R^2 = 0.85$ for the number of variables only reduced to $\bar{R}^2 = 0.84$ indicating that over-specification is not a problem.  
 
@@ -594,7 +593,7 @@ With regard to the double constrained model, more work is clearly needed to unde
 \label{Estimated Flows Double}
 \end{sidewaystable}
 
-%\textbf{1092 words}
+%\textbf{1064 words}
 
 % old attempt at tables form csv 
 % just too much data
@@ -627,25 +626,25 @@ With regard to the double constrained model, more work is clearly needed to unde
 
 \subsection{Overview}
 
-Cellular automata models use homogeneous cells that interact with each other according to a set of rules. Expanding a CA model to include heterogeneous cells or an environment results in a Agent Based Model. Thus CA could be thought of either as distinct from ABM or as a subset. 
+CA models use homogeneous cells that interact with each other according to a set of rules. Expanding a CA model to include heterogeneous cells or an environment results in a ABM. Thus CA could be thought of either as distinct from ABM or as a subset. 
  
-The simplicity of CA models make them useful for studying mathematical processes whereas ABM is more useful for modeling complex "real world" phenomena. Often the value of ABM comes from the ability to conduct parameter sweeps, to study the combination of multiple processes, and accessibility to non-technical audiences. CA tends to focus on the effect of initialization states on the long term outcome of the model whereas agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
+The simplicity of CA models is useful for studying mathematical processes whereas ABM is more useful for modeling  "real world" phenomena. Often the value of ABM comes from the ability to conduct parameter sweeps, study the combination of multiple processes, and accessibility to non-technical audiences. CA tends to focus on the effect of initialization states on the long term outcome of the model whereas agent based models tend to be calculated for a large number of initialization values in order to study the effect of model dynamics independent of initialization values that may not accurately reflect the real world. 
 
 \subsection{Three Scenarios}
 
-First a baseline scenario is used to explore a moderately recoverable disease to which immunity is low, e.g. the seasonal flu without a vaccination program. The second looks at the same disease with a vaccination program. The third looks at a disease that is more recoverable but with low immunity e.g. the common cold. 
+A baseline scenario explores a moderately recoverable disease to which immunity is low, e.g. the seasonal flu without a vaccination program. The second looks at the same disease with a vaccination program. The third looks at a disease that is more recoverable but with low immunity e.g. the common cold. 
 
-All three scenarios will use a population of 1000 and infect 100 people initially. 
+All three scenarios use a population of 1000 and infect 100 people. 
 
 \subsubsection{Scenario 1}
 %%%%%%%%%%%%%%%%%%%%%%
 % describe 
 
-Scenario 1, no vaccine flu, uses 50\% chance of immunity, based on the idea that it's fairly common for someone with the flu to interaction with someone else without infecting them and a 10\% recovery probability on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
+Scenario 1, no vaccine flu, uses 50\% chance of immunity, since it's fairly common for someone with the flu to interact with someone else without infecting them and a 10\% recovery probability on the guess that flu symptoms last between 3 and 9 days for the majority of the population.
 
 % time required to reach steady state
 
-Looking at Figure 2, which plots the percentage of turtles infected over 150 steps of the model for 20 trials, a steady state becomes fairly clear. While this is not a perfect equilibrium, compared to the rapid increase in the first 20 ticks, the model becomes fairly stationary by tick 20 or 30.   
+Looking at Figure 2, the percentage of turtles infected over time for 20 trials, a steady state becomes clear. While this is not a perfect equilibrium, compared to the rapid increase in the first 20 ticks, the model becomes fairly stationary by tick 20 or 30.   
 
 \begin{figure}
 \centering
@@ -662,22 +661,22 @@ The total infection time per non-immune turtle per tick was also recorded. The 2
 
 % conclusions. 
 
-Thus the model indicates that for these parameters, a fairly high number of turtles will contract the infection and the infection will be passed around continually rather than dying out at some point in the future. Considering the margin of errors for the results, if the model accurately reflects a real world scenario, we can have a good idea of how that scenario would play out. 
+Thus the model indicates that for these parameters, a fairly high number of turtles are infected and the infection will be passed around continually rather than dying out at some point in the future. Considering the low margin of error, if the model accurately reflects a real world scenario, we can have a good idea of how that scenario would play out. 
 
 \subsubsection{Scenario 2}
 %%%%%%%%%%%%%%%%%%%%
 % describe
 
-Scenario 2 looks at the flu in a society with high but imperfect immunization rates. In the US this is seen in cases where infants and the elderly cannot receive the vaccine and some people elect not to receive it or forget. This is accomplished by using the same recovery rate, 10\% but increasing immunity probability to 80\%. 
+Scenario 2 looks at the flu in a society with high but imperfect immunization rates. This is seen in cases where infants and the elderly cannot receive the vaccine and others elect not to receive it or forget. This is accomplished by using the same recovery rate, 10\% but increasing immunity probability to 80\%. 
 
 
 % time required to reach steady state
 
- Figure 3 shows the percentage of turtles infected over time. A steady state is more difficult to identify. The average percentage is lower than scenario 1 because of 80\% population immunity. The lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
+Figure 3 shows the percentage of turtles infected over time. A steady state is more difficult to identify. The average percentage is lower than scenario 1 because of 80\% population immunity. The lower mean scales the y-axis of the chart down from 0-14 instead of 0-45 in scenario 1. Thus while the standard deviation looks higher it is essentially the same, 1.869 in scenario 1 and 1.853 in scenario 2. 
 
-Because a steady state is less certain looking at the chart a t-test can be used to confirm that the mean of the set of trials is not changing between steps. At step 50 the mean percent infected was 5.92 with st. deviation 1.799. At step 100 these were 6.90 and 1.99. At step 250 7.935 and 1.696. At step 400 8.075 and 1.502. At step 500 7.956 and 2.113. 
+Because a steady state is less certain, a t-test can test whether mean of the set of trials is changing between steps. At step 50 the mean percent infected was 5.92 with st. deviation 1.799. At step 100 these were 6.90 and 1.99. At step 250 7.935 and 1.696. At step 400 8.075 and 1.502. At step 500 7.956 and 2.113. 
 
-The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116. Indicating a 12\% chance of different means and no steady state with 95\% confidence. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it is difficult to say with confidence that a steady state exists for this model as the effort to reject the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar to each other by coincidence. 
+The p-value for a t-test with the null hypothesis that the means at steps 50 and 100 are different was 0.116, a 12\% chance of different means. The same test for the means at tick 250 and tick 500 had a p-value of 0.97. The test for steps 400 and 500 had a p-value of 0.84. Thus it cannot be said with  confidence that a steady state exists for this model as rejecting the null hypothesis that the means are different begins to resemble simply getting lucky enough to choose ticks with means that are very similar by chance. 
 
 Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$.
 
@@ -690,17 +689,17 @@ Sicktime per turtle per tick at 100 ticks was $ 0.1047 \pm 0.01397$.
 
 % minimum runs for statistically meaningful results
 
-At tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$. the variability in results for this scenario is very similar to scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, i.e. the true mean may change across ticks.  
+At tick 250, the mean percentage of turtles infected was $7.94 \pm 0.794$. the variability in results is very similar to scenario 1 but that in light of the results of a t-test for a steady state, the true margin of error is likely to be higher since the process may not be stationary at tick 250, i.e. the true mean may change across ticks.  
 
 \subsubsection{Scenario 3}
 
 % describe
 
-This scenario investigates the common cold using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines with a cold exposing relatively more people than the flu. 
+This scenario investigates the common cold using a higher rate of recovery 25\% and lower rate of immunity 5\% since there is no vaccine for the common cold and many members of society continue their daily routines with a cold exposing relatively more people. 
 
 % time required to reach steady state
 
-Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.04994 p-value for a two tailed t-test indicates a 5\% probability of the null hypothesis that the means are different.
+Figure 4 illustrates the percentage of turtles infected over time. Here a steady state seems more obvious. At 50 ticks the mean was 66.19 and st. deviation was 1.597. At 100 ticks this was 65.84 and 1.648. The 0.0499 p-value for a two tailed t-test indicates a 5\% probability of the null hypothesis that the means are different.
 
 \begin{figure}
 \centering
@@ -710,16 +709,16 @@ Figure 4 illustrates the percentage of turtles infected over time. Here a steady
 
 % minimum runs for statistically meaningful results
 
-At 50 ticks the mean percentage of turtles infected was $66.08 \pm 0.902$ Results for sick time per turtle per tick at tick 50 were $0.311 \pm 0.0013$. Good margins of error in both cases. 
+At 50 ticks the mean percentage of turtles infected was $66.08 \pm 0.902$ Results for sick time per turtle per tick at tick 50 were $0.311 \pm 0.0013$.
 
 
 \subsection{Conclusion}
 
-Comparing the three scenarios, The unvaccinated flu, scenario 1, resulted in a 38\% average infection rate while the vaccinated flu, scenario 2, resulted in 7.93\% of turtles infected on average. The common cold, scenario 3,  66\% of turtles infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on compared to 10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members.  This model replicates the empirical idea of ``herd immunity''; general group immunity protecting non-immune members. 
+Comparing the three scenarios, Scenario 1 resulted in a 38\% average infection rate while scenario 2 resulted in 7.93\% of turtles infected on average. In cenario 3  66\% of turtles were infected. At tick 50, non-immune turtles in scenario 1 had spent 63\% of ticks infected on compared to 10\% in scenario 2 and 31\% in scenario 3, demonstrating the value of population immunity to non-immune members.  This model replicates the empirical idea of ``herd immunity''; general group immunity protecting non-immune members. 
 
 To continue, one could test whether there is a constant increase in sick time per non-immune turtle or whether  sick time accelerates. One could also add  a parameter for infection contagiousness. Adding in death or post-infection immunity would be an interesting extension. 
 
-%\textbf{1160 words}
+%\textbf{1086 words}
 
 
 

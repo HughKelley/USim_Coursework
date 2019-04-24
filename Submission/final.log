@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  24 APR 2019 08:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  24 APR 2019 09:24
 entering extended mode
 **./final.tex
 (final.tex
@@ -693,27 +693,27 @@ LaTeX Warning: No \author given.
 <cropped_correlations.png, id=10, 372.64218pt x 331.2375pt>
 File: cropped_correlations.png Graphic file (type png)
 <use cropped_correlations.png>
-Package pdftex.def Info: cropped_correlations.png  used on input line 103.
+Package pdftex.def Info: cropped_correlations.png  used on input line 104.
 (pdftex.def)             Requested size: 334.60422pt x 297.43877pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 114.
+(Font)              <10.95> on input line 115.
  [2 <./cropped_correlations.png>] [3] [4] [5] [6] [7] [8] [9] [10]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 443.
+(Font)              <9> on input line 442.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 443.
+(Font)              <5> on input line 442.
 
-Overfull \hbox (26.9228pt too wide) in paragraph at lines 443--463
+Overfull \hbox (26.9228pt too wide) in paragraph at lines 442--462
 [][]
  []
 
 
-Overfull \hbox (54.67262pt too wide) in paragraph at lines 470--490
+Overfull \hbox (54.67262pt too wide) in paragraph at lines 469--489
 [][]
  []
 
 
-Overfull \hbox (26.9228pt too wide) in paragraph at lines 498--518
+Overfull \hbox (26.9228pt too wide) in paragraph at lines 497--517
 [][]
  []
 
@@ -721,14 +721,14 @@ Overfull \hbox (26.9228pt too wide) in paragraph at lines 498--518
 <scen_1_steady_state.png, id=69, 373.395pt x 266.9975pt>
 File: scen_1_steady_state.png Graphic file (type png)
 <use scen_1_steady_state.png>
-Package pdftex.def Info: scen_1_steady_state.png  used on input line 652.
+Package pdftex.def Info: scen_1_steady_state.png  used on input line 651.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
  [18] [19 <./scen_1_steady_state.png>]
 <20-runs-scenario-2-steady-state.png, id=79, 373.395pt x 266.9975pt>
 File: 20-runs-scenario-2-steady-state.png Graphic file (type png)
 <use 20-runs-scenario-2-steady-state.png>
 Package pdftex.def Info: 20-runs-scenario-2-steady-state.png  used on input lin
-e 686.
+e 685.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
 
 [20 <./20-runs-scenario-2-steady-state.png>]
@@ -736,15 +736,15 @@ e 686.
 File: 20-runs-scenario-3-steady-state.png Graphic file (type png)
 <use 20-runs-scenario-3-steady-state.png>
 Package pdftex.def Info: 20-runs-scenario-3-steady-state.png  used on input lin
-e 707.
+e 706.
 (pdftex.def)             Requested size: 334.60422pt x 239.26884pt.
- [21 <./20-runs-scenario-3-steady-state.png>] [22] [23]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 777--777
+ [21 <./20-runs-scenario-3-steady-state.png>] [22]
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 776--776
 []        \OT1/cmtt/m/n/10.95 value = data.frame(target, network_change, compon
 ents(igraph_object)$no)[] 
  []
 
-[24] (final.aux)
+[23] (final.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -777,9 +777,9 @@ rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Hugh/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/
 Hugh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b>
-Output written on final.pdf (24 pages, 386165 bytes).
+Output written on final.pdf (23 pages, 385242 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
+ 140 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
